@@ -5,18 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .button{
+            color: white;
+            background-color: red; 
+            border: none; 
+            padding: 10px;
+            font-weight: bold;
+            transition-duration: 1s;
+        }
+
+        .button:hover {
+            background-color: blue;
+            transition-duration: 1s;
+        }
+
+        .titulo{
+            text-align: center;
+            width: 250px;
+            
+        }
+    </style>
 </head>
 <body>
-      <h2> Simuldaor Financeiro </h2> <br>
+    <div class="titulo">
+        
+        <b> Simuldaor Financeiro </b><br> <br>
 
-    Quantidade de Bolsas de Sangue: <input type="number" min="0" id="bolsa">
-    <br><br>
-    Valor das Bolsas de Sangue: <input type="number" min="0" id="valor">
-    <br><br>
-    Quantidade de Bolsas Perdidas por ano: <input type="number" min="0" id="perda">
-    <br><br>
-    <button onclick="calcular()"> Calcular Simulação </button><br>
-    
+        Quantidade de Bolsas de Sangue:<br> <input type="number" min="0" id="bolsa">
+        <br><br>
+        Valor das Bolsas de Sangue:<br> <input type="number" min="0" id="valor">
+        <br><br>
+        Quantidade de Bolsas Perdidas por ano: <br> <input type="number" min="0" id="perda">
+        <br><br>
+
+        <button class="button" onclick="calcular()"> Simular </button>
+    <br>
+    </div>
+
     <span id="mensagem"></span>
 </body>
 </html>
