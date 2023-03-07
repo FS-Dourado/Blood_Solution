@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <h2> Simuldaor Financeiro </h2> <br>
+
+    Quantidade de Bolsas de Sangue: <input type="number" min="0" id="bolsa">
+    <br><br>
+    Valor das Bolsas de Sangue: <input type="number" min="0" id="valor">
+    <br><br>
+    Quantidade de Bolsas Perdidas por ano: <input type="number" min="0" id="perda">
+    <br><br>
+    <button onclick="calcular()"> Calcular Simulação </button><br>
+    
+    <span id="mensagem"></span>
+</body>
+</html>
+
+
+<script>
+    function calcular() { 
+        var Bolsa = Number(bolsa.value);
+        var Valor = Number(valor.value);
+        var Perda = Number(perda.value);
+        var perca = Perda * Valor
+        var total = Bolsa * Valor;
+        var lucro = (perca * 0.6) ;
+
+        mensagem.innerHTML = `
+        <br>A bolsa de sangue custa em média R$ <b> ${Valor} </b>,<br>
+        o valor total em bolsas da sua empresa é de R$ <b> ${total} </b>,<br> 
+        sua empresa está perdendo R$ <b style = "color: red">${perca} </b> por ano.<br>
+        Implementando nosso projeto sua empresa economizará 60% do valor total da perda,
+         isso resultaria em um retorno de R$ <b style = "color: green">${lucro}</b>`
+
+    }
+</script>
