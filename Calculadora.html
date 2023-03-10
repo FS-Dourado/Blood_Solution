@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <img src="" alt="image" height="100" width="300">
+
     <style>
+        
         .button{
             color: white;
             background-color: red; 
-            border: none; 
-            padding: 10px;
+            border-radius: 15px;
+            padding: 15px;
             font-weight: bold;
             transition-duration: 1s;
+            margin-top: 25px;
         }
 
         .button:hover {
@@ -23,28 +27,34 @@
 
         .titulo{
             text-align: center;
-            width: 250px;
-            
+            margin-top: 50px;
         }
+
+        .texto{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+        }
+
     </style>
 </head>
 <body>
     <div class="titulo">
         
-        <b> Simuldaor Financeiro </b><br> <br>
+        <b><h1> Simulador Financeiro </h1></b><br> <br>
 
         Quantidade de Bolsas de Sangue:<br> <input type="number" min="0" id="bolsa">
         <br><br>
         Valor das Bolsas de Sangue:<br> <input type="number" min="0" id="valor">
         <br><br>
-        Quantidade de Bolsas Perdidas por ano: <br> <input type="number" min="0" id="perda">
+        Quantidade de Bolsas Perdidas por Mês: <br> <input type="number" min="0" id="perda">
         <br><br>
 
         <button class="button" onclick="calcular()"> Simular </button>
-    <br>
+        <br>
+
+        <span class="texto" id="mensagem" ></span>
     </div>
 
-    <span id="mensagem"></span>
 </body>
 </html>
 
@@ -54,16 +64,23 @@
         var Bolsa = Number(bolsa.value);
         var Valor = Number(valor.value);
         var Perda = Number(perda.value);
-        var perca = Perda * Valor
         var total = Bolsa * Valor;
-        var lucro = (perca * 0.6) ;
+        var perca = Perda * Valor;
+
+        var retorno = (perca * 0.3) 
+        var p1 = (perca / total) * 100
+        var p2 = (p1 * 0.3) 
+        var dinheiro = perca * (p2 / 100)  
+        var v1 = Bolsa * 4
+        var v2 = (Bolsa / v1) * 100
 
         mensagem.innerHTML = `
-        <br>A bolsa de sangue custa em média R$ <b> ${Valor} </b>,<br>
-        o valor total em bolsas da sua empresa é de R$ <b> ${total} </b>,<br> 
-        sua empresa está perdendo R$ <b style = "color: red">${perca} </b> por ano.<br>
-        Implementando nosso projeto sua empresa economizará 60% do valor total da perda,
-         isso resultaria em um retorno de R$ <b style = "color: green">${lucro}</b>`
-
+        <br> Uma bolsa de sangue salva em média 4 vidas! <br>
+        o valor total em bolsas da sua empresa é de R$ <b> ${total} </b>,<br>
+        sua empresa está perdendo um total de ${p1}% isso é R$ <b style = "color: red">${perca} </b> mensal. <br>
+        implementando nosso projeto sua empresa reduzira as percas de ${p1}% em até ${p2}%,<br>
+        isso é resultaria em um retorno de R$ <b style = "color: green"> ${dinheiro},</b><br>
+        além de poder salvar até ${v1} vidas a mais, isso é ${v2}% mais! <br>
+        `
     }
 </script>
