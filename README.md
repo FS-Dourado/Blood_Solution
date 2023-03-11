@@ -2,7 +2,7 @@
 
 Blood Solutions - Monitoramento da Temperatura no armazenamento de Banco de Sangue
 
-Integrantes do Projeto:
+#### Integrantes do Projeto:
 * Felipe Naufel Santiago
 * Gabriella Perniconi Roman
 * Gustavo Alcantara Ribeiro
@@ -17,7 +17,8 @@ Integrantes do Projeto:
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="40" height="40" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"  width="40" height="40"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original-wordmark.svg" width="40" height="40"/>
-<img src=" https://assets.mofoprod.net/network/images/discord.original.jpg" width="40" height="40"/>
+<img src="https://icons8.com/icon/2mIgusGquJFz/discord" width="40" height="40"/>
+
 
 #### Linguagens/Tecnologias Utilizadas
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40" /><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="40" height="40"/>
