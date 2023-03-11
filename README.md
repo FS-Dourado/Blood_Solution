@@ -3,5 +3,5 @@
 Blood Solutions - Monitoramento da Temperatura no armazenamento de Banco de Sangue
 
 
-            <img style = 'width=30px'src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" />
-          (FIGMA)
+            <img src="[https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg](https://cdn-icons-png.flaticon.com/512/270/270798.png)" />
+          
