@@ -2,4 +2,4 @@
 
 Blood Solutions - Monitoramento da Temperatura no armazenamento de Banco de Sangue
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" />
