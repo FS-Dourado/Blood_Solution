@@ -17,7 +17,7 @@ Blood Solutions - Monitoramento da Temperatura no armazenamento de Banco de Sang
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="40" height="40" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"  width="40" height="40"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original-wordmark.svg" width="40" height="40"/>
-<img src="https://icons8.com/icon/2mIgusGquJFz/discord" width="40" height="40"/>
+<img src="https://www.svgrepo.com/show/353655/discord-icon.svg" width="40" height="40"/>
 
 
 #### Linguagens/Tecnologias Utilizadas
