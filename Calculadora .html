@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMULADOR FINANCEIRO</title>
 
-    <img src="./LOGOBS.png" alt="image" height="130" width="300">
+    <img src="./eita.png" alt="image" height="130" width="300">
 
     <style>
         
@@ -17,7 +17,7 @@
             padding: 15px;
             font-weight: bold;
             transition-duration: 1s;
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .button:hover {
@@ -67,20 +67,20 @@
         var total = Bolsa * Valor;
         var perca = Perda * Valor;
 
-        var retorno = (perca * 0.3) 
-        var p1 = (perca / total) * 100
-        var p2 = (p1 * 0.3) 
-        var dinheiro = perca * (p2 / 100)  
-        var v1 = Bolsa * 4
-        var v2 = (Bolsa / v1) * 100
+        var retorno = (Perda * 0.3);
+        var p1 = (perca / total) * 100;
+        var p2 = (p1 * 0.3);
+        var dinheiro = perca * (p2 / 100);  
+        var v1 = retorno * 4;
 
         mensagem.innerHTML = `
         <br> Uma bolsa de sangue salva em média <b>4 vidas!</b> <br>
-        o valor total em bolsas da sua empresa é de R$ <b> ${total} </b>,<br>
-        sua empresa está perdendo um total de ${p1}% isso é R$ <b style = "color: red">${perca} </b> mensal. <br>
-        implementando nosso projeto sua empresa reduzira as percas de <b>${p1}%</b> em até <b>${p2}%</b>,<br>
+        o valor total em bolsas da sua empresa é de R$ <b> ${total}</b>,<br>
+        sua empresa está perdendo um total de <b>${p1}%</b> isso é R$ <b style = "color: red">${perca} </b> mensal. <br>
+        implementando nosso projeto sua empresa reduzira as percas em até <b>${p2}%</b>,<br>
         isso é resultaria em um retorno de R$ <b style = "color: green"> ${dinheiro},</b><br>
-        além de poder salvar até <b>${v1}</b> vidas a mais, isso é <b>${v2}%</bn> mais! <br>
+        além de poder salvar até <b>${v1}</b> vidas a mais
         `
+        
     }
 </script>
