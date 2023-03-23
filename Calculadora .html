@@ -6,23 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMULADOR FINANCEIRO</title>
 
-    <img src="./eita.png" alt="image" height="130" width="300">
 
     <style>
         
         .button{
             color: white;
             background-color: red; 
-            border-radius: 15px;
+            border-radius: 5px;
             padding: 15px;
             font-weight: bold;
-            transition-duration: 1s;
+            transition-duration: 0.5s;
             margin-top: 20px;
         }
 
         .button:hover {
             background-color: blue;
-            transition-duration: 1s;
+            transition-duration: 0.5s;
         }
 
         .titulo{
@@ -44,8 +43,6 @@
 
         Quantidade de Bolsas de Sangue:<br> <input type="number" min="0" id="bolsa">
         <br><br>
-        Valor das Bolsas de Sangue:<br> <input type="number" min="0" id="valor">
-        <br><br>
         Quantidade de Bolsas Perdidas por Mês: <br> <input type="number" min="0" id="perda">
         <br><br>
 
@@ -62,25 +59,24 @@
 <script>
     function calcular() { 
         var Bolsa = Number(bolsa.value);
-        var Valor = Number(valor.value);
+        var Valor = Bolsa * 86 //Uma Bolsa de sangue pode custar 86 Reais
         var Perda = Number(perda.value);
         var total = Bolsa * Valor;
         var perca = Perda * Valor;
 
-        var retorno = (Perda * 0.3);
+        var retorno = (Perda * 0.3);    
         var p1 = (perca / total) * 100;
         var p2 = (p1 * 0.3);
         var dinheiro = perca * (p2 / 100);  
-        var v1 = retorno * 4;
+        var v1 = retorno * 4; //Uma bolsa de sangue pode salvar até 4 pessoas
 
         mensagem.innerHTML = `
         <br> Uma bolsa de sangue salva em média <b>4 vidas!</b> <br>
-        o valor total em bolsas da sua empresa é de R$ <b> ${total}</b>,<br>
-        sua empresa está perdendo um total de <b>${p1}%</b> isso é R$ <b style = "color: red">${perca} </b> mensal. <br>
-        implementando nosso projeto sua empresa reduzira as percas em até <b>${p2}%</b>,<br>
-        isso é resultaria em um retorno de R$ <b style = "color: green"> ${dinheiro},</b><br>
-        além de poder salvar até <b>${v1}</b> vidas a mais
+        o valor total em bolsas da sua empresa é de R$ <b> ${total.toFixed(2)}</b>,<br>
+        sua empresa está perdendo um total de <b>${p1.toFixed(2)}%</b> isso é R$ <b style = "color: red">${perca.toFixed(2)} </b> mensal. <br>
+        implementando nosso projeto sua empresa reduzira as percas em até <b>${p2.toFixed(2)}%</b>,<br>
+        isso é resultaria em um retorno de R$ <b style = "color: green"> ${dinheiro.toFixed(2)},</b><br>
+        além de poder salvar até <b>${v1.toFixed(2)}</b> vidas a mais
         `
-        
     }
 </script>
