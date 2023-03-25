@@ -1,4 +1,4 @@
-# Sprint_01
+# Sprint_02
 
 ## Blood Solutions - Monitoramento da Temperatura no armazenamento de Banco de Sangue
 
