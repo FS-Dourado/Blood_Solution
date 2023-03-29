@@ -1,0 +1,29 @@
+.form{
+    background-color: #F5ECEC;
+    padding: 10px;
+    display: flex;
+}
+
+.formulario{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 300px;
+    margin: 30px;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.form .container{
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.form h4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

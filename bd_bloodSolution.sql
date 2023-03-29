@@ -19,11 +19,20 @@ CREATE TABLE armazenamento (
     constraint chkTipo check (tipoSanguineo in ('O+','O-','A+','A-','AB+','AB-','Golden Blood'))
 );
 
+CREATE TABLE transporte (
+	idTransporte INT PRIMARY KEY auto_increment,
+    tipoSanguineo varchar(15) not null,
+	qtdBolsas int,
+    constraint chkTipo2 check (tipoSanguineo in ('O+','O-','A+','A-','AB+','AB-','Golden Blood'))
+);
+
 CREATE TABLE sensor (
 	idSensor INT PRIMARY KEY auto_increment,
     sttsSensor char(1),
     idArmazenamento INT,
-    constraint fk_Armazenamento foreign key (idArmazenamento) references armazenamento (idArmazenamento)
+    idTransporte INT,
+    constraint fk_Armazenamento foreign key (idArmazenamento) references armazenamento (idArmazenamento),
+    constraint fk_Transporte foreign key (idTransporte) references transporte (idTransporte)
 );
 
 CREATE TABLE historico (
