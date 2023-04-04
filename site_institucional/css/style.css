@@ -1,5 +1,5 @@
 *{
-    font-family: Arial;
+    font-family: 'Mulish';
 }
 
 body{
@@ -67,6 +67,10 @@ body{
 .navbar a, .navbar li{
     color: black;
     text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 /* footer */
@@ -82,4 +86,195 @@ body{
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+/* Desktop */
+.desktop{
+    position: relative;
+height: 3108px;
+}
+
+.desktop_light{
+    display: flex;
+    height: 672px;
+    background: #F5ECEC;
+}
+
+.desktop h1{
+    position: absolute;
+    height: 112px;
+    left: 165px;
+    right: 830px;
+    top: 150px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    letter-spacing: 0.2px;
+    color: #373F41;
+}
+
+.desktop .text_iot{
+    position: absolute;
+    height: 110px;
+    left: 165px;
+    right: 830px;
+    top: 321px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    color: #737B7D;   
+}
+
+.desktop .saiba_mais{
+    position: absolute;
+    left: 165px;
+    top: 460px;
+    font-size: 14px;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.3px;
+    background-color: #a70000;
+    width: 139px;
+    height: 48px;
+    color: #FFFFFF;
+}
+
+.desktop .img_top{
+    position: absolute;
+    left: 48.96%;
+    right: 11.46%;
+    top: 201px;
+    border-radius: 1px;
+}
+
+
+
+.top_light .top{
+
+    position: absolute;
+    left: 48.85%;
+    right: 11.46%;
+    top: 189px;
+
+}
+.top_light .green{
+/* green */
+
+
+position: absolute;
+left: 53%;
+right: 90.87%;
+top: 200px;
+
+
+
+}
+.top_light .yellow{
+    /* yellow */
+
+
+position: absolute;
+left: 51.5%;
+top: 200px;
+
+
+
+}
+.top_light .red{
+    /* red */
+
+
+position: absolute;
+left: 50%;
+right: 95.54%;
+top: 200px;
+}
+
+.text_gama h1{
+    display: flex;
+    justify-content: center;
+    right: 45px;
+    top: 804px;
+    
+}
+
+.container h2{
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+
+    text-align: center;
+    letter-spacing: 0.1px;
+    
+    color: #373F41;
+
+}
+
+.container p {
+    
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    
+    text-align: center;
+    letter-spacing: 0.1px;
+    
+    color: #373F41;
+}
+
+.icon_suporte h2{
+    position: absolute;
+    height: 24px;
+    left: 201px;
+    bottom: 2007px;
+           
+}
+
+.icon_suporte p {
+    position: absolute;
+    height: 24px;
+    left: 65px;
+    bottom: 1958px;
+        
+}
+
+.icon_suporte img{
+    position: absolute;
+    left: 236px;
+    top: 1020px;
+
+}
+
+.icon_protecao{
+    position: absolute;
+    height: 24px;
+    left: 507px;
+    bottom: 2070px;
+}
+
+.icon_protecao img{
+    position: relative;
+    left: 160px;
+}
+
+.icon_universal{
+    position: absolute;
+    left: 914px;
+    height: 24px;
+    top: 1015px;
+}
+
+.icon_universal img{
+    width: 31.95px;
+    height: 31.95px;
+    position: relative;
+    left: 135px;
 }
