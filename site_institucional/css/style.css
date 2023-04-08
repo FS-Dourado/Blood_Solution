@@ -262,7 +262,7 @@ top: 200px;
 
 .icon_protecao img{
     position: relative;
-    left: 160px;
+    left: 150px;
 }
 
 .icon_universal{
@@ -277,4 +277,43 @@ top: 200px;
     height: 31.95px;
     position: relative;
     left: 135px;
+    
+}
+
+.icon_mic{
+    position: absolute;
+    left: 64px;
+    bottom: 1719px;
+
+
+}
+
+.icon_mic img{
+    position: absolute;
+    width: 40px;
+    height: 38.82px;
+    left: 170px;
+    top: -40px;
+}
+
+.icon_interacao{
+    position: absolute;
+    top: 1215px;
+    left: 510px;
+    width: 327px;
+    height: 180px;
+}
+
+.icon_interacao img{
+    position: relative;
+    left: 140px;
+    width: 65px;
+    height: 55px;
+}
+
+.icon_backup{
+    position: absolute;
+    left: 713px;
+    width: 326px;
+    
 }
