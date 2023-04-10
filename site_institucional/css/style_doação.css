@@ -1,0 +1,110 @@
+
+h4{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    color: #737B7D;
+}
+
+.form{
+    background-color: #F5ECEC;
+    padding: 10px;
+    display: flex;
+}
+
+.formulario{
+    background-color: white;
+    display: flex;
+    align-items: flex;
+    flex-direction: 0;
+    height: 1px;
+    margin-top: 110px;
+    border: 2px solid red;
+    padding: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.form .container{
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.form h4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.form .campos{
+    width: 85%;
+    height: 35px;
+    margin-top: 10%;
+}
+
+.form span{
+    float: left;
+    display: flex;
+    font-size: 10px;
+}
+
+.form button{
+    width: 150px;
+    height: 50px;
+    background-color: #A70000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10%;
+}
+#doacao{
+    margin-left: 10px;
+    margin-right: 100px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 56px;
+    letter-spacing: 0.2px;
+    color: #373F41;
+
+}
+.formulario span{
+    color: red;
+    font-size: 20px;
+    align-items: center;
+}
+.imagem{
+    margin-bottom: 110px;
+}
+.descricao{
+    background-color: #FFFFFF;
+    padding: 10px;
+    display: flex;    
+}
+.desc{
+    background-color: #F5ECEC;
+    display: flex;
+    align-items: center;
+    flex-direction: 0;
+    width: 100%;
+    height: 100px;
+    border: 2px solid red;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 10px;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+.bolinhas{
+    left: 56%;
+    top: 33.5%;
+}
