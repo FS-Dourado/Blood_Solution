@@ -53,6 +53,11 @@
     margin-top: 10%;
 }
 
+.form input{
+    border: none;
+    border-bottom: solid #F5ECEC ;
+}
 
-
-
+.form button{
+    cursor: pointer;
+}
