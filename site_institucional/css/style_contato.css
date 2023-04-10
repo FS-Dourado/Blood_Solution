@@ -121,6 +121,8 @@
     width: 42%;
     border-radius: 5px;
     height: 12%;
+    border: none;
+    border-bottom: solid crimson;
 }
 
 .formulario .mensagem{
@@ -139,6 +141,7 @@
     background-color: #c51e1e;
     color: white;
     margin-top: 1%;
+    cursor: pointer;
 }
 .direita{
     display: flex;
