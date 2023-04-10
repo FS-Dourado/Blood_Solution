@@ -1,5 +1,5 @@
 *{
-    font-family: Arial;
+    font-family: 'Mulish';
 }
 
 body{
@@ -25,7 +25,7 @@ body{
 
 
 .header .img_logo{
-    width:  150px;
+    width: 15%;
     margin-left: 34px;
 }
 
@@ -46,8 +46,8 @@ body{
     justify-content: space-between;
     position: absolute;
     height: 18px;
-    right: 200px;
-    top: 15px;
+    right: 10%;
+    top: 2.5%;
 
 }
 
@@ -67,6 +67,10 @@ body{
 .navbar a, .navbar li{
     color: black;
     text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 /* footer */
@@ -82,4 +86,384 @@ body{
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+/* Desktop */
+.desktop{
+    position: relative;
+    height: 3108px;
+}
+
+.desktop_light{
+    display: flex;
+    height: 672px;
+    background: #F5ECEC;
+}
+
+.desktop_light h1{
+    position: absolute;
+    text-align: left;
+    width: 30%;
+    height: 112px;
+    left: 13%;
+    right: 830px;
+    top: 5%;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 56px;
+    letter-spacing: 0.2px;
+    color: #373F41;
+}
+
+.desktop .text_iot{
+    position: absolute;
+    height: 110px;
+    left: 13%;
+    text-align: left;
+    width: 30%;
+    top: 10%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    color: #737B7D;   
+}
+
+.desktop .saiba_mais{
+    position: absolute;
+    left: 13%;
+    top: 15%;
+    font-size: 14px;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.3px;
+    background-color: #a70000;
+    width: 139px;
+    height: 48px;
+    color: #FFFFFF;
+}
+
+.desktop .img_top{
+    position: absolute;
+    left: 48.96%;
+    right: 11.46%;
+    top: 7%;
+    border-radius: 1px;
+}
+
+
+
+.top_light .top{
+
+    position: absolute;
+    left: 48.85%;
+    right: 11.46%;
+    top: 6%;
+
+}
+.top_light .green{
+/* green */
+
+
+position: absolute;
+left: 53%;
+right: 90.87%;
+top: 6.42%;
+
+
+
+}
+.top_light .yellow{
+    /* yellow */
+
+
+position: absolute;
+left: 51.5%;
+top: 6.42%;
+
+
+
+}
+.top_light .red{
+    /* red */
+
+
+position: absolute;
+left: 50%;
+right: 95.54%;
+top: 6.42%;
+}
+
+
+
+.text_gama h1{
+    position: relative;
+    left: 47%;
+    top: 200%;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.1px;
+
+    color: #373F41;
+
+    
+}
+
+.container h2{
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+
+    text-align: center;
+    letter-spacing: 0.1px;
+    
+    color: #373F41;
+
+}
+
+.container p {
+    
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    
+    text-align: center;
+    letter-spacing: 0.1px;
+    
+    color: #373F41;
+}
+
+.icon_suporte h2{
+    position: absolute;
+    height: 24px;
+    left: 16%;
+    top: 34%;
+           
+}
+
+.icon_suporte p {
+    position: absolute;
+    height: 24px;
+    left: 6%;
+    top: 35.2%;
+        
+}
+
+.icon_suporte img{
+    position: absolute;
+    left: 18.5%;
+    top: 32.5%;
+
+}
+
+.icon_protecao{
+    position: absolute;
+    height: 24px;
+    left: 39%;
+    top: 32.59%;
+}
+
+.icon_protecao img{
+    position: relative;
+    left: 44.9%;
+}
+
+.icon_universal{
+    position: absolute;
+    left: 71%;
+    height: 24px;
+    top: 32.59%;
+}
+
+.icon_universal img{
+    width: 31.95px;
+    height: 31.95px;
+    position: relative;
+    left: 43%;
+    
+}
+
+.icon_mic{
+    position: absolute;
+    left: 5.5%;
+    top: 40.9%;
+
+
+}
+
+.icon_mic img{
+    position: absolute;
+    width: 40px;
+    height: 38.82px;
+    left: 43.5%;
+    bottom: 100%;
+}
+
+.icon_interacao{
+    position: absolute;
+    top: 39.10%;
+    left: 40%;
+    width: 327px;
+    height: 180px;
+}
+
+.icon_interacao img{
+    position: relative;
+    left: 39.9%;
+    width: 65px;
+    height: 55px;
+}
+
+.icon_backup{
+    position: absolute;
+    left: 70%;
+    width: 326px;
+    height: 180px;
+    top: 39.5%;
+}
+
+.icon_backup img{
+    position: relative;
+    left: 43%;
+    bottom: 1%;
+    width: 40px;
+    height: 40px;
+}
+
+.estatistica{
+    position: absolute;
+    top: 45%;
+    background: #FDFDFD;
+}
+
+.estatistica h1{
+    position: absolute;
+    top: 45%;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+
+    letter-spacing: 0.1px;
+
+    color: #373F41;
+
+}
+
+#text_blood_solution p {
+    position: relative;
+    text-align: justify;
+    height: 286px;
+    top: 215px;
+    width: 45%;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    color: #737B7D;
+
+}
+
+.orcamento{
+    display: flex;
+    position: absolute;
+    top: 61%;
+    background-color: #a70000;
+    width: 115px;
+    height: 48px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.orcamento p{
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.3px;
+}
+
+.container_estatistica{
+    width: 80%;
+    margin: auto;
+}
+
+.container_estatistica .grafico{
+    
+    position: absolute;
+    width: 540px;
+    height: 293px;
+    top: 51.5%;
+    left: 60%;
+}
+
+.text_estoque{
+    position: absolute;
+    bottom: 16.5%;
+    left: 58%;
+}
+
+.text_estoque p{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    color: #737B7D;
+    text-align: left;
+    width: 87%;
+}
+
+.top_estoque{
+    position: absolute;
+    bottom: 27.82%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-sizing: border-box;
+    width: 599px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1.5px solid #FF0000;
+}
+.bolinhas{
+    position: absolute;
+    bottom: 28.2%;
+    left: 6%;
+}
+
+.estoque{
+    position: absolute;
+    width: 599px;
+    height: 492px;
+    bottom: 12%;
+    
+}
+
+.desktop_bottom{
+    position: absolute;
+    display: flex;
+    height: 64px;
+    width: 100%;
+    margin: auto;
+    background-color: #FFCDCD;
+    padding-bottom: 10px;
+    border-top: 2px solid red;
+    bottom: 0%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
