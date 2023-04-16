@@ -120,3 +120,33 @@ SELECT * FROM lote;
 SELECT * FROM sensor;
 SELECT * FROM historico;
 SELECT * FROM contato;
+
+-- Usuário de cada empresa
+SELECT * FROM usuario JOIN empresa
+	ON fkEmpresa = idEmpresa;
+    
+-- Lote de cada empresa
+SELECT * FROM empresa JOIN local_empresa
+	ON idEMpresa = fkEmpresa
+    JOIN lote 
+    ON fkLocal = idLocal;
+    
+-- Histórico do sensor
+SELECT sensor.idSensor,
+sensor.stts,
+historico.temperatura,
+historico.horario FROM sensor JOIN historico
+	ON idSensor = fkSensor;
+    
+    
+-- local de cada lote
+SELECT * FROM lote JOIN local_empresa
+	ON fkLocal = idLocal;
+
+
+-- local de cada sensor
+SELECT * FROM sensor JOIN local_empresa
+	ON idLocal = fkLocal;
+
+
+
