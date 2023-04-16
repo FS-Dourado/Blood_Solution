@@ -1,8 +1,8 @@
 /*Duvida*/
 .duvida{
     background-color: #F5ECEC;
-    padding: 10px;
     height: 300px;
+    padding: 100px;
 }
 
 .contato{
@@ -212,7 +212,6 @@
     margin-top: 2%;
     cursor: pointer;
 } 
-
 .direita{
     display: flex;
     justify-content: center;
