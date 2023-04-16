@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="body">      
+    <h1 id="titulo">Lote nºXXX</h1>
+    <div class="container">
+      <div class="texto">
+        <div>
+          <h2 id="titulo2">Informações sobre o lote</h2>
+          <div class="texto3">
+            <p><b>Nome do lote:</b> XXX</p> 
+            <p><b>Local:</b> XXX</p> 
+            <p><b>Em armazenamento:</b> Não</p> 
+            <p><b>Em trânsito:</b> Sim</p> 
+          </div>
+
+        </div>
+        <div class="espaco"></div>
+      <div class="texto2">
+        <p><b>Estado:</b> Crítico</p>
+        <p><b>Variações:</b> Altas temperaturas</p>
+        <p><b>Oscilações:</b> Constantes</p>
+      </div>
+      <div class="espaco">
+        <p>Há algo errado? Nos contate já!</p> 
+      </div>
+
+      <div class="botao">
+        <input id="input">
+        <button onclick="" id="button">enviar</button>
+      </div>
+
+    </div>
+    
+   </div>    
+  </div>
+
+  
+  <div class="body">
+
+      <div class="div_grafico">
+        <div class="grafico_1">
+          <canvas id="grafico1"></canvas>
+        </div>
+      <div style="height: 70px;">
+          <div class="tempo">
+            Variação de Tempo  
+          </div>
+          
+      </div>
+      <div class="temperatura">
+        <p>Temperatura em graus</p>
+      </div>
+        <div class="grafico_2">
+          <canvas id="grafico2"></canvas>
+        </div>
+      </div>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+        <div class="marca">
+            Blood Solutions
+        </div>
+    </div>
+
+
+</body>
+<script>
+    const ctx = document.getElementById('grafico1');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          datasets:[{
+              label: 'Temperatura',
+              data: [21, 26, 30, 28, 25, 26, 25, 29, 28, 32, 30],
+              borderWidth: 1,
+              borderColor: 'rgba(0, 0, 0)',
+              backgroundColor: 'rgba(171, 60, 93)',
+              fontColor: '#fff'
+      }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    const ctx2 = document.getElementById('grafico2');
+  
+    new Chart(ctx2, {
+      type: 'line',
+      data: {
+          labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          datasets:[{
+              label: 'Temperatura',
+              data: [21, 26, 30, 28, 25, 26, 25, 29, 28, 32, 30],
+              borderWidth: 1,
+              borderColor: 'rgba(0, 0, 0)',
+              backgroundColor: 'rgba(171, 60, 93)',
+              fontColor: '#fff'
+      }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</html>
