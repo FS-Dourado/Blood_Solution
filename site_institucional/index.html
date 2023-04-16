@@ -10,19 +10,28 @@
 </head>
 
 <body>
-    <div class="header">
+    <header>
         <div class="container">
-            <img class="img_logo" src="./images/image 8 1.png" alt="">
-            <ul class="navbar">
+        <img class="img_logo logo" src="./images/image 8 1.png" alt="">
+        <ul class="navbar">
                 <li><a href="" style="color: #a70000;"> Home </a></li>
-                <li><a href=""> Calculadora Financeira</a></li>
+                <li><a href="Calculadora .html"> Calculadora Financeira</a></li>
                 <li><a href=""> Sobre nós</a></li>
-                <li><a href=""> Informações sobre doação</a></li>
-                <li><a href=""> Fale Conosco</a></li>
-                <li><a href="login.html" id="login"> Login</a></li>
+                <li><a href="doação.html"> Informações sobre doação</a></li>
+                <li><a href="contato.html"> Fale Conosco</a></li>
+                <li><a href="login.html" id="login"> Log In</a></li>
             </ul>
-        </div>
-    </div>
+            
+    </header>
+    <section class="banner"></section>
+    <script type="text/javascript">
+    window. addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+    })
+    </script>
+
+
 
     <div class="desktop">
         <div class="desktop_light">
@@ -31,7 +40,7 @@
                 <p class="text_iot">Sistema de IoT que monitora continuamente a temperatura durante o transporte e o
                     armazenamento de bancos de sangue, visando prevenir perdas decorrentes de irregularidades de
                     temperatura.</p>
-                <p class="saiba_mais">Saiba Mais</p>
+                <button class="saiba_mais">Saiba Mais</button>
                 <div class="img_top"><img src="./images/image 2.svg" alt=""></div>
                 <div class="top_light">
                     <img class="top" src="./images/top.svg" alt="">
@@ -93,7 +102,7 @@
                     Blood Solutions.</p></div>
             </div>
             <div class="orcamento">
-                <p>Faça um <br>orçamento</p>
+                <button>Faça um <br>orçamento</button>
              </div>
         </div>
 

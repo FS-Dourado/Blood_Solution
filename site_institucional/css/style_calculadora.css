@@ -1,85 +1,87 @@
-body{
-    margin: 0;
-    width: 100%;
-    background-color: #F5ECEC;
-}
-
-.form{
-
-    padding: 100px;
+/* Container */
+.container_simulador{
     display: flex;
+    flex-direction: row; 
+    font-family: arial;
+}      
+
+.container_calculadora {
+    text-align: center;
+    margin-top: 11.2%;
+    border: 1px solid red;
+    border-radius: 10px;
+    margin-left: 8%;
+    width: 560px;
+    height: 435px;
+   
 }
 
-.formulario{
-    background-color: white;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 35%;
-    height: 350px;
-    margin: 30px;
-    border: 2px solid gray;
-    padding: 15px;
-}
-
-.form .container{
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.form h4{
+h2{
+    font-family: arial;
+    font-size: 25px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    border-bottom: 1px solid red;
+    margin-top: 7px;
 }
-
-.form .campos{
-    width: 85%;
-    height: 35px;
-    margin-top: 10%;
+/* .h2{
+    border-bottom: 1px solid red;
+} */
+.bolinhas_calculadora{
+    position: absolute;
+    bottom: 74.5%;
+    left: 9%;
 }
-
-.form span{
-    float: left;
-    display: flex;
-    font-size: 10px;
-}
-
-.form button{
-    width: 150px;
-    height: 50px;
-    background-color: #A70000;
+ /* botão */
+.button_calculadora {
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
+    background-color: red;
     border-radius: 5px;
-    margin-top: 10%;
+    padding: 13px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+    margin-top: 20px;
+    font-family: arial;
+    border: none;
+    
 }
 
-.form button{
-    cursor: pointer;
-}
-
-.form button:hover{
+.button_calculadora:hover {    
     background-color: crimson;
     transform: scale(1.1);
     transition: 0.5s;
 
 }
 
+/* Frase */
+.texto {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    text-align: center;
+    margin-top: 10%;
+    width: 54%;
+}
+
+
+/*input */
+.group {
+    position: relative;
+    font-family: arial;
+
+}
+
 .input {
     font-size: 16px;
+    text-align: center;
     font-family: arial;
     padding: 10px 10px 10px 5px;
     display: block;
-    width: 250px;
+    width: 200px;
     border: none;
     border-bottom: 1px solid #515151;
     background: transparent;
-    margin-top: 25px;
 }
 
 .input:focus {
@@ -109,7 +111,7 @@ label {
 .bar {
     position: relative;
     display: block;
-    width: 250px;
+    width: 200px;
 }
 
 .bar:before,
@@ -151,3 +153,14 @@ label {
 .input:focus~.highlight {
     animation: inputHighlighter 0.3s ease;
 }
+
+/* @keyframes inputHighlighter {
+    from {
+        background: red;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+} */
