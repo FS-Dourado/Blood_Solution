@@ -44,7 +44,7 @@ div #chartjs {
     margin-top: 10px;
     align-content: center;
     justify-content: center;
-    background-color: #fff;
+    background-color: #f5ecec;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0  rgba(0, 0, 0, 0.19);
     border-radius: 5px;
 }
@@ -59,7 +59,7 @@ div #chartjs {
     margin-top: 20px;
     text-align: auto;
     margin-bottom: 10px;
-    background-color: #fff;
+    background-color: #f5ecec;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0  rgba(0, 0, 0, 0.19);
     border-radius: 10px; 
     
