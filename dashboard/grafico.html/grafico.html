@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style_menu.css">
+    <link rel="stylesheet" href="dashboard_lotes.html">
+    <link rel="stylesheet" href="style_dasboard_lotes.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <img class="avatar" src="user.png"> <br>
+                <li class="list active">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Selects</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
+                        <span class="title">Geral</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lotes.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+<div class=" graficoCompleto">
+ <div class="textoGrafico"><b>Variação de temperatura durante o Mês</b></div>
+    <div class="grafico">
+       
+        <div class="container_fundo">
+            <div class="fundojs">
+                <div id="chartjs" style="display: flex; width: 60vw; height: 60vh;">
+
+                    <canvas style="width: 60vw; height: 60vh; " id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+       
+
+    <div class="fundo">
+        <div class="perdas"><b> Lotes perdidos este mês:</b></div>
+        <div class="texto">
+            <p> <b>3 Lotes</b> </p>
+        </div>
+    </div>
+
+
+    <div class="footer"></div> 
+</div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const list = document.querySelectorAll('.list');
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+        list.forEach((item) =>
+            item.addEventListener('click', activeLink));
+    </script>
+
+</body>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
+                '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+            datasets: [{
+                label: 'Temperatura',
+                borderColor: `rgb(255, 0, 0)`,
+                backgroundColor: `rgb(255, 0, 0)`,
+                data: [4, 3, 2.2, 2.2, 3, 4, 7, 4, 3, 4, 4, 3, 3, 5, 3, 5, 3, 4, 5, 5, 5, 4, 4, 3, 3, 3, 3, 5, 4, 6, 5],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+</script>
+
+</html>
