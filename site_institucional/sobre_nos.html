@@ -12,19 +12,25 @@
 </head>
 
 <body>
-    <div class="header">
+    <header>
         <div class="container">
             <img class="img_logo" src="./images/image 8 1.png" alt="">
             <ul class="navbar">
-                <li><a href=""> Home </a></li>
-                <li><a href=""> Calculadora Financeira</a></li>
+                <li><a href="index.html"> Home </a></li>
+                <li><a href="Calculadora .html"> Calculadora Financeira</a></li>
                 <li><a style="color: #a70000;"> Sobre nós</a></li>
                 <li><a href="doação.html"> Informações sobre doação</a></li>
                 <li><a href="contato.html"> Fale Conosco</a></li>
                 <li><a href="login.html" id="login"> Log In</a></li>
             </ul>
         </div>
-    </div>
+</header>
+<script type="text/javascript">
+    window. addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+    })
+</script>
 
     <div id="nosso_projeto">
         <div class="imp_projeto">

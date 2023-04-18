@@ -7,7 +7,7 @@
 
 .container_calculadora {
     text-align: center;
-    margin-top: 52px;
+    margin-top: 8.5%;
     border: 1px solid red;
     border-radius: 10px;
     margin-left: 8%;
@@ -29,7 +29,7 @@ h2{
 } */
 .bolinhas_calculadora{
     position: absolute;
-    bottom: 74.5%;
+    bottom: 78%;
     left: 9%;
 }
  /* botão */
@@ -44,12 +44,15 @@ h2{
     transition-duration: 0.5s;
     margin-top: 20px;
     font-family: arial;
+    border: none;
     
 }
 
-.button_calculadora:hover {
-    background-color: blue;
-    transition-duration: 0.5s;
+.button_calculadora:hover {    
+    background-color: crimson;
+    transform: scale(1.1);
+    transition: 0.5s;
+
 }
 
 /* Frase */
@@ -57,7 +60,7 @@ h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 21px;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 10%;
     width: 54%;
 }
 
