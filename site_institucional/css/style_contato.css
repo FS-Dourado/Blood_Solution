@@ -1,7 +1,7 @@
 /*Duvida*/
 .duvida{
     background-color: #F5ECEC;
-    padding: 10px;
+    padding: 100px;
 }
 
 .contato{
@@ -12,7 +12,7 @@
 
 .org_esquerda{ 
     width: 50%;
-    height: 350px;
+    height: 280px;
 }
 
 .org_esquerda h4{

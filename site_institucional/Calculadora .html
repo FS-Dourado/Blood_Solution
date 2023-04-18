@@ -15,8 +15,7 @@
 </head>
 
 <body>
-
-    <div class="header">
+<header>
         <div class="container">
             <img class="img_logo" src="./images/image 8 1.png" alt="">
             <ul class="navbar">
@@ -27,8 +26,15 @@
                 <li><a href="contato.html"> Fale Conosco</a></li>
                 <li><a href="login.html" id="login"> Log In</a></li>
             </ul>
-        </div>
+
     </div>
+</header>
+<script type="text/javascript">
+    window. addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+    })
+</script>
 
     <div class="container_simulador">
         <div class="container_calculadora">
@@ -131,7 +137,7 @@
         <b style="color:red;">R$${preco_bolsa}</b><br>
         Mas com o número de perdas, seu total de bolsas de sangue agora é de:
         <br><b style="color:red;">${perda_malote}</b><br> e mensal de: <br>
-         b style="color:red;">R$${preco_perda}</b><br>
+         <b style="color:red;">R$${preco_perda}</b><br>
         Implementando nosso projeto sua empresa reduzira as perdas em até:
         <br> <b style="color:red;">${porcentagem_perda}%</b><br>
         Isso o resultaria  um retorno de <b style="color:red;">R$${total}</b> mensal. <br><br>

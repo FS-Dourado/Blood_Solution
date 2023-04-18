@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    <div class="header">
+    <header>
         <div class="container">
-            <img class="img_logo" src="./images/image 8 1.png" alt="">
-            <ul class="navbar">
+        <img class="img_logo logo" src="./images/image 8 1.png" alt="">
+        <ul class="navbar">
                 <li><a href="" style="color: #a70000;"> Home </a></li>
                 <li><a href="Calculadora .html"> Calculadora Financeira</a></li>
                 <li><a href="sobre_nos.html"> Sobre nós</a></li>
@@ -21,8 +21,17 @@
                 <li><a href="contato.html"> Fale Conosco</a></li>
                 <li><a href="login.html" id="login"> Log In</a></li>
             </ul>
-        </div>
-    </div>
+            
+    </header>
+    <section class="banner"></section>
+    <script type="text/javascript">
+    window. addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+    })
+    </script>
+
+
 
     <div class="desktop">
         <div class="desktop_light">
@@ -31,7 +40,7 @@
                 <p class="text_iot">Sistema de IoT que monitora continuamente a temperatura durante o transporte e o
                     armazenamento de bancos de sangue, visando prevenir perdas decorrentes de irregularidades de
                     temperatura.</p>
-                <p class="saiba_mais">Saiba Mais</p>
+                <button class="saiba_mais">Saiba Mais</button>
                 <div class="img_top"><img src="./images/image 2.svg" alt=""></div>
                 <div class="top_light">
                     <img class="top" src="./images/top.svg" alt="">
@@ -42,6 +51,99 @@
             </div>
         </div>
 
+    <div class="recursos">
+        <div class="container">
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img class="suporte" src="imagens/support.png">
+                        <h3>Suporte 24Hrs</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Suporte disponível para te ajudar e tirar dúvidas<br> sobre o nosso produto.</p>
+                            <a href="#">Veja Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img src="imagens/shield.png">
+                        <h3>Proteção</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Segurança, confidencialidade integridade e<br> disponibilidade.</p>
+                            <a href="#">Veja Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img src="imagens/sell.png">
+                        <h3>Universal</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Nossa solução abrange todos os tipos sanguínios.</p>
+                            <a href="#">Veja Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="container">
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img class="suporte" src="imagens/campaing.png">
+                        <h3>Alertas</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Caso o sensor detectar uma temperatura fora do<br> normal um alerta será emtido automaticamente.</p>                            <a href="#">Veja Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img src="imagens/share.png">
+                        <h3>Interação</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Interação entre todos os seus estoques.</p>
+                            <a href="#">Veja Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <img class="suporte" src="imagens/backup.png">
+                        <h3>Backup de Dados</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content">
+                        <p>Banco completo de dados com informações em nuvem com acesso em tempo real em qualquer lugar.</p>
+                            <a href="#">Veja Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- 
         <div class="container">
             <div class="text_gama">
                 <h1>Oferecemos uma gama completa de recursos:</h1>
@@ -78,7 +180,7 @@
                 <h2>Backup de dados</h2>
                 <p>Banco completo de dados com informações em nuvem com acesso em tempo real em qualquer lugar.</p>
             </div>
-        </div>
+        </div> -->
 
         <div class="container">
             <div class="estatistica">
@@ -93,7 +195,7 @@
                     Blood Solutions.</p></div>
             </div>
             <div class="orcamento">
-                <p>Faça um <br>orçamento</p>
+                <button>Faça um <br>orçamento</button>
              </div>
         </div>
 
@@ -120,9 +222,11 @@
             </div>
         </div>
 
-        <div class="desktop_bottom">
-            <p>Blood Solutions 1ADSC</p>
-        </div>
+
+                <div class="desktop_bottom">
+                    <p>Blood Solutions 1ADSC</p>
+            </div>
+        
     </div>
 </body>
 

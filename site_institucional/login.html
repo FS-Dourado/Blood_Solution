@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/style_login.css">
+    
     <title>Blood Solution | Login </title>
 </head>
 <body>
-    <div class="header">
+    <header>
         <div class="container">
             <img class="img_logo" src="./images/image 8 1.png" alt="">
                 <ul class="navbar">
@@ -21,13 +22,29 @@
                     <li ><a href="" id="login"> Log In</a></li>
                 </ul>
         </div>
-    </div>
+    </header>
+    <script type="text/javascript">
+        window. addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+        })
+        </script>
     <div class="form">
         <div class="container">
             <div class="formulario">
                 <h3>Faça seu Login</h3>
-                    <input class="campos" type="email" placeholder="Email" required>
-                    <input class="campos" type="password" placeholder="Senha">
+                <div>
+                    <input class="input" type="email" placeholder="Email" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
+                <div>
+                    <input class="input" type="password" placeholder="Senha" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
                 <button type="button">Entrar</button>
             </div>
         </div>
