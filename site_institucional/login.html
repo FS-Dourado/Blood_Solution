@@ -34,18 +34,20 @@
             <div class="formulario">
                 <h3>Faça seu Login</h3>
                 <div>
-                    <input class="input" type="email" placeholder="Email" required="">
+                    <input class="input" id="input_email" type="email" placeholder="Email" required="">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label></label>
                 </div>
                 <div>
-                    <input class="input" type="password" placeholder="Senha" required="">
+                    <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label></label>
                 </div>
-                <button type="button">Entrar</button>
+                <button onclick="verifcar()" type="button">Entrar</button>
+                <div class="div_frase"></div>
+                <a href="dashboard.html"></a>
             </div>
         </div>
     </div>
@@ -55,3 +57,16 @@
     </div>
 </body>
 </html>
+
+<script>
+    function verifcar(){
+        var email = input_email.value
+        var senha = input_senha.value
+
+        var validacao = (email == 'adm@sptech.school' && senha == '12345')
+
+        if(validacao == true){
+            div_frase.innerHTML = ``
+        }
+    }
+</script>
