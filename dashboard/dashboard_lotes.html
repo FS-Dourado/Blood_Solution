@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard || </title>
+    <title>dashboard_lotes</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./css/style_menu.css">
-    <link rel="stylesheet" href="./css/style_dasboard.css">
+    <link rel="stylesheet" href="./css/style_dasboard_lotes.css">
 
 </head>
 
@@ -18,8 +18,8 @@
         <div class="navigation">
             <ul>
                 <img class="avatar" src="user.png"> <br>
-                <li class="list active">
-                    <a href="#">
+                <li class="list">
+                    <a href="dashboard.html">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Home</span>
                     </a>
@@ -36,7 +36,7 @@
                         <span class="title">Geral</span>
                     </a>
                 </li>
-                <li class="list">
+                <li class="list active">
                     <a href="./dashboard_lotes.html">
                         <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                         <span class="title">Lotes</span>
@@ -53,28 +53,19 @@
 
         <div class="sessao">
             <div class="frase">
-                <p><b>Hello</b>, Blood Soluctions!</p>
+                <p><b>Lotes:</b> Transporte e armazenados</p>
             </div>
              <div class="bloco">
 
-                <div class="alerta">
+                <div class="lotesT">
                     <center>
-                        <p> Alerta de temperatura <br> <br>
-                            10</p>
+                        <p> Lotes em transporte <br></p>
                     </center>
-                    <span class="icon3"><ion-icon name="thermometer-outline"></ion-icon></span>
                 </div>
-                <div class="alerta">
+               
+                <div class="lotesA">
                     <center>
-                        <p> Alertas continuos<br><br>
-                            3</p>
-                    </center>
-                    <span class="icon2"><ion-icon name="trending-down-outline"></ion-icon></span>
-                </div>
-                <div class="alerta">
-                    <center>
-                        <p> Total de alerta <br>
-                            48</p>
+                        <p> Lotes em armazenamento <br></p>
                     </center>
                 </div>
             </div> 
@@ -126,18 +117,12 @@
     ];
 
     const labels2 = [
-        'Janeiro',
-        'Fevereiro',
-        'Março',
-        'Abril',
-        'Maio',
-        'Junho',
-        'Julho',
-        'Agosto',
-        'Setembro',
-        'Outubro',
-        'Novembro',
-        'Dezembro,'
+    '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
 
     ];
 
@@ -148,15 +133,8 @@
             label: 'temperatura',
             backgroundColor: 'rgb(255, 0, 0 )',
             borderColor: 'rgb(255, 0, 0)',
-            data: [30, 29, 28, 25, 22, 23],
+            data: [30, 29, 28, 25, 25, 23],
         },
-
-        {
-            label: 'umidade',
-            backgroundColor: 'rgb(255, 0, 0)',
-            borderColor: 'rgb(255, 0, 0)',
-            data: [30 + 50, 29 + 53, 28 + 52, 25 + 60, 22 + 58, 23 + 60],
-        }
 
         ]
 
@@ -164,33 +142,25 @@
     const data2 = {
         labels: labels2,
         datasets: [{
-            label: '',
+            label: 'temperatura',
             backgroundColor: 'rgb(255, 0, 0)',
             borderColor: 'rgb(255, 0, 0)',
             data: [22, 24, 27, 23, 20, 18, 
                 29, 20, 30, 29, 24, 16],
         },
 
-        {
-            label: 'umidade',
-            backgroundColor: 'rgb(255, 0, 0)',
-            borderColor: 'rgb(255, 0, 0)',
-            data: [22 + 68, 24 + 65, 27 + 66, 23 + 64, 20 + 68, 18 + 64, 
-            22 + 68, 24 + 65, 27 + 66, 23 + 64, 20 + 68, 18 + 64],
-        }
-
         ]
 
     };
 
     const config = {
-        type: 'doughnut',
+        type: 'line',
         data: data,
         options: {}
     };
 
     const config2 = {
-        type: 'bar',
+        type: 'line',
         data: data2,
         options: {}
     };
