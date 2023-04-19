@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <div class="menuLateral">
+        <div class="container">
+            <img class="logo" src="image 8 1.png" alt="">
+            <div class="box1"><img class="fotoUser" src="628287_anonym_avatar_default_head_person_icon.png" alt=""> <br> </div> <br>
+            <div class="boxes">
+                <div class="User"><b>UserName</b></div> 
+                <button class="box2"><img class="lupa" src="9989530_search_engine_internet_technology_research_icon.png" alt=""> <div class="insert"> <b>Insert</b></div> </button> <br>
+                <button class="box3"><img class="lotes" src="9039903_boxes_icon.png" alt=""> <div class="textoLote"><b>Lotes</b></div> </button> <br>
+                <button class="box4"><img class="mes" src="9035231_calendar_number_outline_icon.png" alt=""> <div class="textoMes"><b>Gráfico</b>  <b><br>mensal</b></div> </button> <br>
+                <button class="box5"><img class="saida" src="9104136_logout_sign out_exit_dooe_out_icon.png" alt=""> <div class="logout"><b>Sair</b></div></button><br>
+            </div>
+        </div>
+    </div>
+
+
+ <div class="textoGrafico"><b>Variação de temperatura durante o Mês</b></div>
+    <div class="grafico">
+       
+        <div class="container">
+            <div class="fundojs">
+                <div id="chartjs" style="display: flex; width: 60vw; height: 60vh;">
+
+                    <canvas style="width: 60vw; height: 60vh; " id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
+                        '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+                    datasets: [{
+                        label: 'Temperatura',
+                        borderColor: `rgb(255, 0, 0)`,
+                        backgroundColor: `rgb(255, 0, 0)`,
+                        data: [4, 3, 2.2, 2.2, 3, 4, 7, 4, 3, 4, 4, 3, 3, 5, 3, 5, 3, 4, 5, 5, 5, 4, 4, 3, 3, 3, 3, 5, 4, 6, 5],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+
+    <div class="fundo">
+        <div class="perdas"><b> Lotes perdidos este mês:</b></div>
+        <div class="texto">
+            <p> <b>3 Lotes</b> </p>
+        </div>
+    </div>
+
+
+    <div class="footer"></div>
+
+</body>
+
+</html>
