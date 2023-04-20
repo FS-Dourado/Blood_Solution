@@ -33,8 +33,9 @@
         <div class="container">
             <div class="formulario">
                 <h3>Faça seu Login</h3>
+            <form action="">
                 <div>
-                    <input class="input" id="input_email" type="email" placeholder="Email" required="">
+                    <input class="input" id="input_email"  type="email" placeholder="Email" required="">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label></label>
@@ -45,9 +46,9 @@
                     <span class="bar"></span>
                     <label></label>
                 </div>
-                <button onclick="verifcar()" type="button">Entrar</button>
-                <div class="div_frase"></div>
-                <a href="dashboard.html"></a>
+            </form>
+                <button onclick="verifcar()" type="submit">Entrar</button>
+                <div id="div_frase"></div>
             </div>
         </div>
     </div>
@@ -60,13 +61,28 @@
 
 <script>
     function verifcar(){
-        var email = input_email.value
-        var senha = input_senha.value
+        var usernameInput = input_email.value
+        var passwordInput = input_senha.value
+        
 
-        var validacao = (email == 'adm@sptech.school' && senha == '12345')
+        if(usernameInput == '' && passwordInput == ''){
+                div_frase.innerHTML = 'Informe corretamente os campos'
+            }   else if (passwordInput == ''){
+                    div_frase.innerHTML = 'Informe corretamente a senha'
+            }   else if(usernameInput == ''){
+                    div_frase.innerHTML = 'Informe corretamente o Email'            
+            }
 
-        if(validacao == true){
-            div_frase.innerHTML = ``
+        else{
+            if (usernameInput == 'adm@sptech.school' && passwordInput == 'senha') {
+                    window.location.href = '../dashboard/dashboard_home.html';
+            } else {
+                    div_frase.innerText = 'Usuário ou senha inválidos';
+                }
         }
-    }
+        
+        
+
+
+}
 </script>
