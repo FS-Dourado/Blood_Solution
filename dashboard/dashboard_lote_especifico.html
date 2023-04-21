@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-
+  <link rel="stylesheet" href="css/style_dashboard_lotes_esp.css">
   <link rel="stylesheet" href="./css/style_menu.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -17,32 +17,32 @@
     <div class="navigation">
       <ul>
         <img class="avatar" src="user.png"> <br>
-        <li class="list active">
-          <a href="./dashboard.html">
+        <li class="list">
+          <a href="./dashboard_home.html">
             <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
             <span class="title">Home</span>
           </a>
         </li>
-        <li class="list">
+        <li class="list active">
           <a href="#">
             <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
             <span class="title">Selects</span>
           </a>
         </li>
         <li class="list">
-          <a href="#">
+          <a href="grafico_mensal.html">
             <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
             <span class="title">Geral</span>
           </a>
         </li>
         <li class="list">
-          <a href="#">
+          <a href="dashboard_lotes.html">
             <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
             <span class="title">Lotes</span>
           </a>
         </li>
         <li class="list">
-          <a href="#">
+          <a href="../site_institucional/index.html">
             <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
             <span class="title">Sair</span>
           </a>
@@ -53,17 +53,18 @@
   <div class="body">
     <h1 id="titulo">Lote nºXXX</h1>
     <div class="container">
+
       <div class="texto">
-        <div>
-          <h2 id="titulo2">Informações sobre o lote</h2>
-          <div class="texto3">
+
+        <h2 id="titulo2">Informações sobre o lote</h2>
+
+        <div class="texto3">
             <p><b>Nome do lote:</b> XXX</p>
             <p><b>Local:</b> XXX</p>
             <p><b>Em armazenamento:</b> Não</p>
             <p><b>Em trânsito:</b> Sim</p>
-          </div>
-
         </div>
+
         <div class="espaco"></div>
         <div class="texto2">
           <p><b>Estado:</b> Crítico</p>
@@ -71,11 +72,12 @@
           <p><b>Oscilações:</b> Constantes</p>
         </div>
         <div class="espaco">
+          <h2>Central de Ajuda</h2>
           <p>Há algo errado? Nos contate já!</p>
         </div>
 
         <div class="botao">
-          <input id="input">
+          <input placeholder="Deixe sua mensagem" id="input">
           <button onclick="" id="button">enviar</button>
         </div>
 
@@ -87,32 +89,28 @@
 
   <div class="body">
 
-    <div class="div_grafico">
-      <div class="grafico_1">
-        <canvas id="grafico1"></canvas>
-      </div>
-      <div style="height: 70px;">
-        <div class="tempo">
-          Variação de Tempo
+    <div class="container">
+      <div class="div_grafico">
+        <div class="chartjs1" style="display: flex; width: 35vw; height: 35vh;">
+          <canvas id="grafico1"></canvas>
         </div>
-
-      </div>
-      <div class="temperatura">
-        <p>Temperatura em graus</p>
-      </div>
-      <div class="grafico_2">
-        <canvas id="grafico2"></canvas>
+        <div style="height: 70px;">
+          <div class="tempo">
+            Variação de Tempo
+          </div>
+        </div>
+        <div class="temperatura">
+          <p>Temperatura em graus</p>
+        </div>
+        <div class  ="chartjs2" style="display: flex; width: 35vw; height: 35vh;">
+          <canvas id="grafico2"></canvas>
+        </div>
       </div>
     </div>
 
   </div>
   </div>
 </div>
-  <div class="footer">
-    <div class="marca">
-      Blood Solutions 1ADSC
-    </div>
-  </div>
 
 
 
@@ -167,7 +165,7 @@
     data: {
       labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       datasets: [{
-        label: 'Temperatura',
+        label: 'Tempo',
         data: [21, 26, 30, 28, 25, 26, 25, 29, 28, 32, 30],
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0)',
