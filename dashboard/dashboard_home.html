@@ -25,25 +25,25 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="dashboard_lote_especifico.html">
+                    <a href="#">
                         <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
                         <span class="title">Selects</span>
                     </a>
                 </li>
                 <li class="list">
-                    <a href="grafico_mensal.html">
+                    <a href="#">
                         <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
                         <span class="title">Geral</span>
                     </a>
                 </li>
                 <li class="list">
-                    <a href="./dashboard_lotes.html">
+                    <a href="./dashboard.pagX.html">
                         <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                         <span class="title">Lotes</span>
                     </a>
                 </li>
                 <li class="list">
-                    <a href="../site_institucional/index.html">
+                    <a href="#">
                         <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
                         <span class="title">Sair</span>
                     </a>
@@ -53,31 +53,12 @@
 
         <div class="sessao">
             <div class="frase">
-                <p><b>Hello</b>, Blood Solutions!</p>
+                <p><b>Hello</b>, Blood Soluctions!</p>
+                <div class="notificacao_img">
+                <span class="notificacao"><ion-icon name="notifications-outline"></ion-icon></span>
             </div>
-             <div class="bloco">
-
-                <div class="alerta">
-                    <center>
-                        <p> Alerta de temperatura <br> <br>
-                            10</p>
-                    </center>
-                    <span class="icon3"><ion-icon name="thermometer-outline"></ion-icon></span>
-                </div>
-                <div class="alerta">
-                    <center>
-                        <p> Alertas continuos<br><br>
-                            3</p>
-                    </center>
-                    <span class="icon2"><ion-icon name="trending-down-outline"></ion-icon></span>
-                </div>
-                <div class="alerta">
-                    <center>
-                        <p> Total de alerta <br>
-                            48</p>
-                    </center>
-                </div>
-            </div> 
+            </div>
+           
             <div class="graficos">
 
                 <div class="chart">
@@ -88,10 +69,20 @@
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
-            
 
+               <div class="bloco">
 
-
+                <div class="alerta">
+                        <p> Alertas do dia: 2<br>
+                            Alertas continuos: 3</p>
+                 
+                </div>
+                <div class="alerta1">
+                        <p> Total de perdas de bolsas 
+                            <br> de sangue por lote: 30</p>
+                </div>
+            </div>  
+        
         </div>
 
 
@@ -117,45 +108,59 @@
 
 <script>
     const labels = [
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
     ];
 
     const labels2 = [
-        'Janeiro',
-        'Fevereiro',
-        'Março',
-        'Abril',
-        'Maio',
-        'Junho',
-        'Julho',
-        'Agosto',
-        'Setembro',
-        'Outubro',
-        'Novembro',
-        'Dezembro,'
+       '00h',
+       '2h',
+       '4h',
+       '6h',
+       '8h',
+       '10h',
+       '12h',
+       '14h',
+       '16h',
+       '18h',
+       '20h',
+       '22h',
 
+    ];
+    
+    const labels3 = [
+       'Quantidade de bolsas',
+       'bolsas perdidas por lote'
     ];
 
 
     const data = {
-        labels: labels,
+        labels: labels3,
         datasets: [{
-            label: 'temperatura',
-            backgroundColor: 'rgb(255, 0, 0 )',
-            borderColor: 'rgb(255, 0, 0)',
-            data: [30, 29, 28, 25, 22, 23],
+    label: '',
+    data: [300, 50 ],
+    backgroundColor: [
+      'rgb(54, 162, 235)',
+      'rgb(255, 0, 100)'
+    ],
+    hoverOffset: 2
+            // label: 'temperatura',
+            // backgroundColor: 'red',
+            // borderColor: 'red',
+            // data: [90],
         },
 
         {
-            label: 'umidade',
-            backgroundColor: 'rgb(255, 0, 0)',
-            borderColor: 'rgb(255, 0, 0)',
-            data: [30 + 50, 29 + 53, 28 + 52, 25 + 60, 22 + 58, 23 + 60],
+            // label: 'umidade',
+            // backgroundColor: 'blue',
+            // borderColor: 'blue',
+            // data: [10],
         }
 
         ]
@@ -164,19 +169,21 @@
     const data2 = {
         labels: labels2,
         datasets: [{
-            label: '',
-            backgroundColor: 'rgb(255, 0, 0)',
-            borderColor: 'rgb(255, 0, 0)',
-            data: [22, 24, 27, 23, 20, 18, 
-                29, 20, 30, 29, 24, 16],
+            label: 'Alertas do dia',
+            backgroundColor: '#FFDE59',
+            borderColor: '#FFDE59' ,
+            data: [4, 4, 4, 4, 7, 5, 
+                5, 5, 5, 4, 4, 4],
         },
 
         {
-            label: 'umidade',
-            backgroundColor: 'rgb(255, 0, 0)',
-            borderColor: 'rgb(255, 0, 0)',
-            data: [22 + 68, 24 + 65, 27 + 66, 23 + 64, 20 + 68, 18 + 64, 
-            22 + 68, 24 + 65, 27 + 66, 23 + 64, 20 + 68, 18 + 64],
+            label: 'Alertas continuos',
+            backgroundColor: 'Red',
+            borderColor: 'Red',
+            data: [ 4, 4, 4, 3, 3, 3, 
+            3, 2, 1, 1, 1, 1
+
+            ],
         }
 
         ]
@@ -184,15 +191,21 @@
     };
 
     const config = {
-        type: 'doughnut',
+        type: 'pie',
         data: data,
         options: {}
     };
 
     const config2 = {
-        type: 'bar',
+        type: 'line',
         data: data2,
-        options: {}
+        options: {
+            scales: {
+                y:{
+                    beginAtZero:true
+                }
+            }
+        }
     };
 
 </script>
