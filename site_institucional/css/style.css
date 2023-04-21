@@ -485,6 +485,11 @@ top: 6.42%;
     letter-spacing: 0.3px;
 }
 
+.orcamento a{
+    text-decoration: none;
+    color: white;
+}
+
 .container_estatistica{
     width: 80%;
     margin: auto;
