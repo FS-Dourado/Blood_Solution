@@ -9,6 +9,11 @@ body{
     
 }
 
+
+/*O webkit-scrollbar, assim como o nome já diz, ele altera as cores, tamanho e etc.*/
+/*é uma propriedade CSS que permite personalizar a aparência das barras de rolagem de nosso site*/
+
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -100,6 +105,9 @@ header ul li a{
     top: 22%;
     transition: 0.6s;
 }
+
+/*O hover é uma propriedade do css que quando o cursor do mouse passar por cima dele, a função :hover é aplicada a ele. E as funções são determinadas temporariamente ao elemento*/
+
 .navbar a:hover{
     color: #a70000;
     transition: 0.6s;
@@ -483,6 +491,11 @@ top: 6.42%;
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0.3px;
+}
+
+.orcamento a{
+    text-decoration: none;
+    color: white;
 }
 
 .container_estatistica{

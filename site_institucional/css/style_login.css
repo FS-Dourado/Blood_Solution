@@ -133,6 +133,10 @@ label {
     right: 50%;
 }
 
+/*O elemento :focus é usado para aplicar estilos a um elemento quando ele está em foco, ou seja, quando algém selecionar este elemento através do teclado.*/
+
+/*o seletor '~' é um seletor 'irmão geral', onde ele seleciona todos que vierem após ele */
+
 .input:focus~.bar:before,
 .input:focus~.bar:after {
     width: 50%;
