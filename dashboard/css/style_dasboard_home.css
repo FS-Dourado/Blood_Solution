@@ -7,33 +7,66 @@
     display: flex;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 22px;
-
     margin-left: 5%;
-    /* flex-direction:column-reverse; */
-
-    /* margin-top: -40%; */
 } 
 
 .bloco{
     display: flex;
-    justify-content: space-between;
-    margin-left: 10%;
+    margin-top: -0%;
+    margin-left: 5%;
+    margin-right: 15%;
 }
 
 .alerta{
     display: flex;
-    background:  #fff ; 
+    background:  #f5ecec ; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-left: 5%;
-    margin-top: 2%;
-    height: 145px;
-    width: 300px;
+    margin-left: 15% ;
+    height: 100px;
+    width: 70%;
     justify-content: center;
     align-items: center;
-    border-radius: 5%;
+    border-radius: 10px;
 
 }
 
+.alerta1{
+    display: flex;
+    background:  #f5ecec ; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 14%;
+    margin-right: -50%;
+    height: 100px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+}
+
+.alerta p{
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.alerta1 p{
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 2px ;
+    
+}
+
+.notificacao_img{
+    margin-top: 1.7%;
+    margin-left: 70%;
+    margin-right: -60%;
+}
 .icon2{
     margin-right: -20%;
     margin-left: 10%;
@@ -57,14 +90,16 @@ ion-icon {
     display: flex;
     justify-content: center; 
     margin: auto;
-    margin-top: 5%; 
+    margin-top: 2%; 
     margin-left: 8%;
     justify-content: space-between;
+    margin-bottom: 3%;
 }
 
 .chart{
     display: flex;
     position: relative;
+    background-color: #f5ecec;
     height: 60vh; 
     width: 60vw;
     border-radius: 10px;
@@ -81,6 +116,7 @@ ion-icon {
  .chart2{
     display: flex;
     position: relative;
+    background-color: #f5ecec;
     height: 60vh; 
     width: 20vw;
     border-radius: 10px;
