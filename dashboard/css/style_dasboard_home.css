@@ -105,12 +105,7 @@ ion-icon {
     border-radius: 10px;
     justify-content: space-evenly;
     margin-left: 10px;
-    /* background-color: #fff; */
-    /* border:1px solid #888888;   */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    /* margin-top: 10%; */
-    /* margin-left: 30px; */
-    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
  }
 
  .chart2{
@@ -123,10 +118,6 @@ ion-icon {
     justify-content: space-evenly;
     margin-left: 10px;
     align-items: center;
-    /* background-color: #fff; */
-    /* border:1px solid #888888;   */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    /* margin-top: 10%; */
-    /* margin-left: 30px; */
     
  }
