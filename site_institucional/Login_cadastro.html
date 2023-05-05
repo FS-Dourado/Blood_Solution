@@ -32,6 +32,7 @@
 												<input type="email" name="logemail" class="form-style"
 													placeholder="Email" id="logemail" autocomplete="off">
 												<i class="input-icon uil uil-at"></i>
+
 											</div>
 											<div class="form-group mt-2">
 												<input type="password" name="logpass" class="form-style"
@@ -50,27 +51,37 @@
 											<a class="arrow back" href="index.html"><img src="images/arrow_back.svg"
 													alt=""></a>
 											<h4 class="mb-4 pb-3">Cadastre-se</h4>
-											<div class="form-group">
-												<input type="text" id="input_cnpj" name="logname" class="form-style" placeholder="CNPJ"
-													id="logname" autocomplete="off">
-												<i class="input-icon uil uil-user"></i>
-											</div>
-											<div class="form-group mt-2">
-												<input type="email" name="logemail" class="form-style"
-													placeholder="Email" id="logemail" autocomplete="off">
-												<i class="input-icon uil uil-at"></i>
-											</div>
-											<div class="form-group mt-2">
-												<input type="password" name="logpass" class="form-style"
-													placeholder="Senha" id="logpass pass" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
-											</div>
-											<div class="form-group mt-2">
-												<input type="password" name="logpass" class="form-style"
-													placeholder="Confirmar Senha" id="logpass_confirm" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
-											</div>
-											<button href="#" onclick="verificar()" class="btn mt-4">Enviar</button>
+											<form id="myForm">
+												<div class="form-group">
+													<input type="text" id="input_cnpj" minlength="14" maxlength="14"
+														name="logname" class="form-style" placeholder="CNPJ"
+														id="logname" autocomplete="off" required>
+													<i class="input-icon uil uil-user"></i>
+													<span id="cnpj-error" class="error-message"></span>
+												</div>
+												<div class="form-group mt-2">
+													<input type="email" name="logemail" class="form-style"
+														placeholder="Email" id="logemail" autocomplete="off" required>
+													<i class="input-icon uil uil-at"></i>
+													<span id="email-error" class="error-message"></span>
+												</div>
+												<div class="form-group mt-2">
+													<input type="password" name="logpass" minlength="8"
+														class="form-style" placeholder="Senha" id="logpass pass"
+														autocomplete="off" required>
+													<i class="input-icon uil uil-lock-alt"></i>
+													<span id="password-error" class="error-message"></span>
+												</div>
+												<div class="form-group mt-2">
+													<input type="password" name="logpass" minlength="8"
+														class="form-style" placeholder="Confirmar Senha"
+														id="logpass_confirm" autocomplete="off" required>
+													<i class="input-icon uil uil-lock-alt"></i>
+													<span id="confirm-password-error" class="error-message"></span>
+												</div>
+												<button type="submit" href="#" onclick="verificar()"
+													class="btn mt-4">Enviar</button>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -82,19 +93,60 @@
 		</div>
 	</div>
 </body>
+
 </html>
 
+<style>
+	.error-message {
+		color: red;
+	}
+</style>
+
 <script>
-	function verificar(){
+	function verificar() {
 		var password = logpass.value;
 		var password_confirm = logpass_confirm.value;
 		var cnpj = input_cnpj.value;
+		var email = logemail.value;
 
-		if (password.length < 8){
-			alert("Mensagem")
-		}
-		if (cnpj.length < 14){
-			alert("O CNPJ está incorreto")
-		}
+		form.addEventListener("submit", function (event) {
+			event.preventDefault();
+			let valid = true;
+
+
+			if (!/^[0-9]{14}$/.test(input_cnpj.value)) {
+				valid = false;
+				document.getElementById("cnpj-error").textContent = "O CNPJ deve conter 14 caracteres.";
+			} else {
+				document.getElementById("cnpj-error").textContent = "";
+			}
+
+			if (!email.includes("@")) {
+				valid = false;
+				document.getElementById("email-error").textContent = "O endereço de e-mail deve conter um '@'.";
+			} else {
+				document.getElementById("email-error").textContent = "";
+			}
+
+			if (password.length < 8) {
+				valid = false;
+				document.getElementById("password-error").textContent = "A senha deve conter no mínimo 8 caracteres.";
+			} else if (!/[A-Z]/.test(password)) {
+				valid = false;
+				document.getElementById("password-error").textContent = "A senha deve conter pelo menos uma letra maiúscula.";
+			} else {
+				document.getElementById("password-error").textContent = "";
+			}
+
+			if (password !== password_confirm) {
+				valid = false;
+				document.getElementById("confirm-password-error").textContent = "As senhas não coincidem.";
+			} else {
+				document.getElementById("confirm-password-error").textContent = "";
+			}
+			if (valid) {
+				form.submit();
+			}
+		});
 	}
 </script>
