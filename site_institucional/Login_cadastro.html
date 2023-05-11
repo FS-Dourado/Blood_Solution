@@ -55,7 +55,8 @@
 												<div class="form-group">
 													<input type="text" id="input_cnpj" minlength="14" maxlength="14"
 														name="logname" class="form-style" placeholder="CNPJ"
-														id="logname" autocomplete="off" required>
+														id="logname" autocomplete="off" required class="form-control"
+														onkeypress="$(this).mask('00.000.000/0000-00')">
 													<i class="input-icon uil uil-user"></i>
 													<span id="cnpj-error" class="error-message"></span>
 												</div>
@@ -93,6 +94,8 @@
 		</div>
 	</div>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
 </html>
 
@@ -106,7 +109,7 @@
 	function verificar() {
 		var password = logpass.value;
 		var password_confirm = logpass_confirm.value;
-		var cnpj = input_cnpj.value;
+		var cnpj = Number(input_cnpj.value);
 		var email = logemail.value;
 
 		form.addEventListener("submit", function (event) {
@@ -140,13 +143,16 @@
 
 			if (password !== password_confirm) {
 				valid = false;
-				document.getElementById("confirm-password-error").textContent = "As senhas não coincidem.";
+				document.getElementById("confirm-password-error").innerHTML = "<span><i class='fas fa-exclamation-triangle'></i> not matching</span>";
 			} else {
-				document.getElementById("confirm-password-error").textContent = "";
+				document.getElementById("confirm-password-error").innerHTML = "";
 			}
-			if (valid) {
-				form.submit();
-			}
+			$("#input_cnpj").keypress(function () {
+				$(this).mask('00.000.000/0000-00');
+			});
 		});
+		if (valid == true) {
+			form.submit();
+		}
 	}
 </script>
