@@ -31,9 +31,9 @@ const serial = async (
                 // altere!
                 // CREDENCIAIS DO BANCO LOCAL - MYSQL WORKBENCH
                 host: 'localhost',
-                user: 'bloodSolutions',
-                password: 'blood',
-                database: 'bd_bloodSolutions'
+                user: 'root',
+                password: 'NicollyJuliane123',
+                database: 'projeto_brewery'
             }
         ).promise();
     } else if (AMBIENTE == 'producao') {
@@ -74,7 +74,7 @@ const serial = async (
                 // -> altere nome da tabela e colunas se necessário
                 // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
                 // >> Importante! você deve ter o aquario de id 1 cadastrado.
-                sqlquery = `INSERT INTO historico(temperatura) VALUES (${lm35Temperatura} CURRENT_TIMESTAMP)`;
+                sqlquery = `INSERT INTO ale(temperatura) VALUES (${lm35Temperatura} CURRENT_TIMESTAMP)`;
 
                 // CREDENCIAIS DO BANCO REMOTO - SQL SERVER
                 // Importante! você deve ter criado o usuário abaixo com os comandos presentes no arquivo
@@ -98,7 +98,7 @@ const serial = async (
                 // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
                 // >> você deve ter o aquario de id 1 cadastrado.
                 await poolBancoDados.execute(
-                    'INSERT INTO historico ( temperatura) VALUES (?)',
+                    'INSERT INTO ale (data_hora, maceracao, cozimento_1, cozimento_2, cozimento_3, moagem ,brassagem_1, brassagem_2, brassagem_3, chaleira, fermentacao_1, fermentacao_2, fermentacao_3, manutencao_filtragem, pasteurizacao, tunel_pasteurizacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                     [lm35Temperatura]
                 );
                 console.log("valores inseridos no banco: ",  lm35Temperatura)
@@ -129,7 +129,7 @@ const servidor = (
     });
    
     app.get('/sensores/lm35/temperatura', (_, response) => {
-        return response.json(valoresLm35Temperatura);
+        return response.json(valoresLm35Temperatura,);
     });
 
 }
