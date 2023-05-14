@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro de funcionario</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/style_menu.css">
+    <link rel="stylesheet" href="./css/style_cadastrar_usuario.css">
+
+</head>
+
+<body class="body_tudo">
+    <!-- Menu lateral -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <img class="avatar" src="user.png"> <br>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lote_especifico.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="grafico_mensal.html">
+                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
+                        <span class="title">Geral</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../site_institucional/index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sessao">
+            <div class="frase">
+                <h3>Cadastrar funcionario</h3>
+            </div>
+            <div class="box_cadastro">
+                <div>
+                    <div>
+                        <input class="input" id="input_Nome" type="text" placeholder="Nome" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_email" type="email" placeholder="Email" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_confirmar_senha" type="password" placeholder="Confirmar Senha" required="">
+                     </div>
+                     <button onclick="verifcar()" type="submit">cadastrar</button>
+
+
+                </div>
+            </div>
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+            </script>
+
+</html>
