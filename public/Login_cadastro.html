@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Blood Solution - Login / Cadastre-se</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+	<link rel="stylesheet" href="./css/style_login_cadastro.css">
+
+</head>
+
+<body>
+	<!-- partial:index.partial.html -->
+	<div class="section">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<h6 class="mb-0 pb-3"><span>Log In </span><span>Cadastre-se</span></h6>
+						<input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+						<label for="reg-log"></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<a class="arrow" href="index.html"><img src="images/arrow_back.svg"
+													alt=""></a>
+											<h4 class="mb-4 pb-3">Log In</h4>
+											<div class="form-group">
+												<input type="email" name="logemail" class="form-style"
+													placeholder="Email" id="logemail" autocomplete="off">
+												<i class="input-icon uil uil-at"></i>
+
+											</div>
+											<div class="form-group mt-2">
+												<input type="password" name="logpass" class="form-style"
+													placeholder="Senha" id="logpass" autocomplete="off">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<a href="#" class="btn mt-4">Entrar</a>
+											<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Esqueceu a
+													senha?</a></p>
+										</div>
+									</div>
+								</div>
+								<div class="card-back">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<a class="arrow back" href="index.html"><img src="images/arrow_back.svg"
+													alt=""></a>
+											<h4 class="mb-4 pb-3">Cadastre-se</h4>
+											<form id="myForm">
+												<div class="form-group">
+													<input type="text" id="input_cnpj" minlength="14" maxlength="14"
+														name="logname" class="form-style" placeholder="CNPJ"
+														id="logname" autocomplete="off" required class="form-control"
+														onkeypress="$(this).mask('00.000.000/0000-00')">
+													<i class="input-icon uil uil-user"></i>
+													<span id="cnpj-error" class="error-message"></span>
+												</div>
+												<div class="form-group mt-2">
+													<input type="email" name="logemail" class="form-style"
+														placeholder="Email" id="logemail" autocomplete="off" required>
+													<i class="input-icon uil uil-at"></i>
+													<span id="email-error" class="error-message"></span>
+												</div>
+												<div class="form-group mt-2">
+													<input type="password" name="logpass" minlength="8"
+														class="form-style" placeholder="Senha" id="logpass pass"
+														autocomplete="off" required>
+													<i class="input-icon uil uil-lock-alt"></i>
+													<span id="password-error" class="error-message"></span>
+												</div>
+												<div class="form-group mt-2">
+													<input type="password" name="logpass" minlength="8"
+														class="form-style" placeholder="Confirmar Senha"
+														id="logpass_confirm" autocomplete="off" required>
+													<i class="input-icon uil uil-lock-alt"></i>
+													<span id="confirm-password-error" class="error-message"></span>
+												</div>
+												<button type="submit" href="../dashboard/dashboard_lote_especifico.html" onclick="verificar()"
+													class="btn mt-4">Enviar</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+</html>
+
+<style>
+	.error-message {
+		color: red;
+	}
+</style>
+
+<script>
+	function verificar() {
+		var password = logpass.value;
+		var password_confirm = logpass_confirm.value;
+		var cnpj = Number(input_cnpj.value);
+		var email = logemail.value;
+
+		form.addEventListener("submit", function (event) {
+			event.preventDefault();
+			let valid = true;
+
+
+			if (!/^[0-9]{14}$/.test(input_cnpj.value)) {
+				valid = false;
+				document.getElementById("cnpj-error").textContent = "O CNPJ deve conter 14 caracteres.";
+			} else {
+				document.getElementById("cnpj-error").textContent = "";
+			}
+
+			if (!email.includes("@")) {
+				valid = false;
+				document.getElementById("email-error").textContent = "O endereço de e-mail deve conter um '@'.";
+			} else {
+				document.getElementById("email-error").textContent = "";
+			}
+
+			if (password.length < 8) {
+				valid = false;
+				document.getElementById("password-error").textContent = "A senha deve conter no mínimo 8 caracteres.";
+			} else if (!/[A-Z]/.test(password)) {
+				valid = false;
+				document.getElementById("password-error").textContent = "A senha deve conter pelo menos uma letra maiúscula.";
+			} else {
+				document.getElementById("password-error").textContent = "";
+			}
+
+			if (password !== password_confirm) {
+				valid = false;
+				document.getElementById("confirm-password-error").innerHTML = "<span><i class='fas fa-exclamation-triangle'></i> not matching</span>";
+			} else {
+				document.getElementById("confirm-password-error").innerHTML = "";
+			}
+			$("#input_cnpj").keypress(function () {
+				$(this).mask('00.000.000/0000-00');
+			});
+		});
+		if (valid == true) {
+			form.submit();
+		}
+	}
+</script>
