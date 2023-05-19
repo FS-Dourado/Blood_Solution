@@ -9,7 +9,7 @@ function buscarUltimasMedidas(idHistorico, limite_linhas) {
         dht11_temperatura as temperatura, 
         dht11_umidade as umidade,  
                         momento,
-                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
+                        FORMAT(momento, 'HH:mm:ss') as historico_grafico
                     from medida
                     where fk_aquario = ${idAquario}
                     order by id desc`;
@@ -17,7 +17,7 @@ function buscarUltimasMedidas(idHistorico, limite_linhas) {
         instrucaoSql = `select 
         temperatura as temperatura, 
                         horario,
-                        DATE_FORMAT(horario,'%H:%i:%s') as momento_grafico
+                        DATE_FORMAT(horario,'%H:%i:%s') as historico_grafico
                     from historico
                     where fkSensor = ${idHistorico}
                     order by id desc limit ${limite_linhas}`;

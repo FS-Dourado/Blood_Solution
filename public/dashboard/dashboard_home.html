@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard || </title>
+    <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./css/style_menu.css">
     <link rel="stylesheet" href="./css/style_dasboard_home.css">
@@ -41,6 +41,12 @@
                     <a href="./dashboard_home.html">
                         <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
                         <span class="title">Local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="cadastro_funcionario.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Cadastra funcionário</span>
                     </a>
                 </li>
                 <li class="list">
@@ -172,8 +178,8 @@
             verificar_autenticacao();
         
             function alterarTitulo(idHistorico) {
-                var tituloAquario = document.getElementById(`tituloAquario${idHistorico}`)
-                tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idHistorico + "</span>"
+                var tituloHistorico = document.getElementById(`tituloHistorico${idHistorico}`)
+                tituloHistorico.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Histórico " + idHistorico + "</span>"
             }
         
         
@@ -260,7 +266,7 @@
         
                 // Adicionando gráfico criado em div na tela
                 let myChart = new Chart(
-                    document.getElementById(`myChartCanvas${idHistorico}`),
+                    document.getElementById(`myChartCanvas1`),
                     config
                 );
         
@@ -294,14 +300,14 @@
                                 console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                                 avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                                 console.log("Horário do novo dado capturado:")
-                                console.log(novoRegistro[0].momento_grafico)
+                                console.log(novoRegistro[0].historico_grafico)
                                 console.log("Horário do último dado capturado:")
                                 console.log(dados.labels[dados.labels.length - 1])
                                 console.log("---------------------------------------------------------------")
                             } else {
                                 // tirando e colocando valores no gráfico
                                 dados.labels.shift(); // apagar o primeiro
-                                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                                dados.labels.push(novoRegistro[0].historico_grafico); // incluir um novo momento
         
                                 dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
                                 dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
