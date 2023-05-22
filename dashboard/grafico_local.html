@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style_menu.css">
+    <link rel="stylesheet" href="css/style_local.css">
+    
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <img class="avatar" src="user.png"> <br>
+                <li class="list">
+                    <a href="dashboard_home.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lote_especifico.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="">
+                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
+                        <span class="title">Geral</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lotes.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../site_institucional/index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+    
+<div class=" graficoCompleto">
+    <div class="textoGrafico">
+    Local XXX
+    </div>
+        <div class="container_fundo">
+                <div id="chartjs" style="display: flex; width: 50vw; height: 50vh;">
+
+                    <canvas style="width: 50vw; height: 50vh; " id="myChart"></canvas>
+                </div>
+                <div class="temperatura">Temperatura (°C)</div>
+                <div class="tempoLocal">Tempo de armanezamento nesse local</div>
+        </div>
+</div>
+       
+
+    <div class="fundo">
+         <div class="cadastrados"><h2> Lotes  <br> cadastrados</h2></div>
+             <div class="cadastrarNovo">
+                <h3> Cadastre seu lote aqui! </h3>
+            <input id="qtd_bolsas" placeholder="Quantidade de bolsas" type="text"> 
+            <input id="tipoSangue" placeholder="Tipo Sanguíneo" type="text"> 
+            <input id="Validade" placeholder="Validade" type="text"> 
+            <button id="botaoCadastro">Cadastrar</button>
+        </div>
+    </div>
+
+
+    <div class="footer"></div> 
+
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const list = document.querySelectorAll('.list');
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+        list.forEach((item) =>
+            item.addEventListener('click', activeLink));
+    </script>
+
+</body>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+            datasets: [{
+                label: 'Temperatura',
+                borderColor: `rgb(200, 37, 37)`, 
+                backgroundColor: `rgb(161, 37, 37)`,
+                data: [2.5, 3, 2.2, 2.5, 3, 3.5, 4, 4.5, 3.5, 2.5 ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</html>

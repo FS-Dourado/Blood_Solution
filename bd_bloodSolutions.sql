@@ -22,6 +22,7 @@ CREATE TABLE usuario(
 CREATE TABLE local_empresa(
 	idLocal INT PRIMARY KEY auto_increment,
     nome VARCHAR(45),
+    
     endereco VARCHAR(50),
     fkEmpresa INT,
     constraint fkEmp FOREIGN KEY (fkEmpresa) references empresa(idEmpresa)
