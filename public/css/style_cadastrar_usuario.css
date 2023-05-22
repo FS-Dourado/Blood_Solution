@@ -1,0 +1,139 @@
+.sessao{
+    display: flex;
+    flex-direction: column;
+}
+
+.frase{
+    display: flex;
+    width: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 22px;
+    margin: 10%;
+} 
+
+.bloco{
+    display: flex;
+    margin-top: -0%;
+    margin-left: 5%;
+    margin-right: 15%;
+}
+
+.alerta{
+    display: flex;
+    background:  #f5ecec ; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 15% ;
+    height: 100px;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+}
+
+.alerta1{
+    display: flex;
+    background:  #f5ecec ; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 14%;
+    margin-right: -50%;
+    height: 100px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+}
+
+.alerta p{
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.alerta1 p{
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px 2px ;
+    
+}
+
+.notificacao_img{
+    margin-top: 1.7%;
+    margin-left: 70%;
+    margin-right: -60%;
+}
+.icon2{
+    margin-right: -20%;
+    margin-left: 10%;
+    margin-top: 25%;
+}
+
+
+.icon3 {
+    margin-right: -15%;
+    margin-left: 5%;
+    margin-top: 20%;
+}
+
+ion-icon {
+    position: relative;
+    font-size: 2rem;
+    z-index: 2;
+} 
+
+.box_cadastro{
+    display: flex;
+    position: relative;
+    background-color: #ffffff;
+    height: 63%;
+    width: 200%;
+    margin-left: 120%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    align-items: center;
+    border-radius: 7px;
+    border: 1px solid red;
+}
+ .input {
+    font-size: 16px;
+    font-family: arial;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 225%;
+    border: 1px solid red;
+    background: transparent;
+    margin-top: 25px;
+    margin-left: 10%;
+}
+.input:focus {
+    outline: none;
+}
+.box_cadastro button{
+    width: 150px;
+    height: 50px;
+    background-color: #A70000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20%;
+    margin-left: 90%;
+}
+
+.box_cadastro button{
+    cursor: pointer;
+}
+
+.box_cadastro button:hover{
+    background-color: crimson;
+    transform: scale(1.1);
+    transition: 0.5s;
+
+}

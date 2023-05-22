@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/style_menu.css">
+    <link rel="stylesheet" href="./css/style_dasboard_home.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body class="body_tudo">
+    <!-- Menu lateral -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <img class="avatar" src="user.png"> <br>
+                <li class="list active">
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lote_especifico.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="grafico_mensal.html">
+                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
+                        <span class="title">Geral</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="cadastro_funcionario.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Cadastra funcionário</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../site_institucional/index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            const list = document.querySelectorAll('.list');
+            function activeLink() {
+                list.forEach((item) =>
+                    item.classList.remove('active'));
+                this.classList.add('active');
+            }
+
+            list.forEach((item) =>
+                item.addEventListener('click', activeLink));
+        </script>
+
+        <div class="hello">
+            <div class="container_2">
+                <div class="organizador">
+                    <div class="frase">
+                        <h1>Hello, Blod Solution</h1>
+                    </div>
+                    <div class="icon_2">
+                        <div>
+                            <ion-icon name="search-outline" class="pesquisar"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sessao">
+                <div class="container_2">
+                    <div class="content">
+                        <div class="card">
+                            <h2>Hospital Santa clara</h2>
+                            <div class="box">
+                                <div class="cards_temperatura" style="background-color: #fffb81;">
+                                    <h5> sensor 1 </h5>
+                                    <div class="grau">
+                                        1ºC
+                                    </div>
+                                    <button id="openModal">Ver alerta </button>
+                                </div>
+                                <div class="cards_temperatura" style="background-color: #ce292a;">
+                                    <h5>sensor 2</h5>
+                                    <div class="grau">7ºC</div>
+                                    <button>Ver alerta </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h2>Hospital Santa Marcelina</h2>
+                            <div class="box">
+                                <div class="cards_temperatura" style="background-color: #7497b3;">
+                                    <h5> sensor 1 </h5>
+                                    <div class="grau">
+                                        4ºC
+                                    </div>
+                                    <button>Ver alerta </button>
+                                </div>
+                                <div class="cards_temperatura" style="background-color: #7497b3;">
+                                    <h5>sensor 2</h5>
+                                    <div class="grau">2ºC</div>
+                                    <button>Ver alerta</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="img_alert">
+                <img src="alert_icon.png" alt="">
+            </div>
+            <h1 class="lote_x">Lote XX</h1>
+            <p class="varicao_hr">Houve variações entre os horários 2, 4, 6, 8 e 10 </p>
+            <canvas id="myChartCanvas1"></canvas>
+
+        </div>
+    </div>
+
+    <script>
+
+        let proximaAtualizacao;
+        
+            var btn = document.getElementById("openModal");
+                var modal = document.getElementById("myModal");
+                btn.onclick = function () {
+                    modal.style.display = "block";
+                }
+        
+                // Fechar o modal ao clicar no botão "X"
+                var closeBtn = document.getElementsByClassName("close")[0];
+                closeBtn.onclick = function () {
+                    modal.style.display = "none";
+                }
+        
+                // Configuração do gráfico
+                const ctx = document.getElementById('myChartCanvas1');
+        
+            
+        
+            window.onload = obterDadosGraficos();
+        
+            function obterDadosGraficos() {
+                obterDadosGrafico(1)
+                obterDadosGrafico(2)
+                obterDadosGrafico(3)
+                obterDadosGrafico(4)
+            }
+        
+            verificar_autenticacao();
+        
+            function alterarTitulo(idHistorico) {
+                var tituloHistorico = document.getElementById(`tituloHistorico${idHistorico}`)
+                tituloHistorico.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Histórico " + idHistorico + "</span>"
+            }
+        
+        
+            // O gráfico é construído com três funções:
+            // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+            // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+            // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+        
+            // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+            // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+            // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+        
+            //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+            //     Para ajustar o "select", ajuste o comando sql em src/models
+            function obterDadosGrafico(idHistorico) {
+        
+                alterarTitulo(idHistorico)
+        
+                if (proximaAtualizacao != undefined) {
+                    clearTimeout(proximaAtualizacao);
+                }
+        
+                fetch(`/medidas/ultimas/${idHistorico}`, { cache: 'no-store' }).then(function (response) {
+                    if (response.ok) {
+                        response.json().then(function (resposta) {
+                            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                            resposta.reverse();
+        
+                            plotarGrafico(resposta, idHistorico);
+                        });
+                    } else {
+                        console.error('Nenhum dado encontrado ou erro na API');
+                    }
+                })
+                    .catch(function (error) {
+                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                    });
+            }
+        
+            // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+            // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+            // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+            function plotarGrafico(resposta, idHistorico) {
+        
+                console.log('iniciando plotagem do gráfico...');
+        
+                // Criando estrutura para plotar gráfico - labels
+                let labels = [];
+        
+                // Criando estrutura para plotar gráfico - dados
+                let dados = {
+                        label: 'Temperatura',
+                        data: [],
+                        fill: false,
+                        backgroundColor: `rgb(255, 0, 0)`,
+                        borderColor: 'rgb(199, 52, 52)',
+                        tension: 0.1
+                };
+        
+                console.log('----------------------------------------------')
+                console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+                console.log(resposta)
+        
+                // Inserindo valores recebidos em estrutura para plotar o gráfico
+                for (i = 0; i < resposta.length; i++) {
+                    var registro = resposta[i];
+                    labels.push(registro.momento_grafico);
+                    dados.datasets[0].data.push(registro.temperatura);
+                }
+        
+                console.log('----------------------------------------------')
+                console.log('O gráfico será plotado com os respectivos valores:')
+                console.log('Labels:')
+                console.log(labels)
+                console.log('Dados:')
+                console.log(dados.datasets)
+                console.log('----------------------------------------------')
+        
+                // Criando estrutura para plotar gráfico - config
+                const config = {
+                    type: 'line',
+                    data: dados,
+                };
+        
+                // Adicionando gráfico criado em div na tela
+                let myChart = new Chart(
+                    document.getElementById(`myChartCanvas1`),
+                    config
+                );
+        
+                setTimeout(() => atualizarGrafico(idHistorico, dados, myChart), 2000);
+            }
+        
+        
+            // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+            // buscando a última medida inserida em tabela contendo as capturas, 
+        
+            //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+            //     Para ajustar o "select", ajuste o comando sql em src/models
+            function atualizarGrafico(idHistorico, dados, myChart) {
+        
+        
+        
+                fetch(`/medidas/tempo-real/${idHistorico}`, { cache: 'no-store' }).then(function (response) {
+                    if (response.ok) {
+                        response.json().then(function (novoRegistro) {
+        
+                            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                            console.log(`Dados atuais do gráfico:`);
+                            console.log(dados);
+        
+                            let avisoCaptura = document.getElementById(`avisoCaptura${idHistorico}`)
+                            avisoCaptura.innerHTML = ""
+        
+        
+                            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                                console.log("---------------------------------------------------------------")
+                                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                                console.log("Horário do novo dado capturado:")
+                                console.log(novoRegistro[0].historico_grafico)
+                                console.log("Horário do último dado capturado:")
+                                console.log(dados.labels[dados.labels.length - 1])
+                                console.log("---------------------------------------------------------------")
+                            } else {
+                                // tirando e colocando valores no gráfico
+                                dados.labels.shift(); // apagar o primeiro
+                                dados.labels.push(novoRegistro[0].historico_grafico); // incluir um novo momento
+        
+                                dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                                dados.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+        
+                                myChart.update();
+                            }
+        
+                            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(idHistorico, dados, myChart), 2000);
+                        });
+                    } else {
+                        console.error('Nenhum dado encontrado ou erro na API');
+                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idHistorico, dados, myChart), 2000);
+                    }
+                })
+                    .catch(function (error) {
+                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                    });
+        
+            }
+        </script>
+
+    <!-- <script>
+        // Abrir o modal ao clicar no botão
+        // var btn = document.getElementById("openModal");
+        // var modal = document.getElementById("myModal");
+        // btn.onclick = function () {
+        //     modal.style.display = "block";
+        // }
+
+        // // Fechar o modal ao clicar no botão "X"
+        // var closeBtn = document.getElementsByClassName("close")[0];
+        // closeBtn.onclick = function () {
+        //     modal.style.display = "none";
+        // }
+
+        // // Configuração do gráfico
+        // const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                datasets: [{
+                    label: 'Temperatura',
+                    borderColor: `rgb(255, 0, 0)`,
+                    backgroundColor: `rgb(255, 0, 0)`,
+                    data: [4, 3, 8, 2.2, 3, 8, 7, 4, 3.5, 4, 4, 3, 2, 1, 1, 3, 5, 4, 5, 5, 5, 4, 4, 3, 3, 3, 3, 5, 4, 6, 1],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+    </script> -->
+    
+</body>
+
+</html>
+
