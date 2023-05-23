@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de funcionario</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/style_menu.css">
+    <link rel="stylesheet" href="../css/style_cadastrar_usuario.css">
+
+</head>
+
+<body class="body_tudo">
+    <!-- Menu lateral -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <img class="avatar" src="user.png"> <br>
+                <li>
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lote_especifico.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="grafico_mensal.html">
+                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
+                        <span class="title">Geral</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../site_institucional/index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="formulario">
+            <div class="frase">
+                <h2>Cadastrar Local</h2>
+            </div>
+            <div class="conteudo">
+                <div class="form">
+                    <input id="input_nome" placeholder="Nome:" type="text">
+                    <input id="input_cep" placeholder="CEP:" type="text">
+                    <input id="input_bairro" placeholder="Bairro:" type="text">
+                    <input id="input_numero" placeholder="Numero:" type="text">
+                    <input id="input_complemento" placeholder="Complemento:" type="text">
+                    <button onclick="cadastrar_local()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+       
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+            </script>
+
+</html>
+<script>
+    function cadastrar_local(){
+        var nomeVar = input_nome.value;
+        var cepVar = input_cep.value;
+        var bairroVar = input_bairro.value;
+        var numeroVar = Number(input_numero.value);
+        var complementoVar = input_complemento.value;
+
+        input_nome.value = ``;
+        input_cep.value = ``;
+        input_bairro.value = ``;
+        input_numero.value = ``;
+        input_complemento.value = ``;
+
+        if (nomeVar == "" ||  cepVar == "" || bairroVar == "" || bairroVar == "" || complementoVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+       
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar_funcionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                cepVarServer: cepVar,
+                bairroServer: bairroVar,
+                numeroServer: numeroVar, 
+                complementoServer: complementoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+    
+
+</script>
