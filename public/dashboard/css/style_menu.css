@@ -15,11 +15,10 @@
 } 
 
 .navigation{
-    position: relative;
+    position: fixed;
     height: 1000px;
     background: #FFCDCD ; 
     width: 70px;
-    box-shadow: 10px 0 0   #f5ecec;
     border-left: 2px solid #FFCDCD;
     overflow-x: hidden;
     transition: 0.5s;
