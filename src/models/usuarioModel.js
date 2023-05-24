@@ -43,15 +43,26 @@ function cadastrar_funcionario(nome, email, senha) {
     return database.executar(instrucao);
 }
 
-function cadastrar_local(nome, cep, bairro, numero, complemento) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", nome, cep, bairro, numero, complemento);
+function cadastrar_local(nome) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_local():", nome);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        INSERT INTO local_empresa (nome) VALUES ('${nome}');
+            
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function cadastrar_endereco(cep, bairro, numero, complemento) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_endereco():", cep, bairro, numero, complemento);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
         INSERT INTO endereco (cep, bairro, numero, complemento) VALUES ('${cep}', '${bairro}', ${numero}, ${complemento});
-        INSERT INTO local_empresa (nome, fkEndereco, fkEmpresa) VALUES ('${nome}', '${fkEndereco}', 1);
-            
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -62,5 +73,6 @@ module.exports = {
     cadastrar,
     listar,
     cadastrar_funcionario,
-    cadastrar_local
+    cadastrar_local,
+    cadastrar_endereco
 };

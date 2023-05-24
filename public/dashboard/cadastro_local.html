@@ -52,7 +52,7 @@
         </div>
         <div class="formulario">
             <div class="frase">
-                <h2>Cadastrar Local</h2>
+                <h2>Cadastrar Funcionário</h2>
             </div>
             <div class="conteudo">
                 <div class="form">
@@ -61,6 +61,7 @@
                     <input id="input_bairro" placeholder="Bairro:" type="text">
                     <input id="input_numero" placeholder="Numero:" type="text">
                     <input id="input_complemento" placeholder="Complemento:" type="text">
+
                     <button onclick="cadastrar_local()">Cadastrar</button>
                 </div>
             </div>
@@ -98,9 +99,7 @@
             setInterval(sumirMensagem, 5000)
         }
 
-       
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar_funcionario", {
+        fetch("/usuarios/cadastrar_endereco", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -108,7 +107,6 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
                 cepVarServer: cepVar,
                 bairroServer: bairroVar,
                 numeroServer: numeroVar, 
@@ -136,6 +134,44 @@
             console.log(`#ERRO: ${resposta}`);
             finalizarAguardar();
         });
+
+        
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar_local", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        
 
         return false;
     }
