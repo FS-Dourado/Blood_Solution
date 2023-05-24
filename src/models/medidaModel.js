@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idHistorico, limite_linhas) {
+function buscarUltimasMedidas(idSensor, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -19,8 +19,8 @@ function buscarUltimasMedidas(idHistorico, limite_linhas) {
                         horario,
                         DATE_FORMAT(horario,'%H:%i:%s') as historico_grafico
                     from historico
-                    where fkSensor = ${idHistorico}
-                    order by id desc limit ${limite_linhas}`;
+                    where fkSensor = ${idSensor}
+                    `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -30,7 +30,7 @@ function buscarUltimasMedidas(idHistorico, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idHistorico) {
+function buscarMedidasEmTempoReal(idSensor) {
 
     instrucaoSql = ''
 
@@ -48,8 +48,9 @@ function buscarMedidasEmTempoReal(idHistorico) {
         temperatura as temperatura, 
                         DATE_FORMAT(horario,'%H:%i:%s') as momento_grafico, 
                         fkSensor 
-                        from historico where fkSensor = ${idHistorico} 
-                    order by id desc limit 1`;
+                        from historico where fkSensor = ${idSensor} 
+                        order by idHistorico desc
+                        `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

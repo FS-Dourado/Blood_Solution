@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard || </title>
+    <title>Dashboard || Home </title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./css/style_menu.css">
     <link rel="stylesheet" href="./css/style_dasboard_home.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="alerta.js"></script>
 
 </head>
 
-<body class="body_tudo">
+<body onload="atualizacaoPeriodica()" class="body_tudo">
     <!-- Menu lateral -->
     <div class="container">
         <div class="navigation">
@@ -89,23 +90,24 @@
                     </div>
                 </div>
             </div>
-
             <div class="sessao">
                 <div class="container_2">
                     <div class="content">
                         <div class="card">
                             <h2>Hospital Santa clara</h2>
                             <div class="box">
-                                <div class="cards_temperatura" style="background-color: #fffb81;">
+                                <div id="id_sensor1" class="cards_temperatura" id="cards_temperatura_sensor1" style="background-color: #7497b3;">
                                     <h5> sensor 1 </h5>
-                                    <div class="grau">
-                                        1ºC
+                                    <div id="sensor1" class="grau">
+                                        -ºC
                                     </div>
                                     <a href="./dashboard_lote_especifico.html"><button>Ver alerta </button></a>
                                 </div>
-                                <div class="cards_temperatura" style="background-color: #ce292a;">
+                                <div class="cards_temperatura" id="cards_temperatura_sensor2" style="background-color: #ce292a;">
                                     <h5>sensor 2</h5>
-                                    <div class="grau">7ºC</div>
+                                    <div id="sensor2" class="grau">
+                                        -ºC
+                                    </div>
                                     <button>Ver alerta </button>
                                 </div>
                             </div>
@@ -115,14 +117,14 @@
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 1 </h5>
-                                    <div class="grau">
-                                        4ºC
+                                    <div id="sensor" class="grau">
+                                        -ºC
                                     </div>
                                     <button>Ver alerta </button>
                                 </div>
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5>sensor 2</h5>
-                                    <div class="grau">2ºC</div>
+                                    <div id="sensor" class="grau">-ºC</div>
                                     <button>Ver alerta</button>
                                 </div>
                             </div>
@@ -134,14 +136,14 @@
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 1 </h5>
-                                    <div class="grau">
-                                        4ºC
+                                    <div id="sensor" class="grau">
+                                        -ºC
                                     </div>
                                     <button>Ver alerta </button>
                                 </div>
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5>sensor 2</h5>
-                                    <div class="grau">2ºC</div>
+                                    <div id="sensor" class="grau">-ºC</div>
                                     <button>Ver alerta</button>
                                 </div>
                             </div>
@@ -151,14 +153,14 @@
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 1 </h5>
-                                    <div class="grau">
-                                        4ºC
+                                    <div id="sensor" class="grau">
+                                        -ºC
                                     </div>
                                     <button>Ver alerta </button>
                                 </div>
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5>sensor 2</h5>
-                                    <div class="grau">2ºC</div>
+                                    <div id="sensor" class="grau">-ºC</div>
                                     <button>Ver alerta</button>
                                 </div>
                             </div>
@@ -175,3 +177,20 @@
 </body>
 
 </html>
+
+
+<script>
+
+
+
+    function atualizacaoPeriodica() {
+        obterdados(1);
+        obterdados(2);
+        obterdados(3);
+        obterdados(4);
+
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
+
+</script>
