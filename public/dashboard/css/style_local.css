@@ -33,16 +33,17 @@ body {
     font-size: 30px;
 }
 
-div #chartjs {
+.chartjs1{
     display: flex;
-    flex-direction: row;
     margin-left: 15%;
-    margin-top: 15%;
+    margin-top: 20%;
     align-content: center;
     justify-content: center;
-   /*  background-color: #f5ecec;
+    background-color: #f5ecec;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0  rgba(0, 0, 0, 0.19);
-    border-radius: 5px; */
+    border-radius: 5px; 
+    width: 50vw; 
+    height: 50vh;
 }
 
 .temperatura {
