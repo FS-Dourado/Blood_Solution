@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de funcionario</title>
+    <script src="./js/funcoes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/style_menu.css">
     <link rel="stylesheet" href="../css/style_cadastrar_usuario.css">
@@ -82,62 +83,16 @@
         var numeroVar = Number(input_numero.value);
         var complementoVar = input_complemento.value;
 
-        input_nome.value = ``;
-        input_cep.value = ``;
-        input_bairro.value = ``;
-        input_numero.value = ``;
-        input_complemento.value = ``;
 
         if (nomeVar == "" ||  cepVar == "" || bairroVar == "" || bairroVar == "" || complementoVar == "") {
-            cardErro.style.display = "block"
+           
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
-            finalizarAguardar();
+            
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        fetch("/usuarios/cadastrar_endereco", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                cepVarServer: cepVar,
-                bairroServer: bairroVar,
-                numeroServer: numeroVar, 
-                complementoServer: complementoVar
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                cardErro.style.display = "block";
-
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-
-                limparFormulario();
-                finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-        });
-
-        
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar_local", {
+            fetch("/usuarios/cadastrar_local", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -153,32 +108,77 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                cadastrar_endereco()
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-
-                limparFormulario();
-                finalizarAguardar();
             } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
+                throw ("Houve um erro ao tentar realizar o cadastro do local!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
         });
-
-        
+        }
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
+    
+    
+
+    function cadastrar_endereco(){
+
+        var cepVar = input_cep.value;
+        var bairroVar = input_bairro.value;
+        var numeroVar = Number(input_numero.value);
+        var complementoVar = input_complemento.value;
+
+        input_nome.value = ``;
+        input_cep.value = ``;
+        input_bairro.value = ``;
+        input_numero.value = ``;
+        input_complemento.value = ``;
+
+        fetch("/usuarios/cadastrar_endereco", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                cepServer: cepVar,
+                bairroServer: bairroVar,
+                numeroServer: numeroVar, 
+                complementoServer: complementoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+  
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+
+                    sessionStorage.CEP_ENDERECO = json.cep;
+                    sessionStorage.BAIRRO_ENDERECO = json.bairro;
+                    sessionStorage.NUMERO_ENDERECO = json.numero;
+                    sessionStorage.COMPLEMENTO_ENDERECO = json.complemento;
+                    sessionStorage.ID_ENDERECO = json.id;
+
+                console.log("Endereco Cadastrado")  
+            });
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro de endereço!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
     }
+
     
 
 </script>

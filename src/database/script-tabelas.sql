@@ -19,12 +19,21 @@ CREATE TABLE usuario(
     constraint chktipo CHECK (tipo IN('Funcionário', 'Administrador'))
 );
 
+CREATE TABLE endereco(
+	idEndereco INT PRIMARY KEY auto_increment,
+    cep CHAR(9),
+    bairro VARCHAR(45),
+    numero INT,
+    complemento VARCHAR(45)
+);
+
 CREATE TABLE local_empresa(
 	idLocal INT PRIMARY KEY auto_increment,
     nome VARCHAR(45),
-    endereco VARCHAR(50),
+    fkEndereco INT,
     fkEmpresa INT,
-    constraint fkEmp FOREIGN KEY (fkEmpresa) references empresa(idEmpresa)
+    constraint fkEmp FOREIGN KEY (fkEmpresa) references empresa(idEmpresa),
+    constraint fkEnd FOREIGN KEY (fkEndereco) references endereco(idEndereco)
 );
 
 CREATE TABLE lote(

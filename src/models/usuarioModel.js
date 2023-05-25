@@ -27,6 +27,8 @@ function cadastrar(nome, email, senha, cpf) {
     var instrucao = `
         INSERT INTO usuario (nome, email, senha, cpf) VALUES ('${nome}', '${email}', '${senha}', '${cpf}');
     `;
+
+   
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -62,10 +64,12 @@ function cadastrar_endereco(cep, bairro, numero, complemento) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO endereco (cep, bairro, numero, complemento) VALUES ('${cep}', '${bairro}', ${numero}, ${complemento});
+        INSERT INTO endereco (cep, bairro, numero, complemento) VALUES ('${cep}', '${bairro}', '${numero}', '${complemento}');
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+
+    var instrucao2 = `SELECT * FROM endereco WHERE cep = '${cep}' AND bairro = '${bairro}' AND numero = '${numero}' AND complemento = ${complemento}`
+    console.log("Executando a instrução SQL: \n" + instrucao + instrucao2);
+    return database.executar(instrucao, instrucao2);
 }
 
 module.exports = {
