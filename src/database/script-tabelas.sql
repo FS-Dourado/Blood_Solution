@@ -126,6 +126,7 @@ INSERT INTO contato VALUES
 SELECT * FROM empresa;
 SELECT * FROM usuario;
 SELECT * FROM local_empresa;
+SELECT * FROM endereco;
 SELECT * FROM lote;
 SELECT * FROM sensor;
 SELECT * FROM historico;

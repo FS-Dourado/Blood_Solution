@@ -63,79 +63,81 @@
                     <input id="input_numero" placeholder="Numero:" type="text">
                     <input id="input_complemento" placeholder="Complemento:" type="text">
 
-                    <button onclick="cadastrar_local()">Cadastrar</button>
+                    <button onclick="cadastrar_endereco()">Cadastrar</button>
                 </div>
             </div>
         </div>
-       
-            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
 
 
-            </script>
+        </script>
 
 </html>
 <script>
-    function cadastrar_local(){
+    function cadastrar_local() {
         var nomeVar = input_nome.value;
         var cepVar = input_cep.value;
         var bairroVar = input_bairro.value;
         var numeroVar = Number(input_numero.value);
         var complementoVar = input_complemento.value;
 
+    
+        input_nome.value = ``;
+        input_cep.value = ``;
+        input_bairro.value = ``;
+        input_numero.value = ``;
+        input_complemento.value = ``;
 
-        if (nomeVar == "" ||  cepVar == "" || bairroVar == "" || bairroVar == "" || complementoVar == "") {
-           
+        if (nomeVar == "" || cepVar == "" || bairroVar == "" || bairroVar == "" || complementoVar == "") {
+
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
-            
+
             return false;
         }
         else {
             fetch("/usuarios/cadastrar_local", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                
-            })
-        }).then(function (resposta) {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    fkEnderecoServer: fkEndereco,
+                })
+            }).then(function (resposta) {
 
-            console.log("resposta: ", resposta);
+                console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
-                cadastrar_endereco()
+                if (resposta.ok) {
 
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro do local!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+                    console.log("Ok")
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro do local!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
         }
 
         return false;
     }
 
-    
-    
 
-    function cadastrar_endereco(){
+
+
+    function cadastrar_endereco() {
 
         var cepVar = input_cep.value;
         var bairroVar = input_bairro.value;
         var numeroVar = Number(input_numero.value);
         var complementoVar = input_complemento.value;
 
-        input_nome.value = ``;
-        input_cep.value = ``;
-        input_bairro.value = ``;
-        input_numero.value = ``;
-        input_complemento.value = ``;
+       
 
         fetch("/usuarios/cadastrar_endereco", {
             method: "POST",
@@ -147,7 +149,7 @@
                 // Agora vá para o arquivo routes/usuario.js
                 cepServer: cepVar,
                 bairroServer: bairroVar,
-                numeroServer: numeroVar, 
+                numeroServer: numeroVar,
                 complementoServer: complementoVar
             })
         }).then(function (resposta) {
@@ -155,20 +157,17 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-  
+
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-
-                    sessionStorage.CEP_ENDERECO = json.cep;
-                    sessionStorage.BAIRRO_ENDERECO = json.bairro;
-                    sessionStorage.NUMERO_ENDERECO = json.numero;
-                    sessionStorage.COMPLEMENTO_ENDERECO = json.complemento;
-                    sessionStorage.ID_ENDERECO = json.id;
-
-                console.log("Endereco Cadastrado")  
-            });
+                    sessionStorage.ID_ENDERECO = json.insertId;
+                    var fkEndereco = sessionStorage.ID_ENDERECO;
+                    cadastrar_local();
+                    console.log(resposta.idEndereco)
+                    console.log("Endereco Cadastrado")
+                });
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro de endereço!");
             }
@@ -179,6 +178,6 @@
         return false;
     }
 
-    
+
 
 </script>

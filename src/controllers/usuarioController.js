@@ -33,7 +33,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -77,7 +77,7 @@ function cadastrar(req, res) {
     } else if (cpf == undefined) {
         res.status(400).send("Seu CPF está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, email, senha, cpf)
             .then(
@@ -111,7 +111,7 @@ function cadastrar_funcionario(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar_funcionario(nome, email, senha)
             .then(
@@ -134,14 +134,17 @@ function cadastrar_funcionario(req, res) {
 function cadastrar_local(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
+    var fkEndereco = req.body.fkEnderecoServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
+    } else if (fkEndereco == undefined) {
+        res.status(400).send("Seu fkEndereco está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar_local(nome)
+        usuarioModel.cadastrar_local(nome, fkEndereco)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -177,7 +180,7 @@ function cadastrar_endereco(req, res) {
     } else if (complemento == undefined) {
         res.status(400).send("Sua complemento está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar_endereco(cep, bairro, numero, complemento)
             .then(
