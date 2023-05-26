@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de funcionario</title>
+    <title>Cadastro de local</title>
     <script src="./js/funcoes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/style_menu.css">
@@ -53,7 +53,7 @@
         </div>
         <div class="formulario">
             <div class="frase">
-                <h2>Cadastrar Funcionário</h2>
+                <h2>Cadastrar Local</h2>
             </div>
             <div class="conteudo">
                 <div class="form">
@@ -63,7 +63,7 @@
                     <input id="input_numero" placeholder="Numero:" type="text">
                     <input id="input_complemento" placeholder="Complemento:" type="text">
 
-                    <button onclick="cadastrar_endereco()">Cadastrar</button>
+                    <button onclick="cadastrar_local()">Cadastrar</button>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
         input_numero.value = ``;
         input_complemento.value = ``;
 
-        if (nomeVar == "" || cepVar == "" || bairroVar == "" || bairroVar == "" || complementoVar == "") {
+        if (nomeVar == "" || cepVar == "" || bairroVar == "" || numeroVar == "" || complementoVar == "") {
 
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
@@ -107,7 +107,10 @@
                     // crie um atributo que recebe o valor recuperado aqui
                     // Agora vá para o arquivo routes/usuario.js
                     nomeServer: nomeVar,
-                    fkEnderecoServer: fkEndereco,
+                    cepServer: cepVar,
+                    bairroServer: bairroVar,
+                    numeroServer: numeroVar,
+                    complementoServer: complementoVar
                 })
             }).then(function (resposta) {
 
@@ -126,58 +129,5 @@
 
         return false;
     }
-
-
-
-
-    function cadastrar_endereco() {
-
-        var cepVar = input_cep.value;
-        var bairroVar = input_bairro.value;
-        var numeroVar = Number(input_numero.value);
-        var complementoVar = input_complemento.value;
-
-       
-
-        fetch("/usuarios/cadastrar_endereco", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                cepServer: cepVar,
-                bairroServer: bairroVar,
-                numeroServer: numeroVar,
-                complementoServer: complementoVar
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.ID_ENDERECO = json.insertId;
-                    var fkEndereco = sessionStorage.ID_ENDERECO;
-                    cadastrar_local();
-                    console.log(resposta.idEndereco)
-                    console.log("Endereco Cadastrado")
-                });
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro de endereço!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-
-        return false;
-    }
-
-
 
 </script>
