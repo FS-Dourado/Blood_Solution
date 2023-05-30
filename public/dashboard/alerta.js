@@ -22,74 +22,93 @@ function obterdados(idSensor) {
 
 }
 
+function insertSimulados(valor_aleatorio) {
+    fetch(`/medidas/insertSimulados`)
+        .then(resposta => {
+
+            if (resposta.ok) {
+                resposta.json().then(resposta => {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    alertar(resposta, valor_aleatorio);
+                });
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados simulados: ${error.message}`);
+        });
+}
+
+
 function alertar(resposta, idSensor) {
     var temp = resposta[0].temperatura;
-
-    console.log(idSensor === resposta[0].temperatura)
+    var tempSimulado = resposta[0].valor_aleatorio;
     
+    var classe_temperatura = 'cor-alerta';
+
     
-    if(temp < 1 || temp > 7){
-        var tempAtencao;
-    } else if(temp >= 2 && temp <= 6){
-        var tempIdeal;
-    }
-    else if(temp < 2 || temp > 6){
-        var tempAlerta;
+    var grauDeAviso ='';
 
+
+    if (temp < 1 || temp > 7) {
+        classe_temperatura = 'cor-alerta perigo-frio';
+        grauDeAviso = 'perigo frio'
+        grauDeAvisoCor = 'cor-alerta perigo-frio'
+        exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor)
+        
+    } else if (temp >= 2 && temp <= 6) {
+        classe_temperatura = 'cor-alerta ideal';
+        grauDeAvisoCor = 'cor-alerta ideal'
+        exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor)
+    }
+    else if (temp < 2 || temp > 6) {
+
+        classe_temperatura = 'cor-alerta alerta-frio';
+        grauDeAviso = 'alerta frio'
+        grauDeAvisoCor = 'cor-alerta alerta-frio'
+        exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor)
     }
 
-    var limites = {
-        atencao: tempAtencao,
-        ideal: tempIdeal,
-        alerta: tempAlerta 
-    };
+}
 
-    if (temp == limites.atencao) {
-        id_sensor1.innerHTML = `
-        <div id="id_sensor1" class="cards_temperatura" id="cards_temperatura_sensor1" style="background-color: #ce292a;">
-        <h5> sensor 1 </h5>
-        <div id="sensor1" class="grau">
-            -ºC
-        </div>
-`
+function exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor) {
+    var indice = alertas.findIndex(item => item.idSensor == idSensor);
+
+    if (indice >= 0) {
+        alertas[indice] = { idSensor, temp, grauDeAvisoCor }
+    } else {
+        alertas.push({ idSensor, temp, grauDeAvisoCor });
     }
-    else if (temp == limites.ideal) {
-        id_sensor1.innerHTML = `
-        <div id="id_sensor1" class="cards_temperatura" id="cards_temperatura_sensor1" style="background-color: #7497b3;">
-        <h5> sensor 1 </h5>
-        <div id="sensor1" class="grau">
-            -ºC
-        </div>
-`
-        removerAlerta(idSensor);
-    }
-    else if (temp == limites.alerta) {
-        id_sensor1.innerHTML = `
-        <div id="id_sensor1" class="cards_temperatura" id="cards_temperatura_sensor1" style="background-color: #fffb81;">
-        <h5> sensor 1 </h5>
-        <div id="sensor1" class="grau">
-            -ºC
-        </div>
-`
-        exibirAlerta(temp, idSensor, id_sensor1)
-    }
+
+    exibirCards();
     
+}
 
-    var card;
+function removerAlerta(idSensor) {
+    alertas = alertas.filter(item => item.idSensor != idSensor);
+    exibirCards();
+}
+ 
+function exibirCards() {
+    div_sensor.innerHTML = '';
 
-    if (idSensor == 1) {
-        sensor1.innerHTML = temp + "°C";
-        card = cards_temperatura_sensor1
-    } else if (idSensor == 2) {
-        sensor2.innerHTML = temp + "°C";
-        card = card_2
-    } else if (idSensor == 3) {
-        sensor3.innerHTML = temp + "°C";
-        card = card_3
-    } else if (idSensor == 4) {
-        sensor4.innerHTML = temp + "°C";
-        card = card_4
+    for (var i = 0; i < alertas.length; i++) {
+        var mensagem = alertas[i];
+        div_sensor.innerHTML += transformarEmDiv(mensagem);
     }
+}
 
-    card.className = classe_temperatura;
+function transformarEmDiv({ idSensor, temp, grauDeAvisoCor }) {
+    return `
+    <div class="cards_temperatura ${grauDeAvisoCor}" id="cards_temperatura_sensor${idSensor}">
+    <h5> sensor ${idSensor} </h5>
+        <div id="sensor${idSensor}" class="grau">
+            ${temp}ºC
+        </div>
+    <a href="./grafico_local.html"><button>Ver alerta </button></a>
+</div>`;
 }

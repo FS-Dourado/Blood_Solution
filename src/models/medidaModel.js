@@ -60,8 +60,19 @@ function buscarMedidasEmTempoReal(idSensor) {
     return database.executar(instrucaoSql);
 }
 
+//Valores simulados
+
+function insertSimulados(valor_aleatorio) {
+
+    var instrucao = `
+        INSERT INTO historico(temperatura, horario, fkSensor) VALUES ('${valor_aleatorio}', now(), 2);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    insertSimulados
 }

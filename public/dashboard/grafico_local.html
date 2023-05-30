@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style_menu.css">
     <link rel="stylesheet" href="css/style_local.css">
+    <script src="alerta.js"></script>
     
 
 </head>
@@ -108,7 +109,7 @@
     /* -- lm35Temperatura */
     var contextoLm35Temperatura = document.getElementById('grafico1').getContext('2d');
     contextoLm35Temperatura.canvas.width = 1000;
-    contextoLm35Temperatura.canvas.height = 300;
+    contextoLm35Temperatura.canvas.height = 500;
     var lm35Temperatura = new Chart(
         contextoLm35Temperatura,
         {
@@ -180,7 +181,7 @@
       
         obterDados(lm35Temperatura, 'lm35/temperatura');
        
-    }, 1000);
+    }, 5000);
   
   </script>
 

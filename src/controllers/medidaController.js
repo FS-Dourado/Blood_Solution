@@ -40,9 +40,30 @@ function buscarMedidasEmTempoReal(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 }
+function insertSimulados(req, res) {
 
+    var valor_aleatorio = req.body.valor_aleatorioServer;
+
+    usuarioModel.insertSimulados(valor_aleatorio)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao dar insert ficticio na tabela! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    insertSimulados
 
 }
+
