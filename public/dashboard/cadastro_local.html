@@ -96,8 +96,8 @@
         var bairroVar = input_bairro.value;
         var numeroVar = Number(input_numero.value);
         var complementoVar = input_complemento.value;
-
-    
+        var fkEmpresa = sessionStorage.ID_EMPRESA;
+        
         input_nome.value = ``;
         input_cep.value = ``;
         input_bairro.value = ``;
@@ -124,7 +124,8 @@
                     cepServer: cepVar,
                     bairroServer: bairroVar,
                     numeroServer: numeroVar,
-                    complementoServer: complementoVar
+                    complementoServer: complementoVar,
+                    fkEmpresaServer: fkEmpresa
                 })
             }).then(function (resposta) {
 

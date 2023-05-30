@@ -97,6 +97,7 @@ fetch("/usuarios/autenticar", {
             sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.NOME_USUARIO = json.nome;
             sessionStorage.ID_USUARIO = json.idUsuario;
+            sessionStorage.ID_EMPRESA = json.fkEmpresa;
 
                 window.location = "./dashboard/dashboard_home.html";
             

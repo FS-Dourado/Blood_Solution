@@ -98,6 +98,7 @@
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
         var confirmarSenhaVar = input_confirmar_senha.value;
+        var fkEmpresa = sessionStorage.ID_EMPRESA;
 
         input_nome.value = ``;
         input_email.value = ``;
@@ -111,26 +112,6 @@
             finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        if(!emailVar.includes("@")){
-            cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "Seu email deve conter @"
-        finalizarAguardar();
-        return false;
-        } else if(senhaVar.length <= 6){
-            cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "Sua senha deve ter mais de 6 caracteres"
-        finalizarAguardar();
-        return false;
-        } else if(confirmarSenhaVar != senhaVar){
-        cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "Sua senha não coincide com a de confirmação"
-        finalizarAguardar();
-        return false;
-        }
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar_funcionario", {
             method: "POST",
@@ -143,19 +124,16 @@
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
+                fkEmpresaServer: fkEmpresa
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
+               
 
                 limparFormulario();
                 finalizarAguardar();
@@ -163,8 +141,7 @@
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            console.log("Deu erro")
         });
 
         return false;

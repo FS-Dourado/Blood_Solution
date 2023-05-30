@@ -102,6 +102,7 @@ function cadastrar_funcionario(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var fkEmpresa= req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -110,10 +111,12 @@ function cadastrar_funcionario(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
+    }else if (fkEmpresa == undefined) {
+        res.status(400).send("Sua fkEmpresa está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar_funcionario(nome, email, senha)
+        usuarioModel.cadastrar_funcionario(nome, email, senha, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -137,7 +140,8 @@ function cadastrar_local(req, res) {
     var cep = req.body.cepServer;
     var bairro = req.body.bairroServer;
     var numero = req.body.numeroServer;
-    var complemento = req.body.complementoServer;    
+    var complemento = req.body.complementoServer;   
+    var fkEmpresa = req.body.fkEmpresaServer; 
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -150,10 +154,12 @@ function cadastrar_local(req, res) {
         res.status(400).send("Seu numero está undefined!");
     } else if (complemento == undefined) {
         res.status(400).send("Seu complemento está undefined!");
+    }  else if (fkEmpresa == undefined) {
+        res.status(400).send("Seu fkEmpresa está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar_local(nome, cep, bairro, numero, complemento)
+        usuarioModel.cadastrar_local(nome, cep, bairro, numero, complemento, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
