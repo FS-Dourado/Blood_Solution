@@ -8,7 +8,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   int leitura = analogRead (lm35);
-  temperatura = 0.11 * leitura + 1.74;
+  temperatura = 0.09 * leitura + 1.71;
   Serial.println(temperatura);
   delay(2000);
 }

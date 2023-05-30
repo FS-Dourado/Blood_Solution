@@ -36,14 +36,14 @@ body {
 .chartjs1{
     display: flex;
     margin-left: 15%;
-    margin-top: 20%;
-    align-content: center;
+    margin-top: 10%;
     justify-content: center;
     background-color: #f5ecec;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0  rgba(0, 0, 0, 0.19);
-    border-radius: 5px; 
-    width: 50vw; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    width: 50vw;
     height: 50vh;
+    flex-direction: column;
 }
 
 .temperatura {
@@ -124,10 +124,11 @@ margin-left: 10px;
     flex-direction: column;
     color: antiquewhite;
     background-color: #A12525;
-    border-radius: 5px; 
-    margin-top: 25%;
+    border-radius: 5px;
+    margin-top: 12%;
+    margin-bottom: 12.7%;
     margin-left: 18%;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     height: 250px;
     width: 260px;

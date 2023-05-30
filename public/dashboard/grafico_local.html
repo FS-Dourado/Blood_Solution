@@ -77,8 +77,8 @@
                 <h3> Cadastre seu lote aqui! </h3>
             <input id="qtd_bolsas" placeholder="Quantidade de bolsas" type="text"> 
             <input id="tipoSangue" placeholder="Tipo Sanguíneo" type="text"> 
-            <input id="Validade" placeholder="Validade" type="text"> 
-            <button id="botaoCadastro">Cadastrar</button>
+            <input id="validade" placeholder="Validade" type="text"> 
+            <button onclick="cadastrar_lote()" id="botaoCadastro">Cadastrar</button>
         </div>
     </div>
 
@@ -140,7 +140,7 @@
                     }]
                 },
                 animation: {
-                    duration: 0
+                    duration: 0 
                 }
             }
         }
@@ -176,12 +176,65 @@
         })
     }
   
-    setInterval(() => {
+    // setInterval(() => {
       
-        obterDados(lm35Temperatura, 'lm35/temperatura');
+    //     obterDados(lm35Temperatura, 'lm35/temperatura');
        
-    }, 1000);
+    // }, 1000);
   
   </script>
 
 </html>
+<script>
+
+function cadastrar_lote() {
+
+//Recupere o valor da nova input pelo nome do id
+// Agora vá para o método fetch logo abaixo
+var qtdBolsaVar = qtd_bolsas.value;
+var tipo_sangueVar =  tipoSangue.value;
+var validadeVar = validade.value;
+
+
+    
+    if (qtdBolsaVar == "" || tipo_sangueVar == "" || validadeVar == "") {
+        console.log("if1")
+        console.log("quantidade de bolsas" + qtdBolsaVar + "\n tipo sanguineo " + tipo_sangueVar + "\n validade " + validadeVar)
+    }   
+
+    else {
+        console.log("quantidade de bolsas" + qtdBolsaVar + "\n tipo sanguineo " + tipo_sangueVar + "\n validade " + validadeVar)
+    }
+    
+
+    // Enviando o valor da nova input
+    fetch("./usuarios/cadastrar_lote", {
+        method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        qtdBolsaServer: qtdBolsaVar,
+        tipo_sangueServer: tipo_sangueVar,
+        validadeServer: validadeVar,
+    })
+}).then(function (resposta) {
+
+    console.log("resposta: ", resposta);
+
+    if (resposta.ok) {
+        
+        window.location = "./login.html";
+    }
+}).catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+});
+
+return false;
+}
+
+    
+
+</script>
