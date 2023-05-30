@@ -40,9 +40,9 @@
    margin-top: 40px;
    display: flex;
    flex-direction: column;
-   width: 43%;
+   width: 48%;
    border:none;
-   height: 390px;
+   height: 420px;
    gap: 20px;
    align-items: center;
    justify-content: center;
@@ -62,7 +62,7 @@
     border-radius: 7px;
     box-shadow: 5px 5px 10px rgb(114, 48, 48), 
     0px 0 rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
+    color: #240404;
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
@@ -73,20 +73,17 @@
 }
 
 ::-webkit-input-placeholder {
-    color: rgb(0, 0, 0);
+    color: #480909;
  }
+
+
 
 .box_cadastro button{
     width: 40%;
     height: 50px;
-    background-color: #a83939;
-    color: white;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
-}
-
-.box_cadastro button{
     cursor: pointer;
     font-size: 16px;
     font-family: 'Raleway', sans-serif;

@@ -5,10 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de funcionario</title>
+    <title>Blood Solucion - Cadastro/funcionario</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/style_menu.css">
     <link rel="stylesheet" href="../css/style_cadastrar_usuario.css">
+
+    <!-- fontes -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
 
 </head>
 
@@ -51,27 +61,36 @@
             </ul>
         </div>
 
-        <div class="formulario">
+        <div class="sessao">
             <div class="frase">
-                <h2>Cadastrar Funcionário</h2>
+                <h3>Cadastrar funcionário</h3>
             </div>
-            <div class="conteudo">
-                <div class="form">
-                    <input id="input_nome" placeholder="Nome:" type="text">
-                    <input id="input_email" placeholder="Email:" type="email">
-                    <input id="input_senha" placeholder="Senha:" type="password">
-                    <input id="input_confirmar_senha" placeholder="Confirmar senha:" type="password">
 
-                    <button onclick="cadastrar_funcionario()">Cadastrar</button>
+            <div class="caixa">
+
+                <div class="box_cadastro">
+                
+                        <input class="input" id="input_nome" type="text" placeholder="Nome" required="">
+                        
+                        <input class="input" id="input_email" type="email" placeholder="Email" required="">
+                        
+                        <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
+                        
+                        <input class="input" id="input_confirmar_senha" type="password" placeholder="Confirmar Senha" required="">
+                        
+                        <button onclick="cadastrar_funcionario()">Cadastrar</button>
+            
+                    
+                    
                 </div>
             </div>
-        </div>
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
 
 
             </script>
-
+        </div>
+    </div>
 </html>
 <script>
     function cadastrar_funcionario(){
@@ -157,3 +176,4 @@
     
 
 </script>
+
