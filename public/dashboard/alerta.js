@@ -49,6 +49,7 @@ function alertar(resposta, idSensor) {
 
     var classe_temperatura = 'cor-alerta';
 
+    
     var grauDeAviso ='';
 
 
@@ -70,14 +71,10 @@ function alertar(resposta, idSensor) {
         grauDeAvisoCor = 'cor-alerta alerta-frio'
         exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor)
     }
-
-
-    
-
 }
 
 function alertarSimulado(respostaSimulada, idSensor){
-    var tempSimulado = respostaSimulada[0].temperatura;
+    var tempSimulado = respostaSimulada[0].temperaturaSimulada;
 
     var classe_temperatura = 'cor-alerta';
 
@@ -152,8 +149,9 @@ function exibirCardsSimulados() {
     
     div_sensor2.innerHTML = '';
 
-    var mensagem = alertasSimulados[0];
-    
+    for (var i = 0; i < alertasSimulados.length; i++) {
+        var mensagem = alertasSimulados[i];
+    }
     div_sensor2.innerHTML = divInsertSimulado(mensagem);
 }
 

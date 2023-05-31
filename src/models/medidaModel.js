@@ -71,13 +71,14 @@ function insertSimulados(valor_aleatorio) {
 
     return database.executar(instrucao);
 
+
 }
 
-function buscarInsertsSimulados(instrucaoSql){
+function buscarInsertsSimulados(){
     instrucaoSql = ''
 
     instrucaoSql = `select 
-    temperatura as temperatura, 
+    temperatura as temperaturaSimulada, 
                     DATE_FORMAT(horario,'%H:%i:%s') as momento_grafico, 
                     fkSensor
                     from historico where fkSensor = 2 
@@ -85,6 +86,7 @@ function buscarInsertsSimulados(instrucaoSql){
                     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
+
 
 }
 module.exports = {
