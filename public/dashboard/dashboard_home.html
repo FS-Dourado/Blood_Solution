@@ -99,16 +99,9 @@
                         <div class="card">
                             <h2>Hospital Santa clara</h2>
                             <div class="box">
-                                <span id="div_sensor" class="div_sensor">
+                                <span id="div_sensor1" class="div_sensor">
                                 </span>
                                 <span id="div_sensor2" class="div_sensor">
-                                    <div class="cards_temperatura" style="background-color: #7497b3;">
-                                        <h5> sensor 1 </h5>
-                                        <div id="sensor2" class="grau">
-                                            -ºC
-                                        </div>
-                                        <button>Ver alerta </button>
-                                    </div>
                                 </span>
                             </div>
                         </div>
@@ -116,7 +109,7 @@
                             <h2>Hospital Santa Marcelina</h2>
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
-                                    <h5> sensor 1 </h5>
+                                    <h5> sensor 3 </h5>
                                     <div id="sensor3" class="grau">
                                         -ºC
                                     </div>
@@ -180,39 +173,36 @@
 
 
 <script>
-function insertSimulados() {
+function insertSimulados(){
     var min2 = 0;
     var max2 = 7;
     var valor_aleatorio = Math.random() * (max2 - min2 + 1) + min2
-
+    
     var min = 1;
     var max = 6;
     var intervalo = max - min + 1;
     var valor_aleatorio_sensor_quebrado = Math.random() * intervalo + min
-    // var valor_aleatorio_fkSensor = parseInt(valor_aleatorio_sensor_quebrado);
 
-    fetch("/usuarios/insertSimulados", {
+    fetch("/medidas/insertSimulados", {
         method: "post",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            valor_aleatorioServer: valor_aleatorio,
-            // valor_aleatorioServer2: valor_aleatorio2,
-            // valor_aleatorio_fkSensorServer: valor_aleatorio_fkSensor
+            valor_aleatorioServer: valor_aleatorio.toFixed(2),
         })
     })
 
-        .then(function (resposta) {
+        .then(function (respostaSimulada) {
             console.log("ESTOU INSERTANDO DADOS FICTICIOS!")
 
-            if (resposta.ok) {
-                console.log(resposta);
+            if (respostaSimulada.ok) {
+                console.log(respostaSimulada);
             } else {
 
                 console.log("Houve um erro ao dar insert ficticios");
 
-                resposta.text().then(texto => {
+                respostaSimulada.text().then(texto => {
                     console.error(texto);
                 });
             }
@@ -220,19 +210,20 @@ function insertSimulados() {
         }).catch(function (erro) {
             console.log(erro);
         })
-
-    return false;
-
-    setTimeout(atualizacaoPeriodica, 5000);
-}
-
-
+        
+        return false;
+    }
+    
+    
     function atualizacaoPeriodica() {
         obterdados(1);
         obterdados(2);
         obterdados(3);
         obterdados(4);
-
+        buscarInsertsSimulados(1);
+        
+        setTimeout(buscarInsertsSimulados, 5000);
+        setTimeout(insertSimulados, 5000);
         setTimeout(atualizacaoPeriodica, 5000);
     }
 

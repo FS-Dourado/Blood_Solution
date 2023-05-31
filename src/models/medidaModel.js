@@ -68,11 +68,28 @@ function insertSimulados(valor_aleatorio) {
         INSERT INTO historico(temperatura, horario, fkSensor) VALUES ('${valor_aleatorio}', now(), 2);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
+
     return database.executar(instrucao);
+
 }
 
+function buscarInsertsSimulados(instrucaoSql){
+    instrucaoSql = ''
+
+    instrucaoSql = `select 
+    temperatura as temperatura, 
+                    DATE_FORMAT(horario,'%H:%i:%s') as momento_grafico, 
+                    fkSensor
+                    from historico where fkSensor = 2 
+                    order by idHistorico desc
+                    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+}
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    insertSimulados
+    insertSimulados,
+    buscarInsertsSimulados
 }
