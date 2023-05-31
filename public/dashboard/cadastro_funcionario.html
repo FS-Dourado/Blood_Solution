@@ -80,8 +80,7 @@
                         
                         <button onclick="cadastrar_funcionario()">Cadastrar</button>
             
-                    
-                    
+                        <div id="div_erro"></div>        
                 </div>
             </div>
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -93,64 +92,97 @@
     </div>
 </html>
 <script>
-    function cadastrar_funcionario(){
-        var nomeVar = input_nome.value;
-        var emailVar = input_email.value;
-        var senhaVar = input_senha.value;
-        var confirmarSenhaVar = input_confirmar_senha.value;
-        var fkEmpresa = sessionStorage.ID_EMPRESA;
+
+function verificar_email(email, callback) {
+    fetch("/usuarios/verificar_email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: email
+      })
+    })
+      .then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Erro na verificação do e-mail");
+        }
+      })
+      .then(function (data) {
+        callback(null, data.emailCadastrado);
+      })
+      .catch(function (error) {
+       div_erro.innerHTML = `Email já cadastrado`;
+        callback(error);
+      });
+  }
+
+    function cadastrar_funcionario() {
+    var nomeVar = input_nome.value;
+    var emailVar = input_email.value;
+    var senhaVar = input_senha.value;
+    var confirmarsenhaVar = input_confirmar_senha.value;
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
+    const spanErro = document.getElementById("span_erro")
 
         input_nome.value = ``;
         input_email.value = ``;
         input_senha.value = ``;
         input_confirmar_senha.value = ``;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmarSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
-            finalizarAguardar();
-            return false;
+    if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmarsenhaVar == "") {
+      div_erro.innerHTML = `Campos inválidos`;
+    } else if(!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com")){
+        div_erro.innerHTML = `Email inválido`;
+    } else if(senhaVar.length <= 6){
+        div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
+    } else if(confirmarsenhaVar != senhaVar){
+        div_erro.innerHTML = `Senhas inválidas`;
+    }else {
+      verificar_email(emailVar, function (error, emailCadastrado) {
+        if (error) {
+          console.error(error);
+          return;
         }
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar_funcionario", {
+
+        if (emailCadastrado) {
+          spanErro.style.display = "block";
+          spanErro.innerHTML = "O email já está cadastrado.";
+        } else {
+          fetch("/usuarios/cadastrar_funcionario", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+              "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                fkEmpresaServer: fkEmpresa
+              nomeServer: nomeVar,
+              emailServer: emailVar,
+              senhaServer: senhaVar,
+              fkEmpresaServer: fkEmpresa
             })
-        }).then(function (resposta) {
+          })
+            .then(function (resposta) {
+              if (resposta.ok) {
+                setTimeout(function () {
+                  console.log("Cadastrado")
+                }, 500);
 
-            console.log("resposta: ", resposta);
+                limparSessao();
+              } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+              }
+            })
+            .catch(function (resposta) {
+              console.log("#ERRO: " + resposta);
+            });
 
-            if (resposta.ok) {
-                
-
-               
-
-                limparFormulario();
-                finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log("Deu erro")
-        });
-
-        return false;
+          return false;
+        }
+      });
     }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+  }
     
-
 </script>
 

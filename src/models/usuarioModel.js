@@ -58,6 +58,11 @@ function cadastrar_local(nome, cep, bairro, numero, complemento, fkEmpresa) {
     return database.executar(instrucao);
 }
 
+function verificar_email(email) {
+    var instrucao = `SELECT * FROM usuario WHERE email = '${email}'`;
+    console.log("Executando verificação de e-mail: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 module.exports = {
     entrar,
@@ -65,4 +70,5 @@ module.exports = {
     listar,
     cadastrar_funcionario,
     cadastrar_local,
+    verificar_email
 };

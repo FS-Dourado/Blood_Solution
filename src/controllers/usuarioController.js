@@ -177,11 +177,37 @@ function cadastrar_local(req, res) {
     }
 }
 
+function verificar_email(req, res) {
+    var email = req.body.emailServer;
+
+    if (email == undefined) {
+        res.status(400).send("O email está indefinido!");
+    } else {
+        usuarioModel.verificar_email(email)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.json({ emailCadastrado: true });
+                } else {
+                    res.json({ emailCadastrado: false });
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao verificar o email! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     cadastrar_funcionario,
     cadastrar_local,
+    verificar_email,
     testar
 }

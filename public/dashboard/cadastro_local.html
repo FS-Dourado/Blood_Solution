@@ -14,12 +14,12 @@
     <!-- fontes -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
 
 
 </head>
@@ -72,7 +72,7 @@
             <div class="caixa">
                 <div class="box_cadastro">
                     <input id="input_nome" placeholder="Nome:" type="text">
-                    <input id="input_cep" placeholder="CEP:" type="text">
+                    <input id="input_cep" placeholder="CEP:" type="text" onkeypress="$(this).mask('00000-000')">
                     <input id="input_bairro" placeholder="Bairro:" type="text">
                     <input id="input_numero" placeholder="Numero:" type="text">
                     <input id="input_complemento" placeholder="Complemento:" type="text">
@@ -81,12 +81,11 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-
-
-
         </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
 </html>
 <script>
@@ -97,7 +96,7 @@
         var numeroVar = Number(input_numero.value);
         var complementoVar = input_complemento.value;
         var fkEmpresa = sessionStorage.ID_EMPRESA;
-        
+
         input_nome.value = ``;
         input_cep.value = ``;
         input_bairro.value = ``;
@@ -141,7 +140,9 @@
                 console.log(`#ERRO: ${resposta}`);
             });
         }
-
+        $("#input_cep").keypress(function () {
+				$(this).mask('00000-000');
+			});
         return false;
     }
 
