@@ -75,9 +75,9 @@
          </div>    
          <div class="cadastrarNovo">
                 <h3> Cadastre seu lote aqui! </h3>
-            <input id="qtd_bolsas" placeholder="Quantidade de bolsas" type="text"> 
+            <input id="qtd_bolsas" placeholder="Quantidade de bolsas" type="number"> 
             <input id="tipoSangue" placeholder="Tipo Sanguíneo" type="text"> 
-            <input id="validade" placeholder="Validade" type="text"> 
+            <input id="validade" placeholder="Validade" type="date"> 
             <button onclick="cadastrar_lote()" id="botaoCadastro">Cadastrar</button>
         </div>
     </div>
@@ -208,7 +208,7 @@ var validadeVar = validade.value;
     
 
     // Enviando o valor da nova input
-    fetch("./usuarios/cadastrar_lote", {
+    fetch("/usuarios/cadastrar_lote", {
         method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -221,18 +221,21 @@ var validadeVar = validade.value;
         validadeServer: validadeVar,
     })
 }).then(function (resposta) {
+              if (resposta.ok) {
+                setTimeout(function () {
+                  console.log("Cadastrado")
+                }, 500);
 
-    console.log("resposta: ", resposta);
+                limparSessao();
+              } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+              }
+            })
+            .catch(function (resposta) {
+              console.log("#ERRO: " + resposta);
+            });
 
-    if (resposta.ok) {
-        
-        window.location = "./login.html";
-    }
-}).catch(function (resposta) {
-    console.log(`#ERRO: ${resposta}`);
-});
-
-return false;
+          return false;
 }
 
     

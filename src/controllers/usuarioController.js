@@ -177,6 +177,41 @@ function cadastrar_local(req, res) {
     }
 }
 
+
+function cadastrar_lote(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var bolsas = req.body.qtdBolsaServer;
+    var tipoSangue= req.body.tipo_sangueServer;
+    var validade = req.body.validadeServer;
+
+    // Faça as validações dos valores
+    if (bolsas == undefined) {
+        res.status(400).send("Bolsas está undefined!");
+    } else if (tipoSangue == undefined) {
+        res.status(400).send("Tipo está undefined!");
+    } else if (validade == undefined) {
+        res.status(400).send("Validade está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_lote(bolsas, tipoSangue, validade)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 function verificar_email(req, res) {
     var email = req.body.emailServer;
 
@@ -209,5 +244,6 @@ module.exports = {
     cadastrar_funcionario,
     cadastrar_local,
     verificar_email,
-    testar
+    testar,
+    cadastrar_lote
 }

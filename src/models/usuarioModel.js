@@ -64,11 +64,19 @@ function verificar_email(email) {
     return database.executar(instrucao);
 }
 
+function cadastrar_lote(bolsas, tipoSangue, validade){
+    var instrucao = `INSERT INTO lote(qtdBolsa, tipoSanguineo, validade) VALUES 
+    ('${bolsas}', '${tipoSangue}', '${validade}' )`
+
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     cadastrar_funcionario,
     cadastrar_local,
-    verificar_email
+    verificar_email,
+    cadastrar_lote
 };

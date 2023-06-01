@@ -32,4 +32,8 @@ router.post("/verificar_email", function (req, res) {
     usuarioController.verificar_email(req, res);
 });
 
+router.post("/cadastrar_lote", function (req, res){
+    usuarioController.cadastrar_lote(req, res);
+});
+
 module.exports = router;
