@@ -91,7 +91,7 @@ justify-content: space-around;
 
 .bloco-pequeno{
 width: 150px;
-height: 30px;
+height: 70px;
 border-radius: 15px;
 /* background-color:  #ce292a;; */
 margin-left: 3%;
@@ -100,6 +100,7 @@ align-items: center;
 justify-content: center;
 color: black;
 padding: 5px 10px;
+flex-direction: column;
 }
 
 .blocos-grande p{
@@ -140,10 +141,6 @@ margin-left: 3%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.box :hover{
-  transform: scale(1.1);
-  transition: all 0.5s;
-}
 
 .card .cards_temperatura{
   width: 260px;
@@ -205,4 +202,23 @@ button:hover {
 
 button:active {
   transform: translateY(-1px);
+}
+.div_sensor > .cards_temperatura{
+  padding-top: 0.4%;
+}
+#div_sensor{
+  display: flex;
+  width: 70%;
+}
+
+.alerta-frio {
+  background-color: #fffb81;
+}
+
+.perigo-frio {
+  background-color: #ce292a;
+}
+
+.ideal {
+  background-color: #7497b3;
 }

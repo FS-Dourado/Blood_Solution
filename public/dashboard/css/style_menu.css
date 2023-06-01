@@ -16,7 +16,7 @@
 
 .navigation{
     position: fixed;
-    height: 1000px;
+    height: 100%;
     background: #FFCDCD ; 
     width: 70px;
     border-left: 2px solid #FFCDCD;
