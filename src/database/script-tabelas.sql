@@ -19,6 +19,7 @@
         constraint chktipo CHECK (tipo IN('Funcionário', 'Administrador'))
     );
 
+
     CREATE TABLE local_empresa(
         idLocal INT PRIMARY KEY auto_increment,
         nome VARCHAR(45),
@@ -43,6 +44,51 @@
         fkLocal INT,
         constraint fkLocal_emp FOREIGN KEY (fkLocal) references local_empresa(idLocal)
     );
+
+CREATE TABLE local_empresa(
+	idLocal INT PRIMARY KEY auto_increment,
+    nome VARCHAR(45),
+    tipoLocal VARCHAR(40),
+    CONSTRAINT chkLocal CHECK (tipoLocal in('armazenamento', 'transporte')),
+    fkEndereco INT,
+    fkEmpresa INT,
+    constraint fkEn foreign key (fkEndereco) references  endereco(idEndereco),
+	constraint fkEmp FOREIGN KEY (fkEmpresa) references empresa(idEmpresa)
+);
+
+CREATE TABLE endereco(
+	idEndereco INT PRIMARY KEY auto_increment,
+    CEP char(9),
+    bairro VARCHAR(45),
+    numero INT,
+    complemento VARCHAR(50)
+    );
+
+CREATE TABLE lote(
+	idLote INT PRIMARY KEY auto_increment,
+    qtdBolsa INT,
+    tipoSanguineo CHAR(3),
+    validade DATE,
+    fkLocal INT,
+    constraint chktipoSanguineo CHECK (tipoSanguineo IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')),
+    constraint fkLocal FOREIGN KEY (fkLocal) references local_empresa(idLocal)
+);
+
+CREATE TABLE registroLotes(
+	idRegistro INT,
+	dataEntrada DATETIME default current_timestamp,
+    dataSaida DATE default current_timestamp,
+    fkLote INT,
+    constraint const foreign key (fkLote) references lote(idLote),
+    constraint pk primary key (idRegistro, fkLote)
+);
+
+CREATE TABLE sensor(
+	idSensor INT PRIMARY KEY auto_increment,
+    stts VARCHAR(15),
+    fkLocal INT,
+    constraint fkLocal_emp FOREIGN KEY (fkLocal) references local_empresa(idLocal)
+);
 
     CREATE TABLE historico(
         idHistorico INT PRIMARY KEY auto_increment,
@@ -155,5 +201,7 @@
         JOIN sensor
         ON sensor.fkLocal = idLocal;
 
+
+-- 
 
 
