@@ -1,8 +1,7 @@
 var alertas = [];
 var alertasSimulados = [];
 
-
-function buscarInsertsSimulados(valor_aleatorio) {
+function obterdadosSimulados(valor_aleatorio) {
     fetch(`/medidas/buscarInsertsSimulados/${valor_aleatorio}`)
         .then(respostaSimulada => {
 

@@ -100,8 +100,22 @@
                             <h2>Hospital Santa clara</h2>
                             <div class="box">
                                 <span id="div_sensor1" class="div_sensor">
+                                    <div class="cards_temperatura" id="cards_temperatura_sensor1">
+                                        <h5> sensor 1 </h5>
+                                            <div id="sensor1" class="grau">
+                                                ºC
+                                            </div>
+                                        <a href="./grafico_local.html"><button>Ver alerta </button></a>
+                                    </div>
                                 </span>
                                 <span id="div_sensor2" class="div_sensor">
+                                    <div class="cards_temperatura" id="cards_temperatura_sensor2">
+                                        <h5> sensor 2</h5>
+                                            <div id="sensor2" class="grau">
+                                                ºC
+                                            </div>
+                                        <a href="./grafico_local.html"><button>Ver alerta </button></a>
+                                    </div>
                                 </span>
                             </div>
                         </div>
@@ -220,10 +234,9 @@ function insertSimulados(){
         obterdados(2);
         obterdados(3);
         obterdados(4);
-        buscarInsertsSimulados(1);
+        obterdadosSimulados(2);
         
-        setTimeout(buscarInsertsSimulados, 5000);
-        setTimeout(insertSimulados, 5000);
+        setTimeout(insertSimulados, 7000);
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
