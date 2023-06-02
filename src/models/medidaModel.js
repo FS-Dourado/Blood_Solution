@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idSensor, limite_linhas) {
+function buscarUltimasMedidas(limite_linhas) {
 
     instrucaoSql = ''
 
@@ -19,7 +19,7 @@ function buscarUltimasMedidas(idSensor, limite_linhas) {
                         horario,
                         DATE_FORMAT(horario,'%H:%i:%s') as historico_grafico
                     from historico
-                    where fkSensor = ${idSensor}
+                    where fkSensor = 1
                     `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -30,7 +30,7 @@ function buscarUltimasMedidas(idSensor, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idSensor) {
+function buscarMedidasEmTempoReal() {
 
     instrucaoSql = ''
 
@@ -48,7 +48,7 @@ function buscarMedidasEmTempoReal(idSensor) {
         temperatura as temperatura, 
                         DATE_FORMAT(horario,'%H:%i:%s') as momento_grafico, 
                         fkSensor 
-                        from historico where fkSensor = ${idSensor} 
+                        from historico where fkSensor = 1 
                         order by idHistorico desc
                         `;
     } else {
@@ -60,8 +60,38 @@ function buscarMedidasEmTempoReal(idSensor) {
     return database.executar(instrucaoSql);
 }
 
+//Valores simulados
 
+function insertSimulados(valor_aleatorio) {
+
+    var instrucao = `
+        INSERT INTO historico(temperaturaSimulada, horario, fkSensor) VALUES ('${valor_aleatorio}', now(), 2);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+
+    return database.executar(instrucao);
+
+
+}
+
+function buscarInsertsSimulados(){
+    instrucaoSql = ''
+
+    instrucaoSql = `select 
+    temperaturaSimulada as temperaturaSimulada, 
+                    DATE_FORMAT(horario,'%H:%i:%s') as momento_grafico, 
+                    fkSensor
+                    from historico where fkSensor = 2 
+                    order by idHistorico desc
+                    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    insertSimulados,
+    buscarInsertsSimulados
 }
