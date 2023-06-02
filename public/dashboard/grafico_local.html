@@ -66,35 +66,6 @@
             <div class="chartjs1">
                 <canvas id="grafico1" style="position: relative; height:55vh; width:55vw"></canvas>
               </div>
-                  <!-- <p>Sensor 2</p> -->
-              <!-- <div class="chartjs2">
-                <canvas id="grafico2" style="position: relative; height:40vh; width:40vw"></canvas>
-              </div>   
-            </div> -->
-                <!-- <div class="temperatura">Temperatura (°C)</div>
-                <div class="tempoLocal">Tempo de armanezamento nesse local</div> -->
-       
-<!-- 
-    <div class="lotes">
-        <h3> Lotes </h3>
-        <div class="cadastrarNovo">
-            <label>Quantidade de bolsas </label>
-        <input id="qtd_bolsas" placeholder="" type="number">
-        <label >Tipo Sanguíneo</label>
-        <input id="tipoSangue" placeholder="" type="text">
-        <label>Data de validade</label> 
-        <input id="validade" placeholder="" type="date"> 
-        <button onclick="cadastrar_lote()" id="botaoCadastro">Cadastrar</button>
-    </div> 
-     <div class="fundo">
-         <div class="cadastrados"><h2> Lotes  <br> cadastrados</h2></div>
-         <div id="id_lista">
-            <div id="div_lote"></div>
-         </div>    
-    </div> -->
-<!-- </div>
-</div> -->
-
 </div>
     <div class="cadastro-lotes">
                 <div id="form"></div>
@@ -104,8 +75,6 @@
         </div>
     </div>
 </div>
-
-    <!-- <div class="footer"></div>  -->
 
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -126,10 +95,8 @@
 </body>
 <script>
         
-    /* -- lm35Temperatura */
     var contextoLm35Temperatura = document.getElementById('grafico1').getContext('2d');
-    // contextoLm35Temperatura.canvas.width = 1000;
-    // contextoLm35Temperatura.canvas.height = 300;
+ 
     var lm35Temperatura = new Chart(
         contextoLm35Temperatura,
         {
@@ -196,12 +163,6 @@
             grafico.update();
         })
     }
-  
-    // setInterval(() => {
-      
-    //     obterDados(lm35Temperatura, 'lm35/temperatura');
-       
-    // }, 1000);
   
   </script>
 
@@ -209,8 +170,7 @@
         
     /* -- lm35Temperatura */
     var contextoLm35Temperatura = document.getElementById('grafico2').getContext('2d');
-    // contextoLm35Temperatura.canvas.width = 1000;
-    // contextoLm35Temperatura.canvas.height = 300;
+
     var lm35Temperatura = new Chart(
         contextoLm35Temperatura,
         {
@@ -277,13 +237,7 @@
             grafico.update();
         })
     }
-  
-    // setInterval(() => {
-      
-    //     obterDados(lm35Temperatura, 'lm35/temperatura');
-       
-    // }, 1000);
-  
+
   </script>
 
 </html>
