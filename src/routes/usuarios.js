@@ -26,8 +26,20 @@ router.post("/cadastrar_funcionario", function (req, res) {
     usuarioController.cadastrar_funcionario(req, res);
 })
 
+router.post("/cadastrar_local", function (req, res) {
+    usuarioController.cadastrar_local(req, res);
+})
+
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
+});
+
+router.post("/verificar_email", function (req, res) {
+    usuarioController.verificar_email(req, res);
+});
+
+router.post("/cadastrar_lote", function (req, res){
+    usuarioController.cadastrar_lote(req, res);
 });
 
 module.exports = router;

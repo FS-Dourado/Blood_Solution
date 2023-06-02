@@ -5,10 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de funcionario</title>
+    <title>Blood Solucion - Cadastro/funcionario</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/style_menu.css">
     <link rel="stylesheet" href="../css/style_cadastrar_usuario.css">
+
+    <!-- fontes -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
 
 </head>
 
@@ -52,16 +62,24 @@
         </div>
         <div class="formulario">
             <div class="frase">
-                <h2>Cadastrar Funcionário</h2>
             </div>
-            <div class="conteudo">
-                <div class="form">
-                    <input id="input_nome" placeholder="Nome:" type="text">
-                    <input id="input_email" placeholder="Email:" type="email">
-                    <input id="input_senha" placeholder="Senha:" type="password">
-                    <input id="input_confirmar_senha" placeholder="Confirmar senha:" type="password">
+            <div class="box_cadastro">
+                <div>
+                    <div>
+                        <input class="input" id="input_nome" type="text" placeholder="Nome" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_email" type="email" placeholder="Email" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_confirmar_senha" type="password" placeholder="Confirmar Senha" required="">
+                     </div>
+                     <button onclick="cadastrar_funcionario()">Cadastrar</button>
 
-                    <button onclick="cadastrar_funcionario()">Cadastrar</button>
+
                 </div>
             </div>
         </div>
@@ -71,89 +89,101 @@
 
 
             </script>
-
+        </div>
+    </div>
 </html>
 <script>
-    function cadastrar_funcionario(){
-        var nomeVar = input_nome.value;
-        var emailVar = input_email.value;
-        var senhaVar = input_senha.value;
-        var confirmarSenhaVar = input_confirmar_senha.value;
+
+function verificar_email(email, callback) {
+    fetch("/usuarios/verificar_email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: email
+      })
+    })
+      .then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Erro na verificação do e-mail");
+        }
+      })
+      .then(function (data) {
+        callback(null, data.emailCadastrado);
+      })
+      .catch(function (error) {
+       div_erro.innerHTML = `Email já cadastrado`;
+        callback(error);
+      });
+  }
+
+    function cadastrar_funcionario() {
+    var nomeVar = input_nome.value;
+    var emailVar = input_email.value;
+    var senhaVar = input_senha.value;
+    var confirmarsenhaVar = input_confirmar_senha.value;
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
+    const spanErro = document.getElementById("span_erro")
 
         input_nome.value = ``;
         input_email.value = ``;
         input_senha.value = ``;
         input_confirmar_senha.value = ``;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmarSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+    if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmarsenhaVar == "") {
+      div_erro.innerHTML = `Campos inválidos`;
+    } else if(!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com")){
+        div_erro.innerHTML = `Email inválido`;
+    } else if(senhaVar.length <= 6){
+        div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
+    } else if(confirmarsenhaVar != senhaVar){
+        div_erro.innerHTML = `Senhas inválidas`;
+    }else {
+      verificar_email(emailVar, function (error, emailCadastrado) {
+        if (error) {
+          console.error(error);
+          return;
+        }
 
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        if(!emailVar.includes("@")){
-            cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "Seu email deve conter @"
-        finalizarAguardar();
-        return false;
-        } else if(senhaVar.length <= 6){
-            cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "Sua senha deve ter mais de 6 caracteres"
-        finalizarAguardar();
-        return false;
-        } else if(confirmarSenhaVar != senhaVar){
-        cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "Sua senha não coincide com a de confirmação"
-        finalizarAguardar();
-        return false;
-        }
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar_funcionario", {
+        if (emailCadastrado) {
+          spanErro.style.display = "block";
+          spanErro.innerHTML = "O email já está cadastrado.";
+        } else {
+          fetch("/usuarios/cadastrar_funcionario", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+              "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
+              nomeServer: nomeVar,
+              emailServer: emailVar,
+              senhaServer: senhaVar,
+              fkEmpresaServer: fkEmpresa
             })
-        }).then(function (resposta) {
+          })
+            .then(function (resposta) {
+              if (resposta.ok) {
+                setTimeout(function () {
+                  console.log("Cadastrado")
+                }, 500);
 
-            console.log("resposta: ", resposta);
+                limparSessao();
+              } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+              }
+            })
+            .catch(function (resposta) {
+              console.log("#ERRO: " + resposta);
+            });
 
-            if (resposta.ok) {
-                cardErro.style.display = "block";
-
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-
-                limparFormulario();
-                finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-        });
-
-        return false;
+          return false;
+        }
+      });
     }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+  }
     
-
 </script>
+

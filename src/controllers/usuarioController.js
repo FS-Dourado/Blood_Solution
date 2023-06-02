@@ -33,7 +33,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -77,7 +77,7 @@ function cadastrar(req, res) {
     } else if (cpf == undefined) {
         res.status(400).send("Seu CPF está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, email, senha, cpf)
             .then(
@@ -102,6 +102,7 @@ function cadastrar_funcionario(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -110,10 +111,12 @@ function cadastrar_funcionario(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Sua fkEmpresa está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar_funcionario(nome, email, senha)
+        usuarioModel.cadastrar_funcionario(nome, email, senha, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -130,44 +133,117 @@ function cadastrar_funcionario(req, res) {
             );
     }
 }
-function cadastrar_lote(rec, res){
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var qtdbolsa = rec.body.qtdBolsaServer;
-    var tipo_sangue =  rec.body.tipo_sangueServer;
-    var validade = rec.body.validadeServer;
-    
-    
-        
-        if (qtdbolsa == "" || tipo_sangue == "" || validade == "") {
-            console.log("if1")
-            console.log("quantidade de bolsas" + qtdbolsa + "\n tipo sanguineo " + tipo_sangue + "\n validade " + validade)
-        }   
-    
-        else {
-            console.log("quantidade de bolsas" + qtdbolsa + "\n tipo sanguineo " + tipo_sangue + "\n validade " + validade)
-        }
-        usuarioModel.cadastrar_lote(qtdbolsa, tipo_sangue, validade)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
+function cadastrar_local(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nome = req.body.nomeServer;
+    var cep = req.body.cepServer;
+    var bairro = req.body.bairroServer;
+    var numero = req.body.numeroServer;
+    var complemento = req.body.complementoServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
+
+    // Faça as validações dos valores
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (cep == undefined) {
+        res.status(400).send("Seu cep está undefined!");
+    } else if (bairro == undefined) {
+        res.status(400).send("Seu bairro está undefined!");
+    } else if (numero == undefined) {
+        res.status(400).send("Seu numero está undefined!");
+    } else if (complemento == undefined) {
+        res.status(400).send("Seu complemento está undefined!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Seu fkEmpresa está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_local(nome, cep, bairro, numero, complemento, fkEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+
+function cadastrar_lote(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var bolsas = req.body.qtdBolsaServer;
+    var tipoSangue = req.body.tipo_sangueServer;
+    var validade = req.body.validadeServer;
+
+    // Faça as validações dos valores
+    if (bolsas == undefined) {
+        res.status(400).send("Bolsas está undefined!");
+    } else if (tipoSangue == undefined) {
+        res.status(400).send("Tipo está undefined!");
+    } else if (validade == undefined) {
+        res.status(400).send("Validade está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_lote(bolsas, tipoSangue, validade)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function verificar_email(req, res) {
+    var email = req.body.emailServer;
+
+    if (email == undefined) {
+        res.status(400).send("O email está indefinido!");
+    } else {
+        usuarioModel.verificar_email(email)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.json({ emailCadastrado: true });
+                } else {
+                    res.json({ emailCadastrado: false });
+                }
+            })
+            .catch(function (erro) {
                 console.log(erro);
                 console.log(
-                    "\nHouve um erro ao cadastrar lote! Erro: ",
+                    "\nHouve um erro ao verificar o email! Erro: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
-            }
-        );}
+            });
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     cadastrar_funcionario,
-    cadastrar_lote,
-    testar
+    cadastrar_local,
+    verificar_email,
+    testar,
+    cadastrar_lote
 }
