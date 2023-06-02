@@ -43,6 +43,7 @@ function cadastrar_funcionario(nome, email, senha, fkEmpresa) {
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
+}
     function cadastrar_local(nome, cep, bairro, numero, complemento, fkEmpresa) {
         console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_local():", nome, cep, bairro, numero, complemento, fkEmpresa);
     
@@ -68,7 +69,7 @@ function cadastrar_funcionario(nome, email, senha, fkEmpresa) {
     
         return database.executar(instrucao);
     }
-}
+
 
 module.exports = {
     entrar,
