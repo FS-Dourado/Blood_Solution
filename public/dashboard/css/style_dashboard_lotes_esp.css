@@ -13,15 +13,13 @@ body{
     position: absolute;
     width: 622px;
     height: 62px;
-    margin-left: 35px;
-
+    margin-left: 20%;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 36px;
     line-height: 44px;
     letter-spacing: 0.04em;
-
     color: #574F4F;
 
  }
@@ -131,18 +129,25 @@ body{
 
 .chartjs1{
     display: flex;
-    margin-left: 50%;
-    margin-top: 80px;
+    margin-left: 40%;
+    margin-top: 30%;
     align-content: center;
     justify-content: center;
     background-color: #f5ecec;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0  rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
+    border-radius: 5px; 
+    width: 50vw; 
+    height: 30vh;
+}
+
+#grafico1{
+    width: 100%;
+    height: 100%;
 }
 
 .chartjs2{
     display: flex;
-    margin-left: 50%;
+    margin-left: 45%;
     margin-top: 6%;
     align-content: center;
     justify-content: center;
@@ -155,8 +160,8 @@ body{
     position: absolute;
     width: 532px;
     height: 31px;
-    left: 7%;
-    top: 56%;
+    left: 15%;
+    top: 65%;
 
     font-family: 'Inter';
     font-style: italic;
@@ -175,7 +180,7 @@ body{
     width: 337.82px;
     height: 50.45px;
     left: 5%;
-    top: 55%;
+    top: 50%;
 
     font-family: 'Inter';
     font-style: italic;

@@ -31,8 +31,8 @@ const serial = async (
                 // altere!
                 // CREDENCIAIS DO BANCO LOCAL - MYSQL WORKBENCH
                 host: 'localhost',
-                user: 'root',
-                password: '01231040',
+                user: 'aluno',
+                password: 'sptech',
                 database: 'blood_solutions'
             }
         ).promise();
@@ -74,7 +74,7 @@ const serial = async (
                 // -> altere nome da tabela e colunas se necessário
                 // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
                 // >> Importante! você deve ter o aquario de id 1 cadastrado.
-                sqlquery = `INSERT INTO histor(temperatura) VALUES (${lm35Temperatura} CURRENT_TIMESTAMP)`;
+                sqlquery = `INSERT INTO historico(temperatura) VALUES (${lm35Temperatura} CURRENT_TIMESTAMP)`;
 
                 // CREDENCIAIS DO BANCO REMOTO - SQL SERVER
                 // Importante! você deve ter criado o usuário abaixo com os comandos presentes no arquivo
@@ -98,7 +98,7 @@ const serial = async (
                 // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
                 // >> você deve ter o aquario de id 1 cadastrado.
                 await poolBancoDados.execute(
-                    `INSERT INTO historico(temperatura, horario, fkSensor) VALUES (${lm35Temperatura}, now(), 1)`,
+                    `INSERT INTO historico(temperatura, horario, fkSensor) VALUES(${lm35Temperatura}, now(), 1)`,
                     [lm35Temperatura]
                 );
                 console.log("valores inseridos no banco: ",  lm35Temperatura)

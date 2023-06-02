@@ -42,8 +42,8 @@
                 </li>
                 <li class="list">
                     <a href="grafico_mensal.html">
-                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
-                        <span class="title">Geral</span>
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Cadastrar</span>
                     </a>
                 </li>
                 <li class="list">
@@ -60,29 +60,30 @@
                 </li>
             </ul>
         </div>
-
-        <div class="sessao">
+        <div class="formulario">
             <div class="frase">
-                <h3>Cadastrar funcionário</h3>
             </div>
-
-            <div class="caixa">
-
-                <div class="box_cadastro">
-                
+            <div class="box_cadastro">
+                <div>
+                    <div>
                         <input class="input" id="input_nome" type="text" placeholder="Nome" required="">
-                        
+                    </div>
+                    <div>
                         <input class="input" id="input_email" type="email" placeholder="Email" required="">
-                        
+                    </div>
+                    <div>
                         <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
-                        
+                    </div>
+                    <div>
                         <input class="input" id="input_confirmar_senha" type="password" placeholder="Confirmar Senha" required="">
-                        
-                        <button onclick="cadastrar_funcionario()">Cadastrar</button>
-            
-                        <div id="div_erro"></div>        
+                     </div>
+                     <button onclick="cadastrar_funcionario()">Cadastrar</button>
+
+
                 </div>
             </div>
+        </div>
+       
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
 

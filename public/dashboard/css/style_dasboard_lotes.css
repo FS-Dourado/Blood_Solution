@@ -75,11 +75,11 @@ ion-icon {
     justify-content: space-between;
 }
 
-.chart{
+.chartjs1{
     display: flex;
     position: relative;
-    height: 40vh; 
-    width: 40vw;
+    height: 60vh; 
+    width: 60vw;
     border-radius: 10px;
     justify-content: space-evenly;
     margin-left: 10px;

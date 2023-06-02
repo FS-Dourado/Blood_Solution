@@ -4,11 +4,11 @@ function buscarUltimasMedidas(req, res) {
 
     const limite_linhas = 7;
 
-    var idHistorico = req.params.idHistorico;
+    var idSensor = req.params.idSensor;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(idHistorico, limite_linhas).then(function (resultado) {
+    medidaModel.buscarUltimasMedidas(idSensor, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -24,11 +24,50 @@ function buscarUltimasMedidas(req, res) {
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var idHistorico = req.params.idHistorico;
+    var idSensor = req.params.idSensor;
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(idHistorico).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoReal(idSensor).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function insertSimulados(req, res) {
+
+    var valor_aleatorio = req.body.valor_aleatorioServer;
+
+    medidaModel.insertSimulados(valor_aleatorio)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao dar insert ficticio na tabela! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+function buscarInsertsSimulados(req, res) {
+
+    var valor_aleatorio = req.body.valor_aleatorioServer;
+
+    console.log(`Recuperando medidas simuladas em tempo real`);
+
+    medidaModel.buscarInsertsSimulados(valor_aleatorio).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -43,6 +82,9 @@ function buscarMedidasEmTempoReal(req, res) {
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    insertSimulados,
+    buscarInsertsSimulados,
 
 }
+

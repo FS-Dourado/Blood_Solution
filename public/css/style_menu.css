@@ -14,7 +14,7 @@
 } 
 
 .navigation{
-    position: relative;
+    position: fixed;
     height: 700px;
     background: #FFCDCD ; 
     width: 70px;
