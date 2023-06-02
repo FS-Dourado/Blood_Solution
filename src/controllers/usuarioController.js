@@ -130,11 +130,44 @@ function cadastrar_funcionario(req, res) {
             );
     }
 }
+function cadastrar_lote(rec, res){
 
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var qtdbolsa = rec.body.qtdBolsaServer;
+    var tipo_sangue =  rec.body.tipo_sangueServer;
+    var validade = rec.body.validadeServer;
+    
+    
+        
+        if (qtdbolsa == "" || tipo_sangue == "" || validade == "") {
+            console.log("if1")
+            console.log("quantidade de bolsas" + qtdbolsa + "\n tipo sanguineo " + tipo_sangue + "\n validade " + validade)
+        }   
+    
+        else {
+            console.log("quantidade de bolsas" + qtdbolsa + "\n tipo sanguineo " + tipo_sangue + "\n validade " + validade)
+        }
+        usuarioModel.cadastrar_lote(qtdbolsa, tipo_sangue, validade)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao cadastrar lote! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );}
 module.exports = {
     entrar,
     cadastrar,
     listar,
     cadastrar_funcionario,
+    cadastrar_lote,
     testar
 }
