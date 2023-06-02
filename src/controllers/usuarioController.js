@@ -102,7 +102,7 @@ function cadastrar_funcionario(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var fkEmpresa= req.body.fkEmpresaServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -111,7 +111,7 @@ function cadastrar_funcionario(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    }else if (fkEmpresa == undefined) {
+    } else if (fkEmpresa == undefined) {
         res.status(400).send("Sua fkEmpresa está undefined!");
     } else {
 
@@ -140,8 +140,8 @@ function cadastrar_local(req, res) {
     var cep = req.body.cepServer;
     var bairro = req.body.bairroServer;
     var numero = req.body.numeroServer;
-    var complemento = req.body.complementoServer;   
-    var fkEmpresa = req.body.fkEmpresaServer; 
+    var complemento = req.body.complementoServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -154,7 +154,7 @@ function cadastrar_local(req, res) {
         res.status(400).send("Seu numero está undefined!");
     } else if (complemento == undefined) {
         res.status(400).send("Seu complemento está undefined!");
-    }  else if (fkEmpresa == undefined) {
+    } else if (fkEmpresa == undefined) {
         res.status(400).send("Seu fkEmpresa está undefined!");
     } else {
 
@@ -181,7 +181,7 @@ function cadastrar_local(req, res) {
 function cadastrar_lote(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var bolsas = req.body.qtdBolsaServer;
-    var tipoSangue= req.body.tipo_sangueServer;
+    var tipoSangue = req.body.tipo_sangueServer;
     var validade = req.body.validadeServer;
 
     // Faça as validações dos valores
