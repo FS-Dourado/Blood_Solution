@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de local</title>
+    <script src="./js/funcoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/style_menu.css">
+    <link rel="stylesheet" href="../css/style_cadastrar_local.css">
+
+    <!-- fontes -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="body_tudo">
+    <!-- Menu lateral -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <img class="avatar" src="user.png"> <br>
+                <li>
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lote_especifico.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="grafico_mensal.html">
+                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
+                        <span class="title">Geral</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../site_institucional/index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- formulario -->
+
+        <div class="sessao">
+            <div class="frase">
+                <h3>Cadastrar Local</h3>
+            </div>
+            <div class="caixa">
+                <div class="box_cadastro">
+                    <input id="input_nome" placeholder="Nome:" type="text">
+                    <input id="input_cep" placeholder="CEP:" type="text" onkeypress="$(this).mask('00000-000')">
+                    <input id="input_bairro" placeholder="Bairro:" type="text">
+                    <input id="input_numero" placeholder="Numero:" type="text">
+                    <input id="input_complemento" placeholder="Complemento:" type="text">
+
+                    <button onclick="cadastrar_local()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+</html>
+<script>
+    function cadastrar_local() {
+        var nomeVar = input_nome.value;
+        var cepVar = input_cep.value;
+        var bairroVar = input_bairro.value;
+        var numeroVar = Number(input_numero.value);
+        var complementoVar = input_complemento.value;
+        var fkEmpresa = sessionStorage.ID_EMPRESA;
+
+        input_nome.value = ``;
+        input_cep.value = ``;
+        input_bairro.value = ``;
+        input_numero.value = ``;
+        input_complemento.value = ``;
+
+        if (nomeVar == "" || cepVar == "" || bairroVar == "" || numeroVar == "" || complementoVar == "") {
+
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+
+            return false;
+        }
+        else {
+            fetch("/usuarios/cadastrar_local", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    cepServer: cepVar,
+                    bairroServer: bairroVar,
+                    numeroServer: numeroVar,
+                    complementoServer: complementoVar,
+                    fkEmpresaServer: fkEmpresa
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    console.log("Ok")
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro do local!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
+        $("#input_cep").keypress(function () {
+				$(this).mask('00000-000');
+			});
+        return false;
+    }
+
+</script>

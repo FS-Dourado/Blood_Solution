@@ -1,0 +1,108 @@
+.sessao{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.frase {
+    display: flex;
+    font-size: 22px;
+    justify-content: baseline;
+    padding-left: 50px;
+    align-items: center;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-size: cover;
+    
+}
+
+
+.frase h3{
+    display: flex;
+    font-family: 'Raleway', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #480909;
+}  
+
+.caixa{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   
+}
+
+.box_cadastro{
+   margin-top: 40px;
+   display: flex;
+   flex-direction: column;
+   width: 43%;
+   border:none;
+   height: 390px;
+   gap: 20px;
+   align-items: center;
+   justify-content: center;
+   background-image: url(https://img.freepik.com/vetores-gratis/curva-vermelha-em-um-vetor-de-fundo-cinza_53876-162313.jpg);
+   background-size: cover;
+   box-shadow: 5px 5px 10px rgb(73, 24, 24), 
+   0px 0 rgb(0, 0, 0);
+   border-radius: 2%;
+}
+
+.box_cadastro input{
+    width: 85%;
+    height: 40px;
+    padding-left: 3%;
+    border: none;
+    background: transparent;
+    border-radius: 7px;
+    box-shadow: 5px 5px 10px rgb(114, 48, 48), 
+    0px 0 rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+}
+
+.input :focus{
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    color: rgb(0, 0, 0);
+ }
+
+.box_cadastro button{
+    width: 40%;
+    height: 50px;
+    background-color: #a83939;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.box_cadastro button{
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #451212;
+    background-color: #ed7a7a;
+    box-shadow: 5px 5px 10px #220000, 
+    0px 0 #530000;
+}
+
+.box_cadastro button:hover{
+    background-color: rgb(228, 0, 0);
+    transform: scale(1.1);
+    transition: 0.5s;
+    color: #ffffff;
+} 
+
+

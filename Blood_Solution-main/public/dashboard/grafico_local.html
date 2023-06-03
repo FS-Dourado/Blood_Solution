@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard || Local</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style_menu.css">
+    <link rel="stylesheet" href="css/style_local.css">
+
+
+</head>
+
+
+ <body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li class="list">
+                    <a href="dashboard_home.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lote_especifico.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="">
+                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
+                        <span class="title">Geral</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lotes.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../site_institucional/index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div> 
+
+    <div class="content-lotes">
+<div class=" graficoCompleto">
+    <!-- <a href="./dashboard_home.html" id="a"><ion-icon name="close-outline"></ion-icon></a> -->
+    <div class="textoGrafico">
+     <span id="local">Nome do local</span>
+    </div>
+    <div class="dividir">
+        <div class="container_fundo">
+            <h3>Ultimas medidas de temperatura</h3>
+            <p>Sensor 1</p>
+            <div class="chartjs1">
+                <canvas id="grafico1" style="position: relative; height:55vh; width:55vw"></canvas>
+              </div>
+                  <!-- <p>Sensor 2</p> -->
+              <!-- <div class="chartjs2">
+                <canvas id="grafico2" style="position: relative; height:40vh; width:40vw"></canvas>
+              </div>   
+            </div> -->
+                <!-- <div class="temperatura">Temperatura (°C)</div>
+                <div class="tempoLocal">Tempo de armanezamento nesse local</div> -->
+
+<!-- 
+    <div class="lotes">
+        <h3> Lotes </h3>
+        <div class="cadastrarNovo">
+            <label>Quantidade de bolsas </label>
+        <input id="qtd_bolsas" placeholder="" type="number">
+        <label >Tipo Sanguíneo</label>
+        <input id="tipoSangue" placeholder="" type="text">
+        <label>Data de validade</label> 
+        <input id="validade" placeholder="" type="date"> 
+        <button onclick="cadastrar_lote()" id="botaoCadastro">Cadastrar</button>
+    </div> 
+     <div class="fundo">
+         <div class="cadastrados"><h2> Lotes  <br> cadastrados</h2></div>
+         <div id="id_lista">
+            <div id="div_lote"></div>
+         </div>    
+    </div> -->
+<!-- </div>
+</div> -->
+
+</div>
+    <div class="cadastro-lotes">
+                <div id="form"></div>
+            <div class="lotes-cadastro">
+            <button onclick="tela_cadastro()">Cadastrar Lotes</button>
+            <button onclick="ver_lotes()">Ver Lotes</button>
+        </div>
+    </div>
+</div>
+
+    <!-- <div class="footer"></div>  -->
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const list = document.querySelectorAll('.list');
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+        list.forEach((item) =>
+            item.addEventListener('click', activeLink));
+    </script>
+
+</body>
+<script>
+
+    /* -- lm35Temperatura */
+    var contextoLm35Temperatura = document.getElementById('grafico1').getContext('2d');
+    // contextoLm35Temperatura.canvas.width = 1000;
+    // contextoLm35Temperatura.canvas.height = 300;
+    var lm35Temperatura = new Chart(
+        contextoLm35Temperatura,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Temperatura',
+                    type: 'line',
+                    borderColor: ['#ffd902'],
+                    backgroundColor: ['#ffe135']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperatura'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0 
+                }
+            }
+        }
+    );
+
+    var paginacao = {};
+    var tempo = {};
+    function obterDados(grafico, endpoint) {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+        http.send(null);
+        var valores = JSON.parse(http.responseText);
+        if (paginacao[endpoint] == null) {
+            paginacao[endpoint] = 0;
+        }
+        if (tempo[endpoint] == null) {
+            tempo[endpoint] = 0;
+        }
+        // Exibir à partir do último elemento exibido anteriormente
+        var ultimaPaginacao = paginacao[endpoint];
+        paginacao[endpoint] = valores.length;
+        var valores = valores.slice(ultimaPaginacao);
+        valores.forEach((valor) => {
+            //Máximo de 60 itens exibidos no gráfico
+            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                grafico.data.labels.shift();
+                grafico.data.datasets[0].data.shift();
+            }
+
+            grafico.data.labels.push(tempo[endpoint]++);
+            grafico.data.datasets[0].data.push(parseFloat(valor));
+            grafico.update();
+        })
+    }
+
+    // setInterval(() => {
+
+    //     obterDados(lm35Temperatura, 'lm35/temperatura');
+
+    // }, 1000);
+
+  </script>
+
+<script>
+
+    /* -- lm35Temperatura */
+    var contextoLm35Temperatura = document.getElementById('grafico2').getContext('2d');
+    // contextoLm35Temperatura.canvas.width = 1000;
+    // contextoLm35Temperatura.canvas.height = 300;
+    var lm35Temperatura = new Chart(
+        contextoLm35Temperatura,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Temperatura',
+                    type: 'line',
+                    borderColor: ['#ffd902'],
+                    backgroundColor: ['#ffe135']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperatura'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0 
+                }
+            }
+        }
+    );
+
+    var paginacao = {};
+    var tempo = {};
+    function obterDados(grafico, endpoint) {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:3300/sensores/' + endpoint, false);
+        http.send(null);
+        var valores = JSON.parse(http.responseText);
+        if (paginacao[endpoint] == null) {
+            paginacao[endpoint] = 0;
+        }
+        if (tempo[endpoint] == null) {
+            tempo[endpoint] = 0;
+        }
+        // Exibir à partir do último elemento exibido anteriormente
+        var ultimaPaginacao = paginacao[endpoint];
+        paginacao[endpoint] = valores.length;
+        var valores = valores.slice(ultimaPaginacao);
+        valores.forEach((valor) => {
+            //Máximo de 60 itens exibidos no gráfico
+            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                grafico.data.labels.shift();
+                grafico.data.datasets[0].data.shift();
+            }
+
+            grafico.data.labels.push(tempo[endpoint]++);
+            grafico.data.datasets[0].data.push(parseFloat(valor));
+            grafico.update();
+        })
+    }
+
+    // setInterval(() => {
+
+    //     obterDados(lm35Temperatura, 'lm35/temperatura');
+
+    // }, 1000);
+
+  </script>
+
+</html>
+<script>
+
+function cadastrar_lote() {
+
+//Recupere o valor da nova input pelo nome do id
+// Agora vá para o método fetch logo abaixo
+var qtdBolsaVar = qtd_bolsas.value;
+var tipo_sangueVar =  tipoSangue.value;
+var validadeVar = validade.value;
+
+
+
+    if (qtdBolsaVar == "" || tipo_sangueVar == "" || validadeVar == "") {
+        console.log("if1")
+        console.log("quantidade de bolsas" + qtdBolsaVar + "\n tipo sanguineo " + tipo_sangueVar + "\n validade " + validadeVar)
+    }   
+
+    else {
+        console.log("quantidade de bolsas" + qtdBolsaVar + "\n tipo sanguineo " + tipo_sangueVar + "\n validade " + validadeVar)
+    }
+
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar_lote", {
+        method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        qtdBolsaServer: qtdBolsaVar,
+        tipo_sangueServer: tipo_sangueVar,
+        validadeServer: validadeVar,
+    })
+}).then(function (resposta) {
+              if (resposta.ok) {
+                setTimeout(function () {
+                  console.log("Cadastrado")
+                }, 500);
+
+                limparSessao();
+              } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+              }
+            })
+            .catch(function (resposta) {
+              console.log("#ERRO: " + resposta);
+            });
+
+          return false;
+}
+
+</script>
+
+<script>
+
+ function ver_lotes(){
+    form.innerHTML = `
+    <div class="fundo">
+         <div class="cadastrados"><h2> Lotes cadastrados</h2></div>
+         <div id="id_lista">
+            <div id="div_lote"></div>
+         </div>  
+    `;
+ }
+
+ function tela_cadastro(){
+    form.innerHTML = `
+    <h3> Lotes </h3>
+        <div class="cadastrarNovo">
+            <label>Quantidade de bolsas </label>
+        <input id="qtd_bolsas" placeholder="" type="number">
+        <label >Tipo Sanguíneo</label>
+        <input id="tipoSangue" placeholder="" type="text">
+        <label>Data de validade</label> 
+        <input id="validade" placeholder="" type="date"> 
+        <button onclick="cadastrar_lote()" id="botaoCadastro">Cadastrar</button>
+    `;
+ }
+
+</script>

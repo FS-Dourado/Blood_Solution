@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style_login.css">
+    
+    <title>Blood Solution | Login </title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img class="img_logo" src="./images/image 8 1.png" alt="">
+                <ul class="navbar">
+                    <li><a href="index.html"> Home </a></li>
+                    <li><a href="Calculadora .html"> Calculadora Financeira</a></li>
+                    <li><a href="sobre_nos.html"> Sobre nós</a></li>
+                    <li><a href="doação.html"> Informações sobre doação</a></li>
+                    <li><a href="contato.html"> Fale Conosco</a></li>
+                    <li ><a href="" id="login"> Log In</a></li>
+                </ul>
+        </div>
+    </header>
+    <script type="text/javascript">
+        window. addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+        })
+        </script>
+    <div class="form">
+        <div class="container">
+            <div class="formulario">
+                <h3>Faça seu Login</h3>
+            <form action="">
+                <div>
+                    <input class="input" id="input_email"  type="email" placeholder="Email" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
+                <div>
+                    <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
+            </form>
+                <button onclick="entrar()"> Entrar</button>
+                <div id="div_frase"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="desktop_bottom">
+            <p>Blood Solutions 1ADSC</p>
+    </div>
+</body>
+</html>
+<script>
+    function entrar() {
+
+var emailVar = input_email.value;
+var senhaVar = input_senha.value;
+
+if (emailVar == "" || senhaVar == "") {
+    console.log ('senha ou email invalido')
+    return false;
+}
+else {
+    setInterval(sumirMensagem, 5000)
+}
+
+console.log("FORM LOGIN: ", emailVar);
+console.log("FORM SENHA: ", senhaVar);
+
+fetch("/usuarios/autenticar", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+    })
+}).then(function (resposta) {
+    console.log("ESTOU NO THEN DO entrar()!")
+
+    if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.ID_USUARIO = json.idUsuario;
+            sessionStorage.ID_EMPRESA = json.fkEmpresa;
+
+                window.location = "./dashboard/dashboard_home.html";
+            
+
+        });
+
+    } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+            console.error(texto);
+            finalizarAguardar(texto);
+        });
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+})
+
+return false;
+}
+
+function sumirMensagem() {
+cardErro.style.display = "none"
+}
+</script>

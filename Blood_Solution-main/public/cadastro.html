@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style_cadastro.css">
+    
+    <title>Blood Solution | Cadastro </title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img class="img_logo" src="./images/image 8 1.png" alt="">
+                <ul class="navbar">
+                    <li><a href="index.html"> Home </a></li>
+                    <li><a href="Calculadora .html"> Calculadora Financeira</a></li>
+                    <li><a href="sobre_nos.html"> Sobre nós</a></li>
+                    <li><a href="doação.html"> Informações sobre doação</a></li>
+                    <li><a href="contato.html"> Fale Conosco</a></li>
+                    <li ><a href="" id="login"> Log In</a></li>
+                </ul>
+        </div>
+    </header>
+    <script type="text/javascript">
+        window. addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+        })
+        </script>
+    <div class="form">
+        <div class="container2">
+            <div class="formulario">
+                <h3>Cadastre-se</h3>
+            <form action="">
+                <div>
+                    <input class="input" id="input_nome" placeholder="Nome" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
+                <div>
+                    <input class="input" id="input_cnpj" placeholder="CNPJ" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
+                <div>
+                    <input class="input" id="input_email" type="email" placeholder="Email" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
+                <div>
+                    <input class="input" id="input_senha"  type="password" placeholder="Senha" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
+                <div>
+                    <input class="input" id="input_confSenha"  type="password" placeholder="Confirmação de senha" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label></label>
+                </div>
+                
+            </form>
+                <button onclick="cadastrar()" type="submit">Entrar</button>
+                <div id="div_frase" style="color: red;"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+            <p>Blood Solutions 1ADSC</p>
+    </footer>
+
+</body>
+</html>
+
+<script>
+
+    function cadastrar() {
+
+        var nome = input_nome.value;
+        var cnpj = input_cnpj.value;
+        var email = input_email.value;
+        var senha = input_senha.value;
+        var confirmacao_senha = input_confSenha.value;
+
+
+        if (cnpj == "" || nome == "" || email == "" || senha == "" || confirmacao_senha == "") {
+            
+            div_frase.innerHTML = "Campos vazios, insira corretamente";
+        
+            return false;
+
+        }
+       
+
+        if(!email.includes("@")){
+
+            div_frase.innerHTML = "Seu email deve incluir @";
+        
+            return false;
+
+        } else if(!senha.length >= 6){
+        
+            div_frase.innerHTML = "Sua senha deve conter mais de 6 caracteres";
+            
+            return false;
+
+        } else if (confirmacao_senha != senha){
+       
+            div_frase.innerHTML = "Sua confirmação de senha não coincide com sua senha";
+
+            return false;
+
+         }
+
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nome,
+                cnpjServer: cnpj,
+                emailServer: email,
+                senhaServer: senha
+            })
+        })
+            .then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Cadastrado com sucesso',
+                showConfirmButton: false,
+                timer: 1500
+                })
+                
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+        
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+    
+</script>

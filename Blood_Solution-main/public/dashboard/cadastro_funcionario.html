@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Solucion - Cadastro/funcionario</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/style_menu.css">
+    <link rel="stylesheet" href="../css/style_cadastrar_usuario.css">
+
+    <!-- fontes -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="body_tudo">
+    <!-- Menu lateral -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <img class="avatar" src="user.png"> <br>
+                <li>
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="dashboard_lote_especifico.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="grafico_mensal.html">
+                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
+                        <span class="title">Cadastrar</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../site_institucional/index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="formulario">
+            <div class="frase">
+            </div>
+            <div class="box_cadastro">
+                <div>
+                    <div>
+                        <input class="input" id="input_nome" type="text" placeholder="Nome" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_email" type="email" placeholder="Email" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
+                    </div>
+                    <div>
+                        <input class="input" id="input_confirmar_senha" type="password" placeholder="Confirmar Senha" required="">
+                     </div>
+                     <button onclick="cadastrar_funcionario()">Cadastrar</button>
+
+
+                </div>
+            </div>
+        </div>
+       
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+
+
+            </script>
+        </div>
+    </div>
+</html>
+<script>
+
+function verificar_email(email, callback) {
+    fetch("/usuarios/verificar_email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: email
+      })
+    })
+      .then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Erro na verificação do e-mail");
+        }
+      })
+      .then(function (data) {
+        callback(null, data.emailCadastrado);
+      })
+      .catch(function (error) {
+       div_erro.innerHTML = `Email já cadastrado`;
+        callback(error);
+      });
+  }
+
+    function cadastrar_funcionario() {
+    var nomeVar = input_nome.value;
+    var emailVar = input_email.value;
+    var senhaVar = input_senha.value;
+    var confirmarsenhaVar = input_confirmar_senha.value;
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
+    const spanErro = document.getElementById("span_erro")
+
+        input_nome.value = ``;
+        input_email.value = ``;
+        input_senha.value = ``;
+        input_confirmar_senha.value = ``;
+
+    if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmarsenhaVar == "") {
+      div_erro.innerHTML = `Campos inválidos`;
+    } else if(!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com")){
+        div_erro.innerHTML = `Email inválido`;
+    } else if(senhaVar.length <= 6){
+        div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
+    } else if(confirmarsenhaVar != senhaVar){
+        div_erro.innerHTML = `Senhas inválidas`;
+    }else {
+      verificar_email(emailVar, function (error, emailCadastrado) {
+        if (error) {
+          console.error(error);
+          return;
+        }
+
+        if (emailCadastrado) {
+          spanErro.style.display = "block";
+          spanErro.innerHTML = "O email já está cadastrado.";
+        } else {
+          fetch("/usuarios/cadastrar_funcionario", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              nomeServer: nomeVar,
+              emailServer: emailVar,
+              senhaServer: senhaVar,
+              fkEmpresaServer: fkEmpresa
+            })
+          })
+            .then(function (resposta) {
+              if (resposta.ok) {
+                setTimeout(function () {
+                  console.log("Cadastrado")
+                }, 500);
+
+                limparSessao();
+              } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+              }
+            })
+            .catch(function (resposta) {
+              console.log("#ERRO: " + resposta);
+            });
+
+          return false;
+        }
+      });
+    }
+  }
+    
+</script>
+
