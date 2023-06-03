@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de local</title>
+    <title>Dashboard || Cadastrar de local</title>
     <script src="./js/funcoes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../css/style_menu.css">
-    <link rel="stylesheet" href="../css/style_cadastrar_local.css">
+    <link rel="stylesheet" href="./css/style_menu.css">
+    <link rel="stylesheet" href="./css/style_cadastrar_local.css">
 
     <!-- fontes -->
 
@@ -29,45 +29,63 @@
     <div class="container">
         <div class="navigation">
             <ul>
-                <img class="avatar" src="user.png"> <br>
-                <li>
-                    <a href="./dashboard_home.html">
-                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="dashboard_lote_especifico.html">
-                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
-                        <span class="title">Lotes</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="grafico_mensal.html">
-                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
-                        <span class="title">Geral</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="./dashboard_home.html">
-                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
-                        <span class="title">Local</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="../site_institucional/index.html">
-                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
-                        <span class="title">Sair</span>
-                    </a>
-                </li>
+              <li class="list">
+                <a href="./dashboard_home.html">
+                  <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                  <span class="title">Home</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="./cadastro_lote.html">
+                  <span class="icon"><ion-icon name="cube-outline"></ion-icon></ion-icon></span>
+                  <span class="title">Lotes</span>
+                </a>
+              </li>
+              <li class="list ">
+                <a href="./cadastro_funcionario.html">
+                  <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
+                  <span class="title">Form funcionario</span>
+                </a>
+              </li>
+              <li class="list active">
+                <a href="./cadastro_local.html">
+                  <span class="icon"><ion-icon name="reader-outline"></ion-icon></span>
+                  <span class="title">Form local</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="./cadastro_local.html">
+                  <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                  <span class="title">Suporte</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="../site_institucional/index.html">
+                  <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                  <span class="title">Sair</span>
+                </a>
+              </li>
             </ul>
-        </div>
+          </div>
+
+        <script>
+            const list = document.querySelectorAll('.list');
+            function activeLink() {
+                list.forEach((item) =>
+                    item.classList.remove('active'));
+                this.classList.add('active');
+            }
+
+            list.forEach((item) =>
+                item.addEventListener('click', activeLink));
+        </script>
+       
 
         <!-- formulario -->
 
         <div class="sessao">
             <div class="frase">
-                <h3>Cadastrar Local</h3>
+                <h3>Cadastrar local</h3>
             </div>
             <div class="caixa">
                 <div class="box_cadastro">

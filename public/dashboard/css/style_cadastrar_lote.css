@@ -7,7 +7,7 @@
 .frase {
     display: flex;
     font-size: 22px;
-    justify-content: baseline;
+    margin-left: 10%;
     padding-left: 50px;
     align-items: center;
 }

@@ -2,65 +2,102 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Solucion - Cadastro/funcionario</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../css/style_menu.css">
-    <link rel="stylesheet" href="../css/style_cadastrar_usuario.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard || Cadastro funcionario</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./css/style_menu.css">
+  <link rel="stylesheet" href="./css/style_cadastrar_usuario.css">
 
-    <!-- fontes -->
+  <!-- fontes -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
 
 </head>
 
 <body class="body_tudo">
-    <!-- Menu lateral -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <img class="avatar" src="user.png"> <br>
-                <li>
-                    <a href="./dashboard_home.html">
-                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="dashboard_lote_especifico.html">
-                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
-                        <span class="title">Lotes</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="grafico_mensal.html">
-                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
-                        <span class="title">Cadastrar</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="./dashboard_home.html">
-                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
-                        <span class="title">Local</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="../site_institucional/index.html">
-                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
-                        <span class="title">Sair</span>
-                    </a>
-                </li>
-            </ul>
+  <!-- Menu lateral -->
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li class="list">
+          <a href="./dashboard_home.html">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="./grafico_local.html">
+            <span class="icon"><ion-icon name="cube-outline"></ion-icon></ion-icon></span>
+            <span class="title">Lotes</span>
+          </a>
+        </li>
+        <li class="list active">
+          <a href="">
+            <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
+            <span class="title">Form funcionario</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="./cadastro_local.html">
+            <span class="icon"><ion-icon name="reader-outline"></ion-icon></span>
+            <span class="title">Form local</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="./cadastro_local.html">
+            <span class="icon"><ion-icon name="mail-outline"></ion-icon></ion-icon></span>
+            <span class="title">Suporte</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="../site_institucional/index.html">
+            <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+            <span class="title">Sair</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      const list = document.querySelectorAll('.list');
+      function activeLink() {
+        list.forEach((item) =>
+          item.classList.remove('active'));
+        this.classList.add('active');
+      }
+
+      list.forEach((item) =>
+        item.addEventListener('click', activeLink));
+    </script>
+
+    <!-- Cadastrar funcionario -->
+
+
+    <div class="sessao">
+      <div class="frase">
+        <h3>Cadastrar funcionario</h3>
+      </div>
+      <div class="caixa">
+        <div class="box_cadastro">
+          <input class="input" id="input_nome" type="text" placeholder="Nome" required="">
+          <input class="input" id="input_email" type="email" placeholder="Email" required="">
+          <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
+          <input class="input" id="input_confirmar_senha" type="password" placeholder="Confirmar Senha" required="">
+
+          <button onclick="cadastrar_funcionario()">Cadastrar</button>
         </div>
-        <div class="formulario">
+      </div>
+    </div>
+  </div>
+  <!-- <div class="formulario">
             <div class="frase">
             </div>
             <div class="box_cadastro">
@@ -82,19 +119,15 @@
 
                 </div>
             </div>
-        </div>
-       
-            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        </div> -->
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
 
-
-            </script>
-        </div>
-    </div>
 </html>
 <script>
 
-function verificar_email(email, callback) {
+  function verificar_email(email, callback) {
     fetch("/usuarios/verificar_email", {
       method: "POST",
       headers: {
@@ -115,12 +148,12 @@ function verificar_email(email, callback) {
         callback(null, data.emailCadastrado);
       })
       .catch(function (error) {
-       div_erro.innerHTML = `Email já cadastrado`;
+        div_erro.innerHTML = `Email já cadastrado`;
         callback(error);
       });
   }
 
-    function cadastrar_funcionario() {
+  function cadastrar_funcionario() {
     var nomeVar = input_nome.value;
     var emailVar = input_email.value;
     var senhaVar = input_senha.value;
@@ -128,20 +161,20 @@ function verificar_email(email, callback) {
     var fkEmpresa = sessionStorage.ID_EMPRESA;
     const spanErro = document.getElementById("span_erro")
 
-        input_nome.value = ``;
-        input_email.value = ``;
-        input_senha.value = ``;
-        input_confirmar_senha.value = ``;
+    input_nome.value = ``;
+    input_email.value = ``;
+    input_senha.value = ``;
+    input_confirmar_senha.value = ``;
 
     if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmarsenhaVar == "") {
       div_erro.innerHTML = `Campos inválidos`;
-    } else if(!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com")){
-        div_erro.innerHTML = `Email inválido`;
-    } else if(senhaVar.length <= 6){
-        div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
-    } else if(confirmarsenhaVar != senhaVar){
-        div_erro.innerHTML = `Senhas inválidas`;
-    }else {
+    } else if (!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com")) {
+      div_erro.innerHTML = `Email inválido`;
+    } else if (senhaVar.length <= 6) {
+      div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
+    } else if (confirmarsenhaVar != senhaVar) {
+      div_erro.innerHTML = `Senhas inválidas`;
+    } else {
       verificar_email(emailVar, function (error, emailCadastrado) {
         if (error) {
           console.error(error);
@@ -184,6 +217,5 @@ function verificar_email(email, callback) {
       });
     }
   }
-    
-</script>
 
+</script>

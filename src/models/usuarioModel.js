@@ -70,6 +70,13 @@ function cadastrar_funcionario(nome, email, senha, fkEmpresa) {
         return database.executar(instrucao);
     }
 
+    function lotes(){
+        var instrucao = `
+        SELECT lote.qtdBolsa, lote.tipoSanguineo, lote.validade FROM lote JOIN local_empresa on fkLocal = idLocal;
+        `;
+
+        return database.executar(instrucao);
+    }
 
 module.exports = {
     entrar,
@@ -77,5 +84,6 @@ module.exports = {
     cadastrar_funcionario,
     cadastrar_local,
     verificar_email,
-    cadastrar_lote
+    cadastrar_lote,
+    lotes
 };

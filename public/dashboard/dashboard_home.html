@@ -19,49 +19,44 @@
     <div class="container">
         <div class="navigation">
             <ul>
-                <li class="list active">
-                    <a href="#">
-                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                        <span class="title">Home</span>
-                    </a>
-                </li>
-                <li class="list">
-
-                    <a href="grafico_local.html">
-                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
-                        <span class="title">Lotes</span>
-
-                    <a href="dashboard_lote_especifico.html">
-                        <span class="icon"><ion-icon name="cellular-outline"></ion-icon></span>
-                        <span class="title">Cadastro funcionario</span>
-
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="grafico_mensal.html">
-                        <span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span>
-                        <span class="title">Cadastro local</span>
-                    </a>
-                </li>
-
-                <li class="list">
-                    <a href="./grafico_local.html">
-
-                <!-- <li class="list">
-                    <a href="./dashboard_home.html">
-
-                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
-                        <span class="title">Local</span>
-                    </a>
-                </li> -->
-                <li class="list">
-                    <a href="../site_institucional/index.html">
-                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
-                        <span class="title">Sair</span>
-                    </a>
-                </li>
+              <li class="list active">
+                <a href="./dashboard_home.html">
+                  <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                  <span class="title">Home</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="./grafico_local.html">
+                  <span class="icon"><ion-icon name="cube-outline"></ion-icon></ion-icon></span>
+                  <span class="title">Lotes</span>
+                </a>
+              </li>
+              <li class="list ">
+                <a href="./cadastro_funcionario.html">
+                  <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
+                  <span class="title">Form funcionario</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="./cadastro_local.html">
+                  <span class="icon"><ion-icon name="reader-outline"></ion-icon></span>
+                  <span class="title">Form local</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="./cadastro_local.html">
+                  <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                  <span class="title">Suporte</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="../site_institucional/index.html">
+                  <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                  <span class="title">Sair</span>
+                </a>
+              </li>
             </ul>
-        </div>
+          </div>
 
         <script>
             const list = document.querySelectorAll('.list');
@@ -79,58 +74,64 @@
             <div class="container_2">
                 <div class="organizador">
                     <div class="frase">
-                        <h1>Hello, Blood Solutions</h1>
+                        <h1>Olá, <span id="nome_empresa"></span> </h1>
+                        <h3> Seja bem-vindo de volta <br>
+                            acompanhe as temperaturas </h3>
                     </div>
-                    <div class="icon_2">
-                        <div class="pesquisar">
-                            <ion-icon name="search-outline" class="pesquisar"></ion-icon>
+                    <div class="sumario">
+                        <div class="container_2">
+                            <div class="content-sumarios">
+                                <div class="div_temperatura">
+                                    <p>Temperatura em</p>
+                               
+                                <div class="blocos-grande">
+                                    <div class="bloco-pequeno" style="background-color: #ce292a; color: white;">
+                                        <i><b>Alerta</b></i>Acima de 7ºC ou<br> menor que 1ºC
+                                    </div>
+                                    <div class="bloco-pequeno" style="background-color: #fffb81;"><i><b>Atenção</b></i>Acima de
+                                        6ºC ou
+                                        <br> menor que 2ºC
+                                    </div>
+                                    <div class="bloco-pequeno" style="background-color: #7497b3; color: white;">
+                                        <i><b>Ideal</b></i>Entre 2ºC e 6ºC
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="sumario">
-                <div class="container_2">
-                    <div class="content-sumarios">
-                        <div class="blocos-grande">
-                            <div class="bloco-pequeno" style="background-color: #ce292a; color: white;">
-                                <i>Alerta</i>Acima de 7 ou<br> menor que 1</div>
-                            <div class="bloco-pequeno" style="background-color: #fffb81;"><i>Atenção</i>Acima de 6 ou
-                                <br> menor que 2</div>
-                            <div class="bloco-pequeno" style="background-color: #7497b3; color: white;">
-                                <i>Ideal</i>Entre 2 e 6</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="sessao">
                 <div class="container_2">
                     <div class="content">
                         <div class="card">
-                            <h2>Hospital Santa clara</h2>
+                            <h2> <span>Hospital cadastrado</span></h2>
                             <div class="box">
                                 <span id="div_sensor1" class="div_sensor">
                                     <div class="cards_temperatura" id="cards_temperatura_sensor1">
                                         <h5> sensor 1 </h5>
-                                            <div id="sensor1" class="grau">
-                                                ºC
-                                            </div>
+                                        <div id="sensor1" class="grau">
+                                            ºC
+                                        </div>
                                         <a href="./grafico_local.html"><button>Ver alerta </button></a>
                                     </div>
                                 </span>
                                 <span id="div_sensor2" class="div_sensor">
                                     <div class="cards_temperatura" id="cards_temperatura_sensor2">
                                         <h5> sensor 2</h5>
-                                            <div id="sensor2" class="grau">
-                                                ºC
-                                            </div>
+                                        <div id="sensor2" class="grau">
+                                            ºC
+                                        </div>
                                         <a href="./grafico_local.html"><button>Ver alerta </button></a>
                                     </div>
                                 </span>
                             </div>
                         </div>
                         <div class="card">
-                            <h2>Hospital Santa Marcelina</h2>
+                            <h2><span>Hospital cadastrado</span></h2>
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 3 </h5>
@@ -149,7 +150,7 @@
                     </div>
                     <div class="content">
                         <div class="card">
-                            <h2>Hospital Geral</h2>
+                            <h2><span>Hospital cadastrado</span></h2>
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 1 </h5>
@@ -166,7 +167,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <h2>Hospital Tiradentes</h2>
+                            <h2><span>Hospital cadastrado</span></h2>
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 1 </h5>
@@ -197,55 +198,57 @@
 
 
 <script>
-function insertSimulados(){
-    var min2 = 0;
-    var max2 = 7;
-    var valor_aleatorio = Math.random() * (max2 - min2 + 1) + min2
-    
-    var min = 1;
-    var max = 6;
-    var intervalo = max - min + 1;
-    var valor_aleatorio_sensor_quebrado = Math.random() * intervalo + min
 
-    fetch("/medidas/insertSimulados", {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            valor_aleatorioServer: valor_aleatorio.toFixed(2),
+    var nome_empresa = sessionStorage.nome
+    function insertSimulados() {
+        var min2 = 0;
+        var max2 = 7;
+        var valor_aleatorio = Math.random() * (max2 - min2 + 1) + min2
+
+        var min = 1;
+        var max = 6;
+        var intervalo = max - min + 1;
+        var valor_aleatorio_sensor_quebrado = Math.random() * intervalo + min
+
+        fetch("/medidas/insertSimulados", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                valor_aleatorioServer: valor_aleatorio.toFixed(2),
+            })
         })
-    })
 
-        .then(function (respostaSimulada) {
-            console.log("ESTOU INSERTANDO DADOS FICTICIOS!")
+            .then(function (respostaSimulada) {
+                console.log("ESTOU INSERTANDO DADOS FICTICIOS!")
 
-            if (respostaSimulada.ok) {
-                console.log(respostaSimulada);
-            } else {
+                if (respostaSimulada.ok) {
+                    console.log(respostaSimulada);
+                } else {
 
-                console.log("Houve um erro ao dar insert ficticios");
+                    console.log("Houve um erro ao dar insert ficticios");
 
-                respostaSimulada.text().then(texto => {
-                    console.error(texto);
-                });
-            }
+                    respostaSimulada.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-        
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
         return false;
     }
-    
-    
+
+
     function atualizacaoPeriodica() {
         obterdados(1);
         obterdados(2);
         obterdados(3);
         obterdados(4);
         obterdadosSimulados(2);
-        
+
         setTimeout(insertSimulados, 7000);
         setTimeout(atualizacaoPeriodica, 5000);
     }

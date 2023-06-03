@@ -17,10 +17,10 @@
 .navigation{
     position: fixed;
     height: 1000px;
-    background: #aa1409; 
+    background: #FF8888; 
     width: 70px;
     box-shadow: 10px 0 0   #f5ecec;
-    border-left: 2px solid #aa1409;
+    border-left: 2px solid #FF8888;
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -90,7 +90,7 @@
     right: 0;
     width: 30px;
     height: 30px;
-    background-color:#aa1409;
+    background-color:#FF8888;
     border-radius: 50%;
     box-shadow: 15px -15px 0 #f5ecec
 }
@@ -102,7 +102,7 @@
     right: 0;
     width: 30px;
     height: 30px;
-    background-color: #aa1409;
+    background-color: #FF8888;
     border-radius: 50%;
     box-shadow: 15px -15px 0  #f5ecec;
 }

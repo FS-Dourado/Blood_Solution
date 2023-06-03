@@ -42,4 +42,9 @@ router.post("/cadastrar_lote", function (req, res){
     usuarioController.cadastrar_lote(req, res);
 });
 
+router.get("/lotes", function (req, res) {
+    usuarioController.lotes(req, res);
+});
+
+
 module.exports = router;
