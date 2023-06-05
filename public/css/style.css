@@ -137,7 +137,7 @@ header ul li a{
     text-decoration: none;
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 18px;
 }
 
@@ -451,11 +451,10 @@ top: 6.42%;
     height: 286px;
     top: 215px;
     width: 45%;
-
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
     letter-spacing: 0.3px;
     color: #737B7D;
 
@@ -520,9 +519,9 @@ top: 6.42%;
 
 .text_estoque p{
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
     letter-spacing: 0.3px;
     color: #737B7D;
     text-align: left;

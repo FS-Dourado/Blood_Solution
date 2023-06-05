@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style_menu.css">
+    <link rel="stylesheet" href="./css/style_contato.css">
+    <title>Dashboard || Suporte </title>
+</head>
+
+<body class="body_tudo">
+
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li class="list ">
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./grafico_local.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list ">
+                    <a href="./cadastro_funcionario.html">
+                        <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
+                        <span class="title">Form funcionario</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./cadastro_local.html">
+                        <span class="icon"><ion-icon name="reader-outline"></ion-icon></span>
+                        <span class="title">Form local</span>
+                    </a>
+                </li>
+                <li class="list active">
+                    <a href="./cadastro_local.html">
+                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                        <span class="title">Suporte</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            const list = document.querySelectorAll('.list');
+            function activeLink() {
+                list.forEach((item) =>
+                    item.classList.remove('active'));
+                this.classList.add('active');
+            }
+
+            list.forEach((item) =>
+                item.addEventListener('click', activeLink));
+        </script>
+
+
+        <!-- Formulario  -->
+
+        <div class="contato">
+            <div class="textoGrafico">
+                <span id="local">Envie um email para o suporte da Blood Solutions
+                </span>
+                <p>O email será redirecionado para central de ajuda</p>
+            </div>
+            <div class="content">
+                <div class="esquerda">
+                    <form id="meuFormulario">
+                        <div class="separar">
+                            <div class="separa2">
+                                <label for="nome">Nome:</label>
+                                <input type="text" id="nome" name="nome" required>
+                            </div>
+                            <div class="separa2">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <label for="mensagem" id="mensagem_2">Mensagem:</label>
+                        <input id="mensagem" name="mensagem" required class="mensagem">
+
+                        <input type="submit" value="Enviar" id="button">
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="manual">
+                <div class="manual-informacao">
+                    <p>Manual de instalação</p>
+                    <div class="manual-conteudo">
+                        <p class="p">Caso já tenha recebido os sensores LM35 em seu estabelecimento
+                            aperte o botão e baixe o manual de instalção para te auxiliar na montagem do sensor
+                        </p>
+                    </div>
+                </div>
+                <button class="buttonDownload" onclick="baixarPDF()">Download</button>
+            </div>
+
+            <div class="vazia"></div>
+        </div>
+    </div>
+
+    <a href="../images/Manual de instalação.pdf"></a>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
+
+<script>
+    document.getElementById("meuFormulario").addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita o comportamento padrão do formulário
+
+        // Realize a validação do formulário aqui
+        if (!validarFormulario()) {
+            return;
+        }
+
+        // Se a validação passar, envie o formulário por email
+        enviarEmail();
+    });
+
+    function validarFormulario() {
+        // Adicione suas regras de validação personalizadas aqui
+        var nome = document.getElementById("nome").value;
+        var email = document.getElementById("email").value;
+        var mensagem = document.getElementById("mensagem").value;
+
+        if (nome.trim() === "") {
+            alert("Por favor, preencha o campo Nome.");
+            return false;
+        }
+
+        if (email.trim() === "") {
+            alert("Por favor, preencha o campo Email.");
+            return false;
+        }
+
+        if (mensagem.trim() === "") {
+            alert("Por favor, preencha o campo Mensagem.");
+            return false;
+        }
+
+        return true;
+    }
+
+    function enviarEmail() {
+        var formulario = document.getElementById("meuFormulario");
+        var destinatario = 'pipe303254064@mail.pipefy.com';
+        var assunto = "Formulário de Contato";
+        var corpo = "Nome: " + formulario.nome.value + "\n";
+        corpo += "Email: " + formulario.email.value + "\n";
+        corpo += "Mensagem: " + formulario.mensagem.value;
+
+        window.location.href = "mailto:" + destinatario + "?subject=" + encodeURIComponent(assunto) + "&body=" + encodeURIComponent(corpo);
+    }
+
+    function baixarPDF() {
+        var link = document.createElement('a');
+        link.href = '../images/Manual de instalação.pdf'; // Substitua pelo caminho do arquivo PDF que deseja baixar
+        link.download = 'Manual de instalação.pdf'; // Substitua pelo nome desejado para o arquivo
+        link.target = '_blank'; // Abre em uma nova aba (opcional)
+        link.click();
+    }
+</script>

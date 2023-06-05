@@ -23,7 +23,6 @@
                 <li><a href="" style="color: #a70000;"> Calculadora Financeira</a></li>
                 <li><a href="sobre_nos.html"> Sobre nós</a></li>
                 <li><a href="doação.html"> Informações sobre doação</a></li>
-                <li><a href="contato.html"> Fale Conosco</a></li>
                 <li><a href="login.html" id="login"> Log In</a></li>
             </ul>
 
@@ -132,15 +131,15 @@
         div_mensagem.innerHTML = `
         <br> Uma bolsa de sangue salva em média: <b style="color:red;">4 vidas!</b> <br><br>
         O valor total de bolsas de sangue da sua empresa é de: <br>
-        <b style="color:red;">${valor_total}</b> <br>
+        <b style="color:red;">${valor_total.toFixed(2)}</b> <br>
         o equivalente mensal de: <br>
-        <b style="color:red;">R$${preco_bolsa}</b><br>
+        <b style="color:red;">R$${preco_bolsa.toFixed(2)}</b><br>
         Mas com o número de perdas, seu total de bolsas de sangue agora é de:
         <br><b style="color:red;">${perda_malote}</b><br> e mensal de: <br>
-         <b style="color:red;">R$${preco_perda}</b><br>
+         <b style="color:red;">R$${preco_perda.toFixed(2)}</b><br>
         Implementando nosso projeto sua empresa reduzira as perdas em até:
         <br> <b style="color:red;">${porcentagem_perda}%</b><br>
-        Isso o resultaria  um retorno de <b style="color:red;">R$${total}</b> mensal. <br><br>
+        Isso o resultaria  um retorno de <b style="color:red;">R$${total.toFixed(2)}</b> mensal. <br><br>
         Além de poder salvar em até <b style="color:red;">${perda_vida}</b> vidas a mais.`
     }
 </script>
