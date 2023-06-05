@@ -74,9 +74,9 @@
             <div class="container_2">
                 <div class="organizador">
                     <div class="frase">
-                        <h1>Olá, <span id="nome_empresa"></span> </h1>
-                        <h3> Seja bem-vindo de volta <br>
-                            acompanhe as temperaturas </h3>
+                        <h1>Olá, <span id="nome_empresa">Empresa</span> </h1>
+                        <h3> Bem-vindo de volta, <span id="nome_funcionario">Funcionario</span>! <br>
+                            Acompanhe as temperaturas. </h3>
                     </div>
                     <div class="sumario">
                         <div class="container_2">
@@ -199,7 +199,12 @@
 
 <script>
 
-    var nome_empresa = sessionStorage.nome
+    var empresa = sessionStorage.NOME_EMPRESA;
+    nome_empresa.innerHTML = empresa;
+
+    var funcionario = sessionStorage.NOME_USUARIO;
+    nome_funcionario.innerHTML = funcionario;
+
     function insertSimulados() {
         var min2 = 0;
         var max2 = 7;
