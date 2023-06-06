@@ -46,5 +46,13 @@ router.get("/lotes", function (req, res) {
     usuarioController.lotes(req, res);
 });
 
+router.get("/ver_lotes", function (req, res) {
+    usuarioController.ver_lotes(req, res);
+});
+
+router.delete("/deletar_lotes", function (req, res) {
+    usuarioController.deletar_lotes(req, res);
+});
+
 
 module.exports = router;

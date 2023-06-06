@@ -84,6 +84,21 @@ function cadastrar_funcionario(nome, email, senha, fkEmpresa) {
         return database.executar(instrucao);
     }
 
+    function ver_lotes(){
+        var instrucao = `
+        SELECT * FROM lote;
+        `;
+
+        return database.executar(instrucao);
+    }
+
+    function deletar_lotes(deletar){
+        var instrucao = `
+        DELETE FROM lote WHERE idLote = '${deletar}';
+        `;
+
+        return database.executar(instrucao);
+    }
 module.exports = {
     entrar,
     listar,
@@ -91,5 +106,7 @@ module.exports = {
     cadastrar_local,
     verificar_email,
     cadastrar_lote,
-    lotes
+    lotes,
+    ver_lotes,
+    deletar_lotes
 };

@@ -49,11 +49,12 @@ CREATE TABLE empresa(
 CREATE TABLE registroLotes(
 	idRegistro INT,
 	dataEntrada DATETIME default current_timestamp,
-    dataSaida DATE default current_timestamp,
+    dataSaida DATETIME default current_timestamp,
     fkLote INT,
     constraint const foreign key (fkLote) references lote(idLote),
     constraint pk primary key (idRegistro, fkLote)
 );
+
   CREATE TABLE historico(
         idHistorico INT PRIMARY KEY auto_increment,
         temperatura DOUBLE,
@@ -154,7 +155,11 @@ INSERT INTO contato VALUES
         JOIN sensor
         ON sensor.fkLocal = idLocal;
 
+	SELECT * FROM lote;
 
+	SELECT * FROM usuario;
+    SELECT * FROM local_empresa;
+    SELECT * FROM lote;
 -- 
 
 

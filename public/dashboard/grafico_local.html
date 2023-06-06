@@ -241,29 +241,29 @@
 
     }
 
-    function cardsLotes(){
+    function cardsLotes() {
         fetch("/usuarios/lotes", {
-        method: 'GET'
-    }).then(function (resposta) {
+            method: 'GET'
+        }).then(function (resposta) {
 
-        if (resposta.ok) {
-            if (resposta.status == 204) {
-                console.log("nenhuma resposta encontrada")
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    console.log("nenhuma resposta encontrada")
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ");
+
+                    console.log(resposta)
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
             }
+        }).catch(function (resposta) {
+            console.error(resposta);
 
-             resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ");
-
-                console.log(resposta)
-
-            });
-        } else {
-            throw ('Houve um erro na API!');
-        }
-    }).catch(function (resposta) {
-        console.error(resposta);
-    
-    });
+        });
     }
 
 
@@ -274,13 +274,90 @@
 <script>
 
     function ver_lotes() {
+
         form.innerHTML = `
-    <div class="fundo">
-         <div class="cadastrados"><h2> Lotes Monitorados</h2></div>
-         <div id="id_lista">
-            <div id="div_lote"></div>
-         </div>  
-    `;
+                <div class="fundo">
+                <div class="cadastrados"><h2> Lotes Monitorados</h2></div>
+                <div id="id_lista">
+                <div id="div_lote"></div>
+                <input type="text" id="input_deletar">
+                <button onclick="deletar_lotes()">Deletar</button>
+                </div>  
+                `;
+
+        fetch("/usuarios/ver_lotes", {
+            method: 'GET'
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    console.log("nenhuma resposta encontrada")
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ");
+
+                    form.innerHTML = `
+                <div class="fundo">
+                <div class="cadastrados"><h2> Lotes Monitorados</h2></div>
+                <div id="id_lista">
+                <div id="div_lote"></div>
+                <input type="text" id="input_deletar">
+                <button onclick="deletar_lotes()">Deletar</button>
+                </div>  
+                `;
+
+                    for (var i = 0; i < resposta.length; i++) {
+                        div_lote.innerHTML += `${resposta[i].idLote} Lote - Tipo Sanguíneo: ${resposta[i].tipoSanguineo}<br>
+                                            Quantidade de bolsas: ${resposta[i].qtdBolsa} - Validade: ${resposta[i].validade}<br>`;
+                    }
+
+                    console.log(resposta)
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
+    }
+
+    function deletar_lotes() {
+        var deletar = input_deletar.value;
+
+        fetch("/usuarios/deletar_lotes", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                deletarServer: deletar,
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    console.log("nenhuma resposta encontrada")
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ");
+
+                    window.location = 'grafico_local.html';
+                    console.log(resposta)
+
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+
+        });
     }
 
     function tela_cadastro() {

@@ -152,6 +152,7 @@ h3 {
     height: 450px;
     border-radius: 10px;
     overflow: auto;
+    flex-direction: column;
 }
 
 .cadastrarNovo {
