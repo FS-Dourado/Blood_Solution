@@ -84,6 +84,7 @@ if (tempSimulado < 1 || tempSimulado > 7) {
     grauDeAviso = 'perigo frio'
     grauDeAvisoCor = 'cor-alerta perigo-frio'
     exibirAlertaSimulado(tempSimulado, idSensor, grauDeAviso, grauDeAvisoCor)
+    exibirAlertas(tempSimulado, idSensor, grauDeAviso, grauDeAvisoCor)
     
 } else if (tempSimulado >= 2 && tempSimulado <= 6) {
     classe_temperatura = 'cor-alerta ideal';
@@ -96,6 +97,7 @@ else if (tempSimulado < 2 || tempSimulado > 6) {
     grauDeAviso = 'alerta frio'
     grauDeAvisoCor = 'cor-alerta alerta-frio'
     exibirAlertaSimulado(tempSimulado, idSensor, grauDeAviso, grauDeAvisoCor)
+    exibirAlertas(tempSimulado, idSensor, grauDeAviso, grauDeAvisoCor)
 }
 }
 
@@ -121,14 +123,13 @@ function exibirAlertaSimulado(tempSimulado, idSensor, grauDeAviso, grauDeAvisoCo
     } else {
         alertasSimulados.push({ idSensor, tempSimulado, grauDeAvisoCor });
     }
-
     exibirCardsSimulados();
-    
 }
 
 function removerAlerta(idSensor) {
     alertas = alertas.filter(item => item.idSensor != idSensor);
     exibirCards();
+
 }
 function removerAlertaSimulado(idSensor) {
     alertasSimulados = alertasSimulados.filter(item => item.idSensor != idSensor);
@@ -174,4 +175,33 @@ function divInsertSimulado({tempSimulado, grauDeAvisoCor}) {
         </div>
     <a href="./grafico_local.html"><button>Ver alerta </button></a>
 </div>`;
+}
+
+
+function exibirAlertas() {
+    var dropdown = document.getElementById('alert-dropdown');
+
+    for (var i = 0; i < alertasSimulados.length; i++) {
+        var alerta = alertasSimulados[i];
+        var div = document.createElement('div');
+        div.innerHTML += transformarEmDiv(alerta);
+        dropdown.appendChild(div);
+    }
+
+}
+
+function transformarEmDiv({idSensor, tempSimulado, grauDeAvisoCor }) {
+    return `
+        <div class="cards_temperatura ${grauDeAvisoCor}">
+            <h5>Sensor ${idSensor}</h5>
+            <div class="grau">${tempSimulado}ºC</div>
+            <a href="./grafico_local.html"><button>Ver alerta</button></a>
+        </div>
+    `;
+}
+
+
+function atualizarContadorAlertas() {
+    var badge = document.getElementById('alert-badge');
+    badge.textContent = alertasSimulados.length;
 }

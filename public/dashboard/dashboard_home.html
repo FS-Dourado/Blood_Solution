@@ -14,7 +14,7 @@
 
 </head>
 
-<body onload="atualizacaoPeriodica(), insertSimulados(), buscarInsertsSimulados()" class="body_tudo">
+<body onload="atualizacaoPeriodica(), insertSimulados()" class="body_tudo">
     <!-- Menu lateral -->
     <div class="container">
         <div class="navigation">
@@ -77,6 +77,11 @@
                         <h1>Olá, <span id="nome_empresa"></span> </h1>
                         <h3> Seja bem-vindo de volta <br>
                             acompanhe as temperaturas </h3>
+                    </div>
+                    <div class="notification dropdown">
+                        <div class="badge" id="alert-badge"></div>
+                        <img src="../imagens/notification.svg" alt="Notification Icon" width="30" height="30">
+                        <div class="dropdown-content" id="alert-dropdown"></div>
                     </div>
                     <div class="sumario">
                         <div class="container_2">
@@ -240,18 +245,18 @@
 
         return false;
     }
-
-
     function atualizacaoPeriodica() {
         obterdados(1);
         obterdados(2);
         obterdados(3);
         obterdados(4);
         obterdadosSimulados(2);
-
+atualizarContadorAlertas()        
+        
         setTimeout(insertSimulados, 7000);
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
-
+    setTimeout(exibirAlertasNotificacao(), 7000);
+    
 </script>

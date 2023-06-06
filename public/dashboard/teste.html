@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .notification {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .notification .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 200px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="notification dropdown">
+        <div class="badge" id="alert-badge"></div>
+        <img src="notification-icon.png" alt="Notification Icon" width="30" height="30">
+        <div class="dropdown-content" id="alert-dropdown"></div>
+    </div>
+
+    <script>
+        // Exemplo de dados de alerta
+        var alertas = [
+            { idSensor: 1, temp: 5, grauDeAvisoCor: 'cor-alerta ideal' },
+            { idSensor: 2, temp: 8, grauDeAvisoCor: 'cor-alerta perigo-frio' },
+            { idSensor: 2, temp: 7, grauDeAvisoCor: 'cor-alerta perigo-frio' },
+            { idSensor: 3, temp: 4, grauDeAvisoCor: 'cor-alerta ideal' }
+
+        ];
+
+        // Função para exibir os alertas no dropdown
+        function exibirAlertas() {
+            var dropdown = document.getElementById('alert-dropdown');
+            dropdown.innerHTML = '';
+
+            for (var i = 0; i < alertas.length; i++) {
+                var alerta = alertas[i];
+                var div = document.createElement('div');
+                div.innerHTML = transformarEmDiv(alerta);
+                dropdown.appendChild(div);
+            }
+        }
+
+        // Função para atualizar o contador de alertas
+        function atualizarContadorAlertas() {
+            var badge = document.getElementById('alert-badge');
+            badge.textContent = alertas.length;
+        }
+
+        // Função para transformar um alerta em HTML
+        function transformarEmDiv({ temp, grauDeAvisoCor }) {
+            return `
+                <div class="cards_temperatura ${grauDeAvisoCor}">
+                    <h5>Sensor ${temp.idSensor}</h5>
+                    <div class="grau">${temp}ºC</div>
+                    <a href="./grafico_local.html"><button>Ver alerta</button></a>
+                </div>
+            `;
+        }
+
+        // Exemplo de inicialização
+        atualizarContadorAlertas();
+
+    </script>
+</body>
+</html>
