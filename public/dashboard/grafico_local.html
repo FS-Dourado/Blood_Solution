@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard || Local</title>
+    <title> Dashboard || Local</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style_menu.css">
     <link rel="stylesheet" href="css/style_local.css">
@@ -76,7 +76,7 @@
         <div class=" graficoCompleto">
             <!-- <a href="./dashboard_home.html" id="a"><ion-icon name="close-outline"></ion-icon></a> -->
             <div class="textoGrafico">
-                <span id="local">Nome do local</span>
+                <span id="local">Hospital Israelita Albert Einstein I </span>
             </div>
             <div class="dividir">
                 <div class="container_fundo">
@@ -302,14 +302,16 @@
                 <div class="cadastrados"><h2> Lotes Monitorados</h2></div>
                 <div id="id_lista">
                 <div id="div_lote"></div>
+                <div class="dividir_inpy_btn">
                 <input type="text" id="input_deletar">
-                <button onclick="deletar_lotes()">Deletar</button>
+                <button onclick="deletar_lotes()" id="btn_deletar">Deletar</button>
+                </div>
                 </div>  
                 `;
 
                     for (var i = 0; i < resposta.length; i++) {
-                        div_lote.innerHTML += `${resposta[i].idLote} Lote - Tipo Sanguíneo: ${resposta[i].tipoSanguineo}<br>
-                                            Quantidade de bolsas: ${resposta[i].qtdBolsa} - Validade: ${resposta[i].validade}<br>`;
+                        div_lote.innerHTML += `<div class="lotes_cards">${resposta[i].idLote} Lote <br> Tipo Sanguíneo: ${resposta[i].tipoSanguineo}<br>
+                                            Quantidade de bolsas: ${resposta[i].qtdBolsa} <br> Validade: ${resposta[i].validade}<br></div>`;
                     }
 
                     console.log(resposta)
