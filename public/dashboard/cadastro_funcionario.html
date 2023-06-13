@@ -66,6 +66,7 @@
       </ul>
     </div>
 
+    <!-- Script do menu lateral -->
     <script>
       const list = document.querySelectorAll('.list');
       function activeLink() {
@@ -97,36 +98,13 @@
       </div>
     </div>
   </div>
-  <!-- <div class="formulario">
-            <div class="frase">
-            </div>
-            <div class="box_cadastro">
-                <div>
-                    <div>
-                        <input class="input" id="input_nome" type="text" placeholder="Nome" required="">
-                    </div>
-                    <div>
-                        <input class="input" id="input_email" type="email" placeholder="Email" required="">
-                    </div>
-                    <div>
-                        <input class="input" id="input_senha" type="password" placeholder="Senha" required="">
-                    </div>
-                    <div>
-                        <input class="input" id="input_confirmar_senha" type="password" placeholder="Confirmar Senha" required="">
-                     </div>
-                     <button onclick="cadastrar_funcionario()">Cadastrar</button>
-
-
-                </div>
-            </div>
-        </div> -->
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-
 
 </html>
 <script>
 
+  // Função para verificar o email
   function verificar_email(email, callback) {
     fetch("/usuarios/verificar_email", {
       method: "POST",
@@ -153,6 +131,7 @@
       });
   }
 
+  // Função para cadastrar o funcionario
   function cadastrar_funcionario() {
     var nomeVar = input_nome.value;
     var emailVar = input_email.value;

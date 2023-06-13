@@ -1,9 +1,9 @@
 /* Container */
-.container_simulador{
+.container_simulador {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     font-family: arial;
-}      
+}
 
 .container_calculadora {
     text-align: center;
@@ -13,10 +13,10 @@
     margin-left: 8%;
     width: 560px;
     height: 435px;
-   
+
 }
 
-h2{
+h2 {
     font-family: arial;
     font-size: 25px;
     display: flex;
@@ -24,15 +24,17 @@ h2{
     border-bottom: 1px solid red;
     margin-top: 7px;
 }
+
 /* .h2{
     border-bottom: 1px solid red;
 } */
-.bolinhas_calculadora{
+.bolinhas_calculadora {
     position: absolute;
     bottom: 78%;
     left: 9%;
 }
- /* botão */
+
+/* botão */
 .button_calculadora {
     color: white;
     background-color: red;
@@ -46,10 +48,10 @@ h2{
     font-family: arial;
     border: none;
     cursor: pointer;
-    
+
 }
 
-.button_calculadora:hover {    
+.button_calculadora:hover {
     background-color: crimson;
     transform: scale(1.1);
     transition: 0.5s;
@@ -154,14 +156,3 @@ label {
 .input:focus~.highlight {
     animation: inputHighlighter 0.3s ease;
 }
-
-/* @keyframes inputHighlighter {
-    from {
-        background: red;
-    }
-
-    to {
-        width: 0;
-        background: transparent;
-    }
-} */

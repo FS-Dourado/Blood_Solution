@@ -12,6 +12,7 @@
 
 <body class="body_tudo">
 
+    <!-- menu -->
     <div class="container">
         <div class="navigation">
             <ul>
@@ -54,6 +55,7 @@
             </ul>
         </div>
 
+        <!-- Script do menu -->
         <script>
             const list = document.querySelectorAll('.list');
             function activeLink() {
@@ -96,7 +98,7 @@
                 </div>
             </div>
 
-
+            <!-- Manual de instalção -->
             <div class="manual">
                 <div class="manual-informacao">
                     <p>Manual de instalação</p>
@@ -113,7 +115,7 @@
         </div>
     </div>
 
-    <a href="../images/Manual de instalação.pdf"></a>
+    <a href="./Manual de instalação.pdf"></a>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -158,6 +160,7 @@
         return true;
     }
 
+    // Função para enviar um email para a ferramenta de suporte - abrir um chamado 
     function enviarEmail() {
         var formulario = document.getElementById("meuFormulario");
         var destinatario = 'pipe303254064@mail.pipefy.com';
@@ -169,6 +172,7 @@
         window.location.href = "mailto:" + destinatario + "?subject=" + encodeURIComponent(assunto) + "&body=" + encodeURIComponent(corpo);
     }
 
+    // Função para baixar o manual de instalação
     function baixarPDF() {
         var link = document.createElement('a');
         link.href = '../images/Manual de instalação.pdf'; // Substitua pelo caminho do arquivo PDF que deseja baixar

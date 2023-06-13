@@ -1,15 +1,15 @@
-body{
+body {
     margin: 0;
     width: 100%;
     background-color: #F5ECEC;
 }
 
-.form{
+.form {
     padding: 100px;
     display: flex;
 }
 
-.formulario{
+.formulario {
     background-color: white;
     display: flex;
     align-items: center;
@@ -23,31 +23,31 @@ body{
     border-radius: 10px;
 }
 
-.form .container{
+.form .container {
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.form h4{
+.form h4 {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.form .campos{
+.form .campos {
     width: 85%;
     height: 35px;
     margin-top: 10%;
 }
 
-.form span{
+.form span {
     float: left;
     display: flex;
     font-size: 10px;
 }
 
-.form button{
+.form button {
     width: 150px;
     height: 50px;
     background-color: #A70000;
@@ -60,11 +60,11 @@ body{
     margin-top: 10%;
 }
 
-.form button{
+.form button {
     cursor: pointer;
 }
 
-.form button:hover{
+.form button:hover {
     background-color: crimson;
     transform: scale(1.1);
     transition: 0.5s;

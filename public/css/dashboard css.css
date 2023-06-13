@@ -1,24 +1,22 @@
 /*body*/
 .body {
     background-color: #f5ecec;
-    color:#977772;
+    color: #977772;
     display: flex;
-    flex-direction: column; 
-    
+    flex-direction: column;
+
 }
 
-
-
-.body{
+.body {
     background-color: #f5ecec;
-    color:#977772;
+    color: #977772;
     flex-direction: column;
 
 }
 
 .texto {
     background-color: #f5ecec;
-    color:#977772;
+    color: #977772;
     padding: 35px;
     margin-left: 60%;
     height: 0px;
@@ -27,7 +25,7 @@
 
 }
 
-.tempo{
+.tempo {
     display: flex;
     justify-content: center;
     width: 50%;
@@ -38,11 +36,11 @@
     gap: 20px;
 }
 
-.temperatura p{
+.temperatura p {
 
     align-items: center;
     height: 0px;
-    width:250px;
+    width: 250px;
     display: flex;
     font-size: 25px;
     rotate: 270deg;
@@ -50,7 +48,7 @@
 }
 
 .espaco {
-   margin: 5%;
+    margin: 5%;
 }
 
 .marca {
@@ -58,10 +56,10 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    
+
     margin-right: 150px;
     color: rgb(150, 119, 119);
-    
+
 }
 
 .titulo_1 {
@@ -71,6 +69,7 @@
     font-size: 98%;
     font-style: italic;
 }
+
 .titulo_1 {
     margin-bottom: -17px;
 }
@@ -83,11 +82,12 @@
     font-style: italic;
     margin-top: 43px;
 }
+
 .titulo_2 {
     margin-bottom: 2px;
 }
 
-.titulo_3{
+.titulo_3 {
     display: flex;
     margin-right: 50px;
     flex-direction: column;
@@ -95,7 +95,8 @@
     font-style: italic;
     margin-top: 30px;
 }
-.titulo_3{
+
+.titulo_3 {
     font-size: 25px;
     font-style: normal;
     font-weight: bolder;
@@ -103,35 +104,35 @@
     color: #5b5353;
 }
 
-.subtitulo_3 p{
+.subtitulo_3 p {
     color: #524848;
     font-style: italic;
     font-weight: bold;
     margin-right: 25px;
 }
 
-.bottom input{
+.bottom input {
     border-radius: 4%;
     background-color: #e3cbcb;
     width: 200px;
     height: 25px;
     border-color: #cca7a7;
-    background-color:#cca7a7;
+    background-color: #cca7a7;
 }
 
-.bottom button{
+.bottom button {
     border-radius: 10%;
-    
+
 }
 
-.grafico_1{
+.grafico_1 {
     width: 43%;
     margin-left: 10%;
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
 }
 
-.grafico_2{
+.grafico_2 {
     display: flex;
     flex-direction: column;
     margin-left: 10%;
@@ -139,11 +140,13 @@
     margin-bottom: 5%;
 
 }
-.div_grafico{
-    display: flex;
-    flex-direction: column;}
 
-body{
+.div_grafico {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
     margin: 0;
     padding: 0;
 }
@@ -155,10 +158,10 @@ body{
     width: 100%;
     height: 90px;
     background-color: #fec1c1;
-    color: #000;    
+    color: #000;
 }
 
-.footer .marca{
+.footer .marca {
     justify-content: center;
     align-items: center;
     height: 100%;

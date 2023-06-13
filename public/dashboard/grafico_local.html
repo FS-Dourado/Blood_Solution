@@ -9,12 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style_menu.css">
     <link rel="stylesheet" href="css/style_local.css">
-
-
 </head>
 
-
 <body>
+
+    <!-- menu lateral -->
     <div class="container">
         <div class="navigation">
             <ul>
@@ -57,6 +56,7 @@
             </ul>
         </div>
 
+        <!-- script do menu -->
         <script>
             const list = document.querySelectorAll('.list');
             function activeLink() {
@@ -72,21 +72,24 @@
 
     </div>
 
+    <!-- Informações e grafico  -->
     <div class="content-lotes">
         <div class=" graficoCompleto">
-            <!-- <a href="./dashboard_home.html" id="a"><ion-icon name="close-outline"></ion-icon></a> -->
             <div class="textoGrafico">
-                <span id="local">Hospital Israelita Albert Einstein I </span>
+                <span id="local">Hospital Israelita Albert Einstein I - geladeira I </span>
             </div>
             <div class="dividir">
                 <div class="container_fundo">
                     <h3>Ultimas medidas de temperatura</h3>
-                    <p>Sensor 1</p>
                     <div class="chartjs1">
                         <canvas id="grafico1" style="position: relative; height:50vh; width:90vh"></canvas>
                     </div>
-                </div>
 
+                    <div>
+                        <p>Temperatura em graus Celcius</p>
+                    </div>
+                </div>
+                <!-- botões do formulario -->
                 <div class="cadastro-lotes">
                     <div id="form"></div>
                     <div class="lotes-cadastro">
@@ -189,6 +192,7 @@
 
     cardsLotes();
 
+    // função para cadastrar lotes
     function cadastrar_lote() {
 
         //Recupere o valor da nova input pelo nome do id
@@ -241,6 +245,7 @@
 
     }
 
+    // função para mostrar os lotes
     function cardsLotes() {
         fetch("/usuarios/lotes", {
             method: 'GET'
@@ -273,6 +278,7 @@
 
 <script>
 
+    // função para mostar a tela de cadastro e os cards com os lotes
     function ver_lotes() {
 
         form.innerHTML = `

@@ -15,49 +15,51 @@
 </head>
 
 <body onload="atualizacaoPeriodica(), insertSimulados(), buscarInsertsSimulados()" class="body_tudo">
+
     <!-- Menu lateral -->
     <div class="container">
         <div class="navigation">
             <ul>
-              <li class="list active">
-                <a href="./dashboard_home.html">
-                  <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                  <span class="title">Home</span>
-                </a>
-              </li>
-              <li class="list">
-                <a href="./grafico_local.html">
-                  <span class="icon"><ion-icon name="cube-outline"></ion-icon></ion-icon></span>
-                  <span class="title">Lotes</span>
-                </a>
-              </li>
-              <li class="list ">
-                <a href="./cadastro_funcionario.html">
-                  <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
-                  <span class="title">Form funcionario</span>
-                </a>
-              </li>
-              <li class="list">
-                <a href="./cadastro_local.html">
-                  <span class="icon"><ion-icon name="reader-outline"></ion-icon></span>
-                  <span class="title">Form local</span>
-                </a>
-              </li>
-              <li class="list">
-                <a href="./contato.html">
-                  <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                  <span class="title">Suporte</span>
-                </a>
-              </li>
-              <li class="list">
-                <a href="../index.html">
-                  <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
-                  <span class="title">Sair</span>
-                </a>
-              </li>
+                <li class="list active">
+                    <a href="./dashboard_home.html">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./grafico_local.html">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></ion-icon></span>
+                        <span class="title">Lotes</span>
+                    </a>
+                </li>
+                <li class="list ">
+                    <a href="./cadastro_funcionario.html">
+                        <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
+                        <span class="title">Form funcionario</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./cadastro_local.html">
+                        <span class="icon"><ion-icon name="reader-outline"></ion-icon></span>
+                        <span class="title">Form local</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./contato.html">
+                        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                        <span class="title">Suporte</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="../index.html">
+                        <span class="icon"><ion-icon name="exit-outline"></ion-icon></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
             </ul>
-          </div>
+        </div>
 
+        <!-- Script menu lateral -->
         <script>
             const list = document.querySelectorAll('.list');
             function activeLink() {
@@ -70,6 +72,7 @@
                 item.addEventListener('click', activeLink));
         </script>
 
+        <!-- home -->
         <div class="hello">
             <div class="container_2">
                 <div class="organizador">
@@ -78,37 +81,41 @@
                         <h3> Bem-vindo de volta, <span id="nome_funcionario">Funcionario</span>! <br>
                             Acompanhe as temperaturas. </h3>
                     </div>
+
+                    <!-- Cards de legenda de temperatura -->
                     <div class="sumario">
                         <div class="container_2">
                             <div class="content-sumarios">
                                 <div class="div_temperatura">
                                     <p>Temperatura em</p>
-                               
-                                <div class="blocos-grande">
-                                    <div class="bloco-pequeno" style="background-color: #ce292a; color: white;">
-                                        <i><b>Alerta</b></i>Acima de 7ºC ou<br> menor que 1ºC
-                                    </div>
-                                    <div class="bloco-pequeno" style="background-color: #fffb81;"><i><b>Atenção</b></i>Acima de
-                                        6ºC ou
-                                        <br> menor que 2ºC
-                                    </div>
-                                    <div class="bloco-pequeno" style="background-color: #7497b3; color: white;">
-                                        <i><b>Ideal</b></i>Entre 2ºC e 6ºC
+
+                                    <div class="blocos-grande">
+                                        <div class="bloco-pequeno" style="background-color: #ce292a; color: white;">
+                                            <i><b>Alerta</b></i>Acima de 7ºC ou<br> menor que 1ºC
+                                        </div>
+                                        <div class="bloco-pequeno" style="background-color: #fffb81;">
+                                            <i><b>Atenção</b></i>Acima de
+                                            6ºC ou
+                                            <br> menor que 2ºC
+                                        </div>
+                                        <div class="bloco-pequeno" style="background-color: #7497b3; color: white;">
+                                            <i><b>Ideal</b></i>Entre 2ºC e 6ºC
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
+            <!-- Cards de temperatura -->
             <div class="sessao">
                 <div class="container_2">
                     <div class="content">
                         <div class="card">
-                            <h2> <span> Hospital Israelita Albert Einstein I - <span style="color: red;">geladeira 1</span></h2>
+                            <h2> <span> Hospital Israelita Albert Einstein I - <span style="color: red;">geladeira
+                                        1</span></h2>
                             <div class="box">
                                 <span id="div_sensor1" class="div_sensor">
                                     <div class="cards_temperatura" id="cards_temperatura_sensor1">
@@ -131,7 +138,9 @@
                             </div>
                         </div>
                         <div class="card">
-                            <h2><span> Hospital Israelita Albert Einstein I - <span style="color: red;">geladeira 2</span</span></h2>
+                            <h2><span> Hospital Israelita Albert Einstein I - <span style="color: red;">geladeira 2
+                                    </span>
+                            </h2>
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 3 </h5>
@@ -150,7 +159,8 @@
                     </div>
                     <div class="content">
                         <div class="card">
-                            <h2><span>Hospital Sirio Libanes - <span style="color: red;">geladeira 1</span</span></h2>
+                            <h2><span>Hospital Sirio Libanes - <span style="color: red;">geladeira 1</span< /span>
+                            </h2>
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 1 </h5>
@@ -167,7 +177,8 @@
                             </div>
                         </div>
                         <div class="card">
-                            <h2><span>Hospital Sirio Libanes - <span style="color: red;">geladeira 2</span</span></h2>
+                            <h2><span>Hospital Sirio Libanes - <span style="color: red;">geladeira 2</span< /span>
+                            </h2>
                             <div class="box">
                                 <div class="cards_temperatura" style="background-color: #7497b3;">
                                     <h5> sensor 1 </h5>
@@ -189,7 +200,7 @@
         </div>
     </div>
 
-
+    <!-- Script dos icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
@@ -199,12 +210,15 @@
 
 <script>
 
+    // Mostrar nome da empresa
     var empresa = sessionStorage.NOME_EMPRESA;
     nome_empresa.innerHTML = empresa;
 
+    // Mostrar nome do funcionario
     var funcionario = sessionStorage.NOME_USUARIO;
     nome_funcionario.innerHTML = funcionario;
 
+    // funcão da temperatura aleatoria
     function insertSimulados() {
         var min2 = 0;
         var max2 = 7;
@@ -246,7 +260,7 @@
         return false;
     }
 
-
+    // Funçaõ da temperatura tempo real
     function atualizacaoPeriodica() {
         obterdados(1);
         obterdados(2);
